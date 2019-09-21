@@ -1,0 +1,40 @@
+23:12:53 **** Build of configuration Debug for project periph_blinky ****
+make -r -j2 all 
+Building file: ../example/src/sysinit.c
+Building file: ../example/src/cr_startup_lpc175x_6x.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"C:\Users\Gaston\Desktop\pantalla TFT\lpc_chip_175x_6x\inc" -I"C:\Users\Gaston\Desktop\pantalla TFT\lpc_board_nxp_lpcxpresso_1769\inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -specs=redlib.specs -MMD -MP -MF"example/src/sysinit.d" -MT"example/src/sysinit.o" -MT"example/src/sysinit.d" -o "example/src/sysinit.o" "../example/src/sysinit.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"C:\Users\Gaston\Desktop\pantalla TFT\lpc_chip_175x_6x\inc" -I"C:\Users\Gaston\Desktop\pantalla TFT\lpc_board_nxp_lpcxpresso_1769\inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -specs=redlib.specs -MMD -MP -MF"example/src/cr_startup_lpc175x_6x.d" -MT"example/src/cr_startup_lpc175x_6x.o" -MT"example/src/cr_startup_lpc175x_6x.d" -o "example/src/cr_startup_lpc175x_6x.o" "../example/src/cr_startup_lpc175x_6x.c"
+In file included from ../example/src/sysinit.c:32:0:
+C:\Users\Gaston\Desktop\pantalla TFT\lpc_board_nxp_lpcxpresso_1769\inc/board.h:158:0: warning: "DB15_BIT" redefined
+ #define DB15_BIT 2
+ 
+C:\Users\Gaston\Desktop\pantalla TFT\lpc_board_nxp_lpcxpresso_1769\inc/board.h:140:0: note: this is the location of the previous definition
+ #define DB15_BIT 10
+ 
+Finished building: ../example/src/cr_startup_lpc175x_6x.c
+Finished building: ../example/src/sysinit.c
+ 
+ 
+Building file: ../example/src/systick.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"C:\Users\Gaston\Desktop\pantalla TFT\lpc_chip_175x_6x\inc" -I"C:\Users\Gaston\Desktop\pantalla TFT\lpc_board_nxp_lpcxpresso_1769\inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -specs=redlib.specs -MMD -MP -MF"example/src/systick.d" -MT"example/src/systick.o" -MT"example/src/systick.d" -o "example/src/systick.o" "../example/src/systick.c"
+In file included from ../example/src/systick.c:32:0:
+C:\Users\Gaston\Desktop\pantalla TFT\lpc_board_nxp_lpcxpresso_1769\inc/board.h:158:0: warning: "DB15_BIT" redefined
+ #define DB15_BIT 2
+ 
+C:\Users\Gaston\Desktop\pantalla TFT\lpc_board_nxp_lpcxpresso_1769\inc/board.h:140:0: note: this is the location of the previous definition
+ #define DB15_BIT 10
+ 
+Finished building: ../example/src/systick.c
+ 
+Building target: periph_blinky.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -L"C:\Users\Gaston\Desktop\pantalla TFT\lpc_chip_175x_6x\Debug" -L"C:\Users\Gaston\Desktop\pantalla TFT\lpc_board_nxp_lpcxpresso_1769\Debug" -Xlinker -Map="periph_blinky.map" -Xlinker --gc-sections -mcpu=cortex-m3 -mthumb -T "periph_blinky_Debug.ld" -o "periph_blinky.axf"  ./example/src/cr_startup_lpc175x_6x.o ./example/src/sysinit.o ./example/src/systick.o   -llpc_board_nxp_lpcxpresso_1769 -llpc_chip_175x_6x
+c:/nxp/mcuxpressoide_10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.win32_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/bin/ld.exe: cannot find -llpc_board_nxp_lpcxpresso_1769
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:32: periph_blinky.axf] Error 1
+
+23:13:01 Build Finished (took 7s.404ms)
+

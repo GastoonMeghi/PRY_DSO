@@ -1,0 +1,6 @@
+16:17:38 **** Build of configuration Debug for project lpc_chip_175x_6x ****
+make -r all 
+make: Nothing to be done for 'all'.
+
+16:17:39 Build Finished (took 978ms)
+

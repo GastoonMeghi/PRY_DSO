@@ -1,0 +1,93 @@
+17:42:05 **** Build of configuration Debug for project c-tds-project-4 ****
+make -r -j2 all 
+Building file: ../example/src/tasks/task-E1_switch.c
+Building file: ../example/src/tasks/task-E2_switch.c
+Invoking: MCU C Compiler
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DNO_BOARD_LIB -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"C:\Users\Gaston\Desktop\pantalla TFT\lpc_chip_175x_6x\inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"example/src/tasks/task-E1_switch.d" -MT"example/src/tasks/task-E1_switch.o" -MT"example/src/tasks/task-E1_switch.d" -o "example/src/tasks/task-E1_switch.o" "../example/src/tasks/task-E1_switch.c"
+arm-none-eabi-gcc -DNO_BOARD_LIB -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"C:\Users\Gaston\Desktop\pantalla TFT\lpc_chip_175x_6x\inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"example/src/tasks/task-E2_switch.d" -MT"example/src/tasks/task-E2_switch.o" -MT"example/src/tasks/task-E2_switch.d" -o "example/src/tasks/task-E2_switch.o" "../example/src/tasks/task-E2_switch.c"
+../example/src/tasks/task-E1_switch.c:33:16: warning: 'switch_input' defined but not used [-Wunused-variable]
+ static uint8_t switch_input = 0;
+                ^~~~~~~~~~~~
+Finished building: ../example/src/tasks/task-E2_switch.c
+ 
+Finished building: ../example/src/tasks/task-E1_switch.c
+Building file: ../example/src/tasks/task-E3_switch.c
+Invoking: MCU C Compiler
+ 
+Building file: ../example/src/tasks/task-car_wash_controller_lpc1769.c
+arm-none-eabi-gcc -DNO_BOARD_LIB -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"C:\Users\Gaston\Desktop\pantalla TFT\lpc_chip_175x_6x\inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"example/src/tasks/task-E3_switch.d" -MT"example/src/tasks/task-E3_switch.o" -MT"example/src/tasks/task-E3_switch.d" -o "example/src/tasks/task-E3_switch.o" "../example/src/tasks/task-E3_switch.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DNO_BOARD_LIB -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"C:\Users\Gaston\Desktop\pantalla TFT\lpc_chip_175x_6x\inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"example/src/tasks/task-car_wash_controller_lpc1769.d" -MT"example/src/tasks/task-car_wash_controller_lpc1769.o" -MT"example/src/tasks/task-car_wash_controller_lpc1769.d" -o "example/src/tasks/task-car_wash_controller_lpc1769.o" "../example/src/tasks/task-car_wash_controller_lpc1769.c"
+Finished building: ../example/src/tasks/task-E3_switch.c
+ 
+Building file: ../example/src/tasks/task-heartbeat_lpc1769.c
+Invoking: MCU C Compiler
+Finished building: ../example/src/tasks/task-car_wash_controller_lpc1769.c
+arm-none-eabi-gcc -DNO_BOARD_LIB -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"C:\Users\Gaston\Desktop\pantalla TFT\lpc_chip_175x_6x\inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"example/src/tasks/task-heartbeat_lpc1769.d" -MT"example/src/tasks/task-heartbeat_lpc1769.o" -MT"example/src/tasks/task-heartbeat_lpc1769.d" -o "example/src/tasks/task-heartbeat_lpc1769.o" "../example/src/tasks/task-heartbeat_lpc1769.c"
+ 
+Building file: ../example/src/tasks/task-motor2_led_lpc1769.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DNO_BOARD_LIB -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"C:\Users\Gaston\Desktop\pantalla TFT\lpc_chip_175x_6x\inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"example/src/tasks/task-motor2_led_lpc1769.d" -MT"example/src/tasks/task-motor2_led_lpc1769.o" -MT"example/src/tasks/task-motor2_led_lpc1769.d" -o "example/src/tasks/task-motor2_led_lpc1769.o" "../example/src/tasks/task-motor2_led_lpc1769.c"
+Finished building: ../example/src/tasks/task-heartbeat_lpc1769.c
+Finished building: ../example/src/tasks/task-motor2_led_lpc1769.c
+ 
+ 
+Building file: ../example/src/tasks/task-watchdog_lpc1769.c
+Building file: ../example/src/tasks/task-puerta1.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DNO_BOARD_LIB -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"C:\Users\Gaston\Desktop\pantalla TFT\lpc_chip_175x_6x\inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"example/src/tasks/task-watchdog_lpc1769.d" -MT"example/src/tasks/task-watchdog_lpc1769.o" -MT"example/src/tasks/task-watchdog_lpc1769.d" -o "example/src/tasks/task-watchdog_lpc1769.o" "../example/src/tasks/task-watchdog_lpc1769.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DNO_BOARD_LIB -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"C:\Users\Gaston\Desktop\pantalla TFT\lpc_chip_175x_6x\inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"example/src/tasks/task-puerta1.d" -MT"example/src/tasks/task-puerta1.o" -MT"example/src/tasks/task-puerta1.d" -o "example/src/tasks/task-puerta1.o" "../example/src/tasks/task-puerta1.c"
+Finished building: ../example/src/tasks/task-watchdog_lpc1769.c
+ 
+Finished building: ../example/src/tasks/task-puerta1.c
+Building file: ../example/src/main/cr_startup_lpc175x_6x.c
+ 
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DNO_BOARD_LIB -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"C:\Users\Gaston\Desktop\pantalla TFT\lpc_chip_175x_6x\inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"example/src/main/cr_startup_lpc175x_6x.d" -MT"example/src/main/cr_startup_lpc175x_6x.o" -MT"example/src/main/cr_startup_lpc175x_6x.d" -o "example/src/main/cr_startup_lpc175x_6x.o" "../example/src/main/cr_startup_lpc175x_6x.c"
+Building file: ../example/src/main/main.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DNO_BOARD_LIB -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"C:\Users\Gaston\Desktop\pantalla TFT\lpc_chip_175x_6x\inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"example/src/main/main.d" -MT"example/src/main/main.o" -MT"example/src/main/main.d" -o "example/src/main/main.o" "../example/src/main/main.c"
+Finished building: ../example/src/main/cr_startup_lpc175x_6x.c
+ 
+Building file: ../example/src/main/sysinit.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DNO_BOARD_LIB -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"C:\Users\Gaston\Desktop\pantalla TFT\lpc_chip_175x_6x\inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"example/src/main/sysinit.d" -MT"example/src/main/sysinit.o" -MT"example/src/main/sysinit.d" -o "example/src/main/sysinit.o" "../example/src/main/sysinit.c"
+Finished building: ../example/src/main/main.c
+ 
+Building file: ../example/src/c-tds/monittor_lpc1769.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DNO_BOARD_LIB -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"C:\Users\Gaston\Desktop\pantalla TFT\lpc_chip_175x_6x\inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"example/src/c-tds/monittor_lpc1769.d" -MT"example/src/c-tds/monittor_lpc1769.o" -MT"example/src/c-tds/monittor_lpc1769.d" -o "example/src/c-tds/monittor_lpc1769.o" "../example/src/c-tds/monittor_lpc1769.c"
+Finished building: ../example/src/main/sysinit.c
+ 
+Building file: ../example/src/c-tds/scheduler_lpc1769.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DNO_BOARD_LIB -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"C:\Users\Gaston\Desktop\pantalla TFT\lpc_chip_175x_6x\inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"example/src/c-tds/scheduler_lpc1769.d" -MT"example/src/c-tds/scheduler_lpc1769.o" -MT"example/src/c-tds/scheduler_lpc1769.d" -o "example/src/c-tds/scheduler_lpc1769.o" "../example/src/c-tds/scheduler_lpc1769.c"
+Finished building: ../example/src/c-tds/monittor_lpc1769.c
+ 
+../example/src/c-tds/scheduler_lpc1769.c: In function 'SCH_Dispatch_Tasks':
+../example/src/c-tds/scheduler_lpc1769.c:270:14: warning: variable 'time_SCH' set but not used [-Wunused-but-set-variable]
+     uint32_t time_SCH;
+              ^~~~~~~~
+Building file: ../example/src/c-tds/system_lpc1769.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DNO_BOARD_LIB -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"C:\Users\Gaston\Desktop\pantalla TFT\lpc_chip_175x_6x\inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"example/src/c-tds/system_lpc1769.d" -MT"example/src/c-tds/system_lpc1769.o" -MT"example/src/c-tds/system_lpc1769.d" -o "example/src/c-tds/system_lpc1769.o" "../example/src/c-tds/system_lpc1769.c"
+Finished building: ../example/src/c-tds/scheduler_lpc1769.c
+ 
+Finished building: ../example/src/c-tds/system_lpc1769.c
+ 
+Building target: c-tds-project-4.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -L"C:\Users\Gaston\Desktop\pantalla TFT\lpc_chip_175x_6x\Debug" -Xlinker -Map="c-tds-project-4.map" -Xlinker --gc-sections -mcpu=cortex-m3 -mthumb -T "c-tds-project-4_Debug.ld" -o "c-tds-project-4.axf"  ./example/src/tasks/task-E1_switch.o ./example/src/tasks/task-E2_switch.o ./example/src/tasks/task-E3_switch.o ./example/src/tasks/task-car_wash_controller_lpc1769.o ./example/src/tasks/task-heartbeat_lpc1769.o ./example/src/tasks/task-motor2_led_lpc1769.o ./example/src/tasks/task-puerta1.o ./example/src/tasks/task-watchdog_lpc1769.o  ./example/src/main/cr_startup_lpc175x_6x.o ./example/src/main/main.o ./example/src/main/sysinit.o  ./example/src/c-tds/monittor_lpc1769.o ./example/src/c-tds/scheduler_lpc1769.o ./example/src/c-tds/system_lpc1769.o   -llpc_chip_175x_6x
+Finished building target: c-tds-project-4.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "c-tds-project-4.axf"; # arm-none-eabi-objcopy -v -O binary "c-tds-project-4.axf" "c-tds-project-4.bin" ; # checksum -p LPC1769 -d "c-tds-project-4.bin";
+   text	   data	    bss	    dec	    hex	filename
+   8812	      0	   1368	  10180	   27c4	c-tds-project-4.axf
+ 
+
+17:42:15 Build Finished (took 9s.658ms)
+

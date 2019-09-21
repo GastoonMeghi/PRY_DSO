@@ -1,0 +1,20 @@
+16:34:35 **** Incremental Build of configuration Debug for project TFT ****
+make -r -j2 all 
+Building target: TFT.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -L"C:\Users\Gaston\Desktop\pantalla TFT-07-09-2019\pantalla TFT\lpc_board_nxp_lpcxpresso_1769\Debug" -L"C:\Users\Gaston\Desktop\pantalla TFT-07-09-2019\pantalla TFT\lpc_chip_175x_6x\Debug" -Xlinker -Map="TFT.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m3 -mthumb -T "TFT_Debug.ld" -o "TFT.axf"  ./src/DefaultFonts.o ./src/HW_lpc1769.o ./src/TFT.o ./src/UTFT.o ./src/cr_startup_lpc175x_6x.o ./src/crp.o ./src/sysinit.o   -llpc_board_nxp_lpcxpresso_1769 -llpc_chip_175x_6x
+Memory region         Used Size  Region Size  %age Used
+       MFlash512:       21400 B       512 KB      4.08%
+        RamLoc32:        6440 B        32 KB     19.65%
+        RamAHB32:          0 GB        32 KB      0.00%
+Finished building target: TFT.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "TFT.axf"; # arm-none-eabi-objcopy -v -O binary "TFT.axf" "TFT.bin" ; # checksum -p LPC1769 -d "TFT.bin";
+   text	   data	    bss	    dec	    hex	filename
+  14988	   6412	     28	  21428	   53b4	TFT.axf
+ 
+
+16:34:37 Build Finished (took 1s.458ms)
+
