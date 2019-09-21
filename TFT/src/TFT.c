@@ -116,13 +116,13 @@ int main(void) {
 
     //drawPixel(20,20);
     setFont(SmallFont);
-
-    for (i=1;i<400;i++)
-    drawPixel(i,sin[i]);
+    Chip_GPIO_WritePortBit(LPC_GPIO,0,22,true);
     while(1)
     {
-    	drawBitmap (0,0, 32, 32, icon2,8);
-    	while (Chip_GPIO_GetPinState(LPC_GPIO,2,10)==1);
+
+	drawBitmap (0,0, 32, 32, icon2,8);
+	while (Chip_GPIO_GetPinState(LPC_GPIO,2,10)==1){Chip_GPIO_WritePortBit(LPC_GPIO,0,22,false);}
+
     	clrScr();
     	setColor2(255,255,255);
     	for (i=1;i<400;i++)

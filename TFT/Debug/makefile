@@ -29,7 +29,7 @@ all: TFT.axf
 TFT.axf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU Linker'
-	arm-none-eabi-gcc -nostdlib -L"C:\Users\Gaston\Desktop\pantalla TFT-07-09-2019\pantalla TFT\lpc_board_nxp_lpcxpresso_1769\Debug" -L"C:\Users\Gaston\Desktop\pantalla TFT-07-09-2019\pantalla TFT\lpc_chip_175x_6x\Debug" -Xlinker -Map="TFT.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m3 -mthumb -T "TFT_Debug.ld" -o "TFT.axf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-gcc -nostdlib -L"C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug" -L"C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug" -Xlinker -Map="TFT.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m3 -mthumb -T "TFT_Debug.ld" -o "TFT.axf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build
