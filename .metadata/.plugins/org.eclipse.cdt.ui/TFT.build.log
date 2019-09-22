@@ -1,9 +1,9 @@
-19:42:43 **** Clean-only build of configuration Debug for project TFT ****
+22:52:39 **** Clean-only build of configuration Debug for project TFT ****
 make -r -j2 clean 
 rm -rf  ./src/DefaultFonts.o ./src/HW_lpc1769.o ./src/TFT.o ./src/UTFT.o ./src/cr_startup_lpc175x_6x.o ./src/crp.o ./src/sysinit.o  ./src/DefaultFonts.d ./src/HW_lpc1769.d ./src/TFT.d ./src/UTFT.d ./src/cr_startup_lpc175x_6x.d ./src/crp.d ./src/sysinit.d  TFT.axf
 rm: can't remove 'TFT.axf': Permission denied
 make: [makefile:39: clean] Error 1 (ignored)
  
 
-19:42:44 Build Finished (took 909ms)
+22:52:40 Build Finished (took 729ms)
 

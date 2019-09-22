@@ -141,7 +141,7 @@ typedef struct
 		void	InitLCD(uint8_t orientation);
 		void	clrScr();
 		void	drawPixel(int x, int y);
-		void	drawLine(int x1, int y1, int x2, int y2);
+		//void	drawLine(int x1, int y1, int x2, int y2);
 		void	fillScr2(uint8_t r, uint8_t g, uint8_t b);
 		void	fillScr(uint16_t color);
 		void	drawRect(int x1, int y1, int x2, int y2);
@@ -193,8 +193,8 @@ typedef struct
 		void LCD_Write_DATA_8(uint8_t VL);
 		void _hw_special_init();
 		void setPixel(uint16_t color);
-//		void drawHLine(int x, int y, int l);
-//		void drawVLine(int x, int y, int l);
+		void drawHLine(int x, int y, int l);
+		void drawVLine(int x, int y, int l);
 		void printChar(uint8_t c, uint16_t x, uint16_t y);
 		void setXY(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2);
 		void clrXY();
