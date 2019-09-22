@@ -65,6 +65,7 @@
 		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\Gaston\Documents\facultad\TDII\Proyecto\c-tds-project-4a"/>
 			<item value="C:\Users\Gaston\Desktop\lpcopen_2_10_lpcxpresso_nxp_lpcxpresso_1769"/>
 			<item value="C:\Users\Gaston\Desktop\pantalla TFT\c-tds-project-4"/>
 			<item value="C:\Users\Gaston\Desktop\pantalla TFT\lpcopen_2_10_lpcxpresso_nxp_lpcxpresso_1769"/>
