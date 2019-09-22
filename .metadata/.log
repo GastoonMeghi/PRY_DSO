@@ -5734,3 +5734,137 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.core.resources 4 567 2019-09-21 23:44:57.769
 !MESSAGE The project description file (.project) for 'c-tds-project-4' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+
+!ENTRY org.eclipse.cdt.core 1 0 2019-09-22 00:25:35.742
+!MESSAGE Indexed 'c-tds-project-4a' (15 sources, 57 headers) in 4,58 sec: 3.575 declarations; 5.998 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0 %)
+
+!ENTRY org.eclipse.jface.text 2 0 2019-09-22 00:27:08.686
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2019-09-22 00:27:08.687
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY com.crt.log 1 0 2019-09-22 01:01:27.478
+!MESSAGE Trying to connect to redlink server on port 3025.
+
+!ENTRY com.crt.debugcommon 1 0 2019-09-22 01:01:27.518
+!MESSAGE RedlinkServer telnet session connected on port 3025->52761 @ 127.0.0.1
+
+!ENTRY com.crt.dsfdebug 1 0 2019-09-22 01:01:34.492
+!MESSAGE Telnet session connected on port 3330->52766 @ 127.0.0.1
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2019-09-22 01:02:28.446
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.ImmediateRequestMonitor@769582): Status ERROR: org.eclipse.cdt.dsf.gdb code=10003 Invalid context type. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10003 2019-09-22 01:02:28.446
+!MESSAGE Invalid context type.
+
+!ENTRY com.crt.log 1 0 2019-09-22 01:02:59.153
+!MESSAGE Trying to connect to redlink server on port 3025.
+
+!ENTRY com.crt.debugcommon 1 0 2019-09-22 01:02:59.187
+!MESSAGE RedlinkServer telnet session connected on port 3025->52768 @ 127.0.0.1
+
+!ENTRY com.crt.dsfdebug 1 0 2019-09-22 01:03:01.117
+!MESSAGE Telnet session connected on port 3330->52773 @ 127.0.0.1
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2019-09-22 01:09:00.583
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.ImmediateRequestMonitor@5a07dd): Status ERROR: org.eclipse.cdt.dsf.gdb code=10003 Invalid context type. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10003 2019-09-22 01:09:00.584
+!MESSAGE Invalid context type.
+
+!ENTRY com.crt.dsfdebug 2 0 2019-09-22 01:09:02.020
+!MESSAGE Termi&nate/Disconnect All is not enabled.
+
+To terminate debug sessions, first select a debug session in the Debug View and then select Terminate again.
+
+!ENTRY com.crt.log 1 0 2019-09-22 01:09:42.803
+!MESSAGE Trying to connect to redlink server on port 3025.
+
+!ENTRY com.crt.debugcommon 1 0 2019-09-22 01:09:42.852
+!MESSAGE RedlinkServer telnet session connected on port 3025->52776 @ 127.0.0.1
+
+!ENTRY com.crt.dsfdebug 1 0 2019-09-22 01:09:44.833
+!MESSAGE Telnet session connected on port 3330->52781 @ 127.0.0.1
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 10004 2019-09-22 01:10:28.512
+!MESSAGE Failed to execute MI command:
+-data-list-register-values x 13
+Error message from debugger back end:
+Selected thread is running.
+!STACK 0
+java.lang.Exception: Selected thread is running.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:943)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:772)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 10004 2019-09-22 01:11:19.520
+!MESSAGE Failed to execute MI command:
+-data-list-register-values x 13
+Error message from debugger back end:
+Selected thread is running.
+!STACK 0
+java.lang.Exception: Selected thread is running.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:943)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:772)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2019-09-22 01:14:11.559
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.ImmediateRequestMonitor@2ed5f4): Status ERROR: org.eclipse.cdt.dsf.gdb code=10003 Invalid context type. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10003 2019-09-22 01:14:11.559
+!MESSAGE Invalid context type.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2019-09-22 01:14:13.834
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1aa55d5): Status ERROR: com.crt.dsfdebug code=10001 GDB Control not accessible. null' resulted in an error.
+!SUBENTRY 1 com.crt.dsfdebug 4 10001 2019-09-22 01:14:13.834
+!MESSAGE GDB Control not accessible.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2019-09-22 01:14:13.835
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@16842a9): Status ERROR: com.crt.dsfdebug code=10001 GDB Control not accessible. null' resulted in an error.
+!SUBENTRY 1 com.crt.dsfdebug 4 10001 2019-09-22 01:14:13.835
+!MESSAGE GDB Control not accessible.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2019-09-22 01:14:13.836
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@4d6eef): Status ERROR: com.crt.dsfdebug code=10001 GDB Control not accessible. null' resulted in an error.
+!SUBENTRY 1 com.crt.dsfdebug 4 10001 2019-09-22 01:14:13.837
+!MESSAGE GDB Control not accessible.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2019-09-22 01:14:13.838
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@70552e): Status ERROR: com.crt.dsfdebug code=10001 GDB Control not accessible. null' resulted in an error.
+!SUBENTRY 1 com.crt.dsfdebug 4 10001 2019-09-22 01:14:13.838
+!MESSAGE GDB Control not accessible.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2019-09-22 01:14:13.839
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1bdac08): Status ERROR: com.crt.dsfdebug code=10001 GDB Control not accessible. null' resulted in an error.
+!SUBENTRY 1 com.crt.dsfdebug 4 10001 2019-09-22 01:14:13.839
+!MESSAGE GDB Control not accessible.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2019-09-22 01:14:13.840
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@99c29c): Status ERROR: com.crt.dsfdebug code=10001 GDB Control not accessible. null' resulted in an error.
+!SUBENTRY 1 com.crt.dsfdebug 4 10001 2019-09-22 01:14:13.841
+!MESSAGE GDB Control not accessible.
+
+!ENTRY com.crt.log 1 0 2019-09-22 01:16:43.422
+!MESSAGE Trying to connect to redlink server on port 3025.
+
+!ENTRY com.crt.debugcommon 1 0 2019-09-22 01:16:43.462
+!MESSAGE RedlinkServer telnet session connected on port 3025->52785 @ 127.0.0.1
+
+!ENTRY com.crt.dsfdebug 1 0 2019-09-22 01:16:45.409
+!MESSAGE Telnet session connected on port 3330->52790 @ 127.0.0.1
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 10004 2019-09-22 01:17:25.347
+!MESSAGE Failed to execute MI command:
+-data-list-register-values x 13
+Error message from debugger back end:
+Selected thread is running.
+!STACK 0
+java.lang.Exception: Selected thread is running.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:943)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:772)
+
+!ENTRY com.crt.log 1 0 2019-09-22 01:19:53.748
+!MESSAGE Trying to connect to redlink server on port 3025.
+
+!ENTRY com.crt.debugcommon 1 0 2019-09-22 01:19:53.783
+!MESSAGE RedlinkServer telnet session connected on port 3025->52793 @ 127.0.0.1
+
+!ENTRY com.crt.dsfdebug 1 0 2019-09-22 01:19:55.748
+!MESSAGE Telnet session connected on port 3330->52798 @ 127.0.0.1
