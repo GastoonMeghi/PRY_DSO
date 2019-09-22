@@ -2,12 +2,19 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="CS_BIT" key="selection"/>
+		<item value="cl" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="VH"/>
+			<item value="VL"/>
+			<item value="fch="/>
+			<item value="fch"/>
+			<item value=" C"/>
+			<item value=" - "/>
+			<item value="FIO"/>
 			<item value="B_CS"/>
 			<item value="P_CS"/>
 			<item value=";"/>
@@ -16,12 +23,13 @@
 			<item value="ch"/>
 			<item value="BIT_WR"/>
 			<item value="PORT_WR"/>
-			<item value="B_WR"/>
-			<item value="P_WR"/>
-			<item value="10"/>
-			<item value="BIT"/>
 		</list>
 		<list key="replacehistory">
+			<item value="cl"/>
+			<item value="ch"/>
+			<item value="C"/>
+			<item value=" "/>
+			<item value="#define FIO"/>
 			<item value="CS_BIT"/>
 			<item value="CS_PORT"/>
 			<item value=","/>
@@ -32,16 +40,13 @@
 			<item value="WR_BIT"/>
 			<item value="WR_PORT"/>
 			<item value="BIT_WR"/>
-			<item value="PORT_WR"/>
-			<item value="2"/>
-			<item value="PORT"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="284" key="DIALOG_WIDTH"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 		<item value="390" key="DIALOG_HEIGHT"/>
-		<item value="731" key="DIALOG_X_ORIGIN"/>
-		<item value="243" key="DIALOG_Y_ORIGIN"/>
+		<item value="848" key="DIALOG_X_ORIGIN"/>
+		<item value="263" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>
