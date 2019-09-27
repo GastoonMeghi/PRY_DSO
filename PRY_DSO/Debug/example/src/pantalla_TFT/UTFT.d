@@ -1,7 +1,7 @@
 example/src/pantalla_TFT/UTFT.o example/src/pantalla_TFT/UTFT.d: \
  ../example/src/pantalla_TFT/UTFT.c \
- c:\users\gaston\documents\facultad\tdii\proyecto\dso\example\inc\utft\utft.h \
- c:\users\gaston\documents\facultad\tdii\proyecto\dso\example\inc\utft\HW_AVR_DEFINES.h \
+ c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\utft.h \
+ c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\HW_AVR_DEFINES.h \
  C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board.h \
  C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\inc/chip.h \
  C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\inc/lpc_types.h \
@@ -44,11 +44,11 @@ example/src/pantalla_TFT/UTFT.o example/src/pantalla_TFT/UTFT.d: \
  C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\inc/lpc_types.h \
  C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/lpc_phy.h \
  C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board.h \
- c:\users\gaston\documents\facultad\tdii\proyecto\dso\example\inc\utft\hw_lpc1769.h
+ c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\hw_lpc1769.h
 
-c:\users\gaston\documents\facultad\tdii\proyecto\dso\example\inc\utft\utft.h:
+c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\utft.h:
 
-c:\users\gaston\documents\facultad\tdii\proyecto\dso\example\inc\utft\HW_AVR_DEFINES.h:
+c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\HW_AVR_DEFINES.h:
 
 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board.h:
 
@@ -134,4 +134,4 @@ C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\i
 
 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board.h:
 
-c:\users\gaston\documents\facultad\tdii\proyecto\dso\example\inc\utft\hw_lpc1769.h:
+c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\hw_lpc1769.h:

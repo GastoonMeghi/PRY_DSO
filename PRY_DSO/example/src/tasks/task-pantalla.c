@@ -662,7 +662,75 @@ void task_pantalla_Init(void)
 void task_pantalla (void)
 {
 	static uint8_t state=0;
-	uint32_t i;
+	uint32_t i=0;
+	if (Chip_GPIO_GetPinState(LPC_GPIO,2,10)==1)
+	{
+	switch (state)
+	{
+	case 0:
+		setColor2(0,0,0);
+		state++;
+
+	case 1:
+		drawPixel(i,sin4[i]/2);
+		i++;
+		if(i==300) state=2;
+	case 2:
+		setColor2(255,255,255);
+		state++;
+	case 3:
+		print("Vpp=1.5V",305,105,0);
+		state++;
+	case 4:
+		print("frec=2Mhz",305,125,0);
+		state++;
+	case 5:
+		print("fs=200Mhz",CENTER,225,0);
+		state++;
+	case 6:
+		setColor2(0,255,0);
+		state++;
+		i=0;
+	case 7:
+		drawPixel(i,(sin[i]/3));
+		i++;
+		if(i==300) state++;
+	case 8:
+		setColor2(0,0,0);
+		state++;
+
+	case 9:
+		drawPixel(i,sin[i]/2);
+		i++;
+		if(i==300) state=2;
+	case 10:
+		setColor2(255,255,255);
+		state++;
+	case 11:
+		print("Vpp=3.3V",305,105,0);
+		state++;
+	case 12:
+		print("frec=700Khz",305,125,0);
+		state++;
+	case 13:
+		print("fs=1Mhz  ",CENTER,225,0);
+		state++;
+	case 14:
+		setColor2(0,255,0);
+		state++;
+		i=0;
+	case 15:
+		drawPixel(i,(sin4[i]/3));
+		i++;
+		if(i==300)
+		{
+			state=0;
+			i=0;
+		}
+	}
+	}
+	else
+	{
 	if (state==0)
 	{
 		setColor2(0,0,0);
@@ -693,5 +761,6 @@ void task_pantalla (void)
 			drawPixel(i,sin4[i]/2);
 		state=0;
 		return;
+	}
 	}
 }

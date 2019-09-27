@@ -26,25 +26,25 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: DSO.axf
+all: PRY_DSO.axf
 
 # Tool invocations
-DSO.axf: $(OBJS) $(USER_OBJS)
+PRY_DSO.axf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU Linker'
-	arm-none-eabi-gcc -nostdlib -L"C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug" -Xlinker -Map="DSO.map" -Xlinker --gc-sections -mcpu=cortex-m3 -mthumb -T "c-tds-project-4_Debug.ld" -o "DSO.axf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-gcc -nostdlib -L"C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug" -Xlinker -Map="PRY_DSO.map" -Xlinker --gc-sections -mcpu=cortex-m3 -mthumb -T "PRY_DSO_Debug.ld" -o "PRY_DSO.axf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build
 
 # Other Targets
 clean:
-	-$(RM) $(EXECUTABLES)$(OBJS)$(C_DEPS) DSO.axf
+	-$(RM) $(EXECUTABLES)$(OBJS)$(C_DEPS) PRY_DSO.axf
 	-@echo ' '
 
 post-build:
 	-@echo 'Performing post-build steps'
-	-arm-none-eabi-size "DSO.axf"; # arm-none-eabi-objcopy -v -O binary "DSO.axf" "DSO.bin" ; # checksum -p LPC1769 -d "DSO.bin";
+	-arm-none-eabi-size "PRY_DSO.axf"; # arm-none-eabi-objcopy -v -O binary "PRY_DSO.axf" "PRY_DSO.bin" ; # checksum -p LPC1769 -d "PRY_DSO.bin";
 	-@echo ' '
 
 .PHONY: all clean dependents post-build

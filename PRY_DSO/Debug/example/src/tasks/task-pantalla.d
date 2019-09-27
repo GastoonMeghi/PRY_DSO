@@ -41,14 +41,14 @@ example/src/tasks/task-pantalla.o example/src/tasks/task-pantalla.d: \
  ../example/src/tasks/../main/../c-tds/scheduler_lpc1769.h \
  ../example/src/tasks/../main/../c-tds/port_lpc1769.h \
  ../example/src/tasks/../main/../c-tds/monittor_lp1769.h \
- c:\users\gaston\documents\facultad\tdii\proyecto\dso\example\inc\utft\utft.h \
- c:\users\gaston\documents\facultad\tdii\proyecto\dso\example\inc\utft\HW_AVR_DEFINES.h \
+ c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\utft.h \
+ c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\HW_AVR_DEFINES.h \
  C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board.h \
  C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board_api.h \
  C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\inc/lpc_types.h \
  C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/lpc_phy.h \
  C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board.h \
- c:\users\gaston\documents\facultad\tdii\proyecto\dso\example\inc\utft\defaultfonts.h \
+ c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\defaultfonts.h \
  ../example/src/tasks/task-pantalla.h
 
 ../example/src/tasks/../main/main.h:
@@ -135,9 +135,9 @@ C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\inc/error.h:
 
 ../example/src/tasks/../main/../c-tds/monittor_lp1769.h:
 
-c:\users\gaston\documents\facultad\tdii\proyecto\dso\example\inc\utft\utft.h:
+c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\utft.h:
 
-c:\users\gaston\documents\facultad\tdii\proyecto\dso\example\inc\utft\HW_AVR_DEFINES.h:
+c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\HW_AVR_DEFINES.h:
 
 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board.h:
 
@@ -149,6 +149,6 @@ C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\i
 
 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board.h:
 
-c:\users\gaston\documents\facultad\tdii\proyecto\dso\example\inc\utft\defaultfonts.h:
+c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\defaultfonts.h:
 
 ../example/src/tasks/task-pantalla.h:

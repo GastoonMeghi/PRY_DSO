@@ -43,7 +43,7 @@ example/src/pantalla_TFT/DefaultFonts.o \
  C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\inc/lpc_types.h \
  C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/lpc_phy.h \
  C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board.h \
- c:\users\gaston\documents\facultad\tdii\proyecto\dso\example\inc\utft\defaultfonts.h
+ c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\defaultfonts.h
 
 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board.h:
 
@@ -129,4 +129,4 @@ C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\i
 
 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board.h:
 
-c:\users\gaston\documents\facultad\tdii\proyecto\dso\example\inc\utft\defaultfonts.h:
+c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\defaultfonts.h:
