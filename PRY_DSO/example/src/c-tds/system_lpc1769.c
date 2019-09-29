@@ -116,7 +116,7 @@ void SYSTEM_Configure_Required_Mode(void)
         case NORMAL:
         {
         	// Set up scheduler for 1 ms ticks (tick interval in *ms*)
-            SCH_Init(1);
+            SCH_Init(2);
 
             // Initialize WWDT and event router
         	Chip_WWDT_Init(LPC_WWDT);
@@ -183,7 +183,7 @@ void SYSTEM_Configure_Required_Mode(void)
 //            // Add Heartbeat task
             SCH_Add_Task(HEARTBEAT_Update, 0, 1000, 20, 0);
 
-            SCH_Add_Task(task_pantalla, 0, 1000, 500000, 0);
+            SCH_Add_Task(task_pantalla, 0, 3,1000000, 0);
 
             break;
         }

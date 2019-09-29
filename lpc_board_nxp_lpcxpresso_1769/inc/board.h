@@ -297,6 +297,6 @@ void Board_USBD_Init(uint32_t port);
 
 //****************UTFT**************************//
 
-void Board_UTFT_Init(void);
+
 
 #endif /* __BOARD_H_ */

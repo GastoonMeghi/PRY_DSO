@@ -22,7 +22,7 @@
 	static regsize			B_RS, B_WR, B_CS, B_RST, B_SDA, B_SCL, B_ALE;// pines
 	//Los puertos y los pines se implementan diferente en el lpc1769 así que quizas se termine borrando
 	static uint8_t			__p1, __p2, __p3, __p4, __p5;
-	static _current_font	cfont;
+	_current_font	cfont;
 		uint8_t			_transparent;
 	static uint8_t display_transfer_mode=16;
 //En principio no lo deberia usar, porque solo carga los valores de los pines
@@ -52,13 +52,13 @@
 
 void LCD_Write_COM(uint8_t VL)
 {
-	Chip_GPIO_WritePortBit(LPC_GPIO,RS_PORT, RS_BIT, 0);
+	CLEAR_RS
 	LCD_Writ_Bus(0x00,VL,display_transfer_mode);
 }
 
 void LCD_Write_DATA2(uint8_t VH,uint8_t VL)
 {
-		Chip_GPIO_WritePortBit(LPC_GPIO,RS_PORT, RS_BIT, 1);
+		SET_RS
 		LCD_Writ_Bus(VH,VL,display_transfer_mode);
 }
 
@@ -66,7 +66,7 @@ void LCD_Write_DATA2(uint8_t VH,uint8_t VL)
 void LCD_Write_DATA1(uint8_t VL)
 {
 
-		Chip_GPIO_WritePortBit(LPC_GPIO,RS_PORT, RS_BIT, 1);
+		SET_RS
 		LCD_Writ_Bus(0x00,VL,display_transfer_mode);
 }
 
@@ -78,7 +78,7 @@ void LCD_Write_COM_DATA(uint8_t com1,int dat1)
 
 void LCD_Write_DATA_8(uint8_t VL)
 {
-    sbi(P_RS, B_RS);
+    SET_RS
     LCD_Write_Bus_8(VL);
 }
 
@@ -103,7 +103,7 @@ void InitLCD(uint8_t orientation)
 	Chip_GPIO_WritePortBit(LPC_GPIO,RST_PORT, RST_BIT, 1);
 	for (i=0;i<136353;i++); //trato de hacer una demora de 15mSeg
 
-	Chip_GPIO_WritePortBit(LPC_GPIO,CS_PORT, CS_BIT, 0);
+	CLEAR_CS
 
 	LCD_Write_COM(0x83);
 	LCD_Write_DATA1(0x02);  //TESTM=1
@@ -355,19 +355,19 @@ void clrXY()
 //	}
 //	if (display_transfer_mode==16)
 //	{
-//		cbi(P_CS, B_CS);
+//		CLEAR_CS
 //		setXY(x1, y1, x2, y2);
-//		sbi(P_RS, B_RS);
+//		SET_RS
 //		_fast_fill_16(fch,fcl,((long(x2-x1)+1)*(long(y2-y1)+1)));
-//		sbi(P_CS, B_CS);
+//		SET_CS
 //	}
 //	else if ((display_transfer_mode==8) and (fch==fcl))
 //	{
-//		cbi(P_CS, B_CS);
+//		CLEAR_CS
 //		setXY(x1, y1, x2, y2);
-//		sbi(P_RS, B_RS);
+//		SET_RS
 //		_fast_fill_8(fch,((long(x2-x1)+1)*(long(y2-y1)+1)));
-//		sbi(P_CS, B_CS);
+//		SET_CS
 //	}
 //	else
 //	{
@@ -431,7 +431,7 @@ void clrXY()
 //	int x1 = 0;
 //	int y1 = radius;
 //
-//	cbi(P_CS, B_CS);
+//	CLEAR_CS
 //	setXY(x, y + radius, x, y + radius);
 //	LCD_Write_DATA(fch,fcl);
 //	setXY(x, y - radius, x, y - radius);
@@ -469,7 +469,7 @@ void clrXY()
 //		setXY(x - y1, y - x1, x - y1, y - x1);
 //		LCD_Write_DATA(fch,fcl);
 //	}
-//	sbi(P_CS, B_CS);
+//	SET_CS
 //	clrXY();
 //}
 //
@@ -489,7 +489,7 @@ void clrScr()
 {
 	long i;
 
-	cbi(CS_PORT,CS_BIT);
+	CLEAR_CS
 	clrXY();
 //	if (display_transfer_mode!=1)
 		sbi(RS_PORT,RS_BIT);
@@ -506,7 +506,7 @@ void clrScr()
 //		}
 		//hasta acá
 //	}
-	sbi(CS_PORT,CS_BIT);
+	SET_CS
 }
 //
 //void fillScr2(uint8_t r, uint8_t g, uint8_t b)
@@ -525,10 +525,10 @@ void clrScr()
 //	ch=byte(color>>8);
 //	cl=byte(color & 0xFF);
 //
-//	cbi(P_CS, B_CS);
+//	CLEAR_CS
 //	clrXY();
 //	if (display_transfer_mode!=1)
-//		sbi(P_RS, B_RS);
+//		SET_RS
 //	if (display_transfer_mode==16)
 //		_fast_fill_16(ch,cl,((disp_x_size+1)*(disp_y_size+1)));
 //	else if ((display_transfer_mode==8) and (ch==cl))
@@ -546,7 +546,7 @@ void clrScr()
 //			}
 //		}
 //	}
-//	sbi(P_CS, B_CS);
+//	SET_CS
 //}
 
 void setColor2(uint8_t r, uint8_t g, uint8_t b)
@@ -618,7 +618,7 @@ void drawPixel(int x, int y)
 //		short			ystep =  y2 > y1 ? 1 : -1;
 //		int				col = x1, row = y1;
 //
-//		cbi(P_CS, B_CS);
+//		CLEAR_CS
 //		if (dx < dy)
 //		{
 //			int t = - (dy >> 1);
@@ -655,7 +655,7 @@ void drawPixel(int x, int y)
 //				}
 //			}
 //		}
-//		sbi(P_CS, B_CS);
+//		SET_CS
 //	}
 //	clrXY();
 //}
@@ -667,11 +667,11 @@ void drawHLine(int x, int y, int l)
 		l = -l;
 		x -= l;
 	}
-	cbi(P_CS, B_CS);
+	CLEAR_CS
 	setXY(x, y, x+l, y);
-	sbi(P_RS, B_RS);
+	SET_RS
 	_fast_fill_16(fch,fcl,l);
-	sbi(P_CS, B_CS);
+	SET_CS
 	clrXY();
 }
 
@@ -682,11 +682,11 @@ void drawVLine(int x, int y, int l)
 		l = -l;
 		y -= l;
 	}
-	cbi(P_CS, B_CS);
+	CLEAR_CS
 	setXY(x, y, x, y+l);
-		sbi(P_RS, B_RS);
+		SET_RS
 		_fast_fill_16(fch,fcl,l);
-	sbi(P_CS, B_CS);
+	SET_CS
 	clrXY();
 }
 
@@ -696,83 +696,32 @@ void printChar(uint8_t c, uint16_t x, uint16_t y)
 	uint32_t j;
 	uint32_t temp;
 
-	Chip_GPIO_WritePortBit(LPC_GPIO,CS_PORT, CS_BIT, 0);
-
-	if (!_transparent)
+	CLEAR_CS
+	temp=((c-cfont.offset)*((cfont.x_size/8)*cfont.y_size))+4;
+	for(j=0;j<((cfont.x_size/8)*cfont.y_size);j+=(cfont.x_size/8))
 	{
-		if (orient==PORTRAIT)
+		setXY(x,y+(j/(cfont.x_size/8)),x+cfont.x_size-1,y+(j/(cfont.x_size/8)));
+		for (int zz=(cfont.x_size/8)-1; zz>=0; zz--)
 		{
-			setXY(x,y,x+cfont.x_size-1,y+cfont.y_size-1);
-
-			temp=((c-cfont.offset)*((cfont.x_size/8)*cfont.y_size))+4;
-			for(j=0;j<((cfont.x_size/8)*cfont.y_size);j++)
+			//ch=pgm_read_byte(&cfont.font[temp+zz]);
+			ch= *((uint8_t*)&cfont.font[temp+zz]);
+			for(i=0;i<8;i++)
 			{
-				//ch=pgm_read_byte(&cfont.font[temp]);
-				ch= *((uint8_t*)&cfont.font[temp]);
-				for(i=0;i<8;i++)
+				if((ch&(1<<i))!=0)
 				{
-					if((ch&(1<<(7-i)))!=0)
-					{
-						setPixel((fch<<8)|fcl);
-					}
-					else
-					{
-						setPixel((bch<<8)|bcl);
-					}
+					setPixel((fch<<8)|fcl);
 				}
-				temp++;
+				else
+				{
+					setPixel((bch<<8)|bcl);
+				}
 			}
 		}
-		else
-		{
-			temp=((c-cfont.offset)*((cfont.x_size/8)*cfont.y_size))+4;
-
-			for(j=0;j<((cfont.x_size/8)*cfont.y_size);j+=(cfont.x_size/8))
-			{
-				setXY(x,y+(j/(cfont.x_size/8)),x+cfont.x_size-1,y+(j/(cfont.x_size/8)));
-				for (int zz=(cfont.x_size/8)-1; zz>=0; zz--)
-				{
-					//ch=pgm_read_byte(&cfont.font[temp+zz]);
-					ch= *((uint8_t*)&cfont.font[temp+zz]);
-					for(i=0;i<8;i++)
-					{
-						if((ch&(1<<i))!=0)
-						{
-							setPixel((fch<<8)|fcl);
-						}
-						else
-						{
-							setPixel((bch<<8)|bcl);
-						}
-					}
-				}
-				temp+=(cfont.x_size/8);
-			}
-		}
+		temp+=(cfont.x_size/8);
 	}
-	else
-	{
-		temp=((c-cfont.offset)*((cfont.x_size/8)*cfont.y_size))+4;
-		for(j=0;j<cfont.y_size;j++)
-		{
-			for (int zz=0; zz<(cfont.x_size/8); zz++)
-			{
-				//ch=pgm_read_byte(&cfont.font[temp+zz]);
-				ch= *((uint8_t*)&cfont.font[temp+zz]);
-				for(i=0;i<8;i++)
-				{
 
-					if((ch&(1<<(7-i)))!=0)
-					{
-						setXY(x+i+(zz*8),y+j,x+i+(zz*8)+1,y+j+1);
-						setPixel((fch<<8)|fcl);
-					}
-				}
-			}
-			temp+=(cfont.x_size/8);
-		}
-	}
-	Chip_GPIO_WritePortBit(LPC_GPIO,CS_PORT, CS_BIT, 1);
+
+	SET_CS
 	clrXY();
 }
 //
@@ -784,7 +733,7 @@ void printChar(uint8_t c, uint16_t x, uint16_t y)
 //	double radian;
 //	radian=deg*0.0175;
 //
-//	cbi(P_CS, B_CS);
+//	CLEAR_CS
 //
 //	temp=((c-cfont.offset)*((cfont.x_size/8)*cfont.y_size))+4;
 //	for(j=0;j<cfont.y_size;j++)
@@ -812,7 +761,7 @@ void printChar(uint8_t c, uint16_t x, uint16_t y)
 //		}
 //		temp+=(cfont.x_size/8);
 //	}
-//	sbi(P_CS, B_CS);
+//	SET_CS
 //	clrXY();
 //}
 //
@@ -991,18 +940,18 @@ void drawBitmap(int x, int y, int sx, int sy, unsigned short* data, int scale)
 	{
 		if (orient==PORTRAIT)
 		{
-			cbi(CS_PORT,CS_BIT);
+			CLEAR_CS
 			setXY(x, y, x+sx-1, y+sy-1);
 			for (tc=0; tc<(sx*sy); tc++)
 			{
 				col=*((unsigned short*)&data[tc]);
 				LCD_Write_DATA2(col>>8,col & 0xff);
 			}
-			sbi(CS_PORT,CS_BIT);
+			SET_CS
 		}
 		else
 		{
-			cbi(CS_PORT,CS_BIT);
+			CLEAR_CS
 			for (ty=0; ty<sy; ty++)
 			{
 				setXY(x, y+ty, x+sx-1, y+ty);
@@ -1012,14 +961,14 @@ void drawBitmap(int x, int y, int sx, int sy, unsigned short* data, int scale)
 					LCD_Write_DATA2(col>>8,col & 0xff);
 				}
 			}
-			sbi(CS_PORT,CS_BIT);
+			SET_CS
 		}
 	}
 	else
 	{
 		if (orient==PORTRAIT)
 		{
-			cbi(CS_PORT,CS_BIT);
+			CLEAR_CS
 			for (ty=0; ty<sy; ty++)
 			{
 				setXY(x, y+(ty*scale), x+((sx*scale)-1), y+(ty*scale)+scale);
@@ -1031,11 +980,11 @@ void drawBitmap(int x, int y, int sx, int sy, unsigned short* data, int scale)
 							LCD_Write_DATA2(col>>8,col & 0xff);
 					}
 			}
-			sbi(CS_PORT, CS_BIT);
+			SET_CS
 		}
 		else
 		{
-			cbi(CS_PORT, CS_BIT);
+			CLEAR_CS
 			for (ty=0; ty<sy; ty++)
 			{
 				for (tsy=0; tsy<scale; tsy++)
@@ -1049,7 +998,7 @@ void drawBitmap(int x, int y, int sx, int sy, unsigned short* data, int scale)
 					}
 				}
 			}
-			sbi(CS_PORT, CS_BIT);
+			SET_CS
 		}
 	}
 	clrXY();
@@ -1066,7 +1015,7 @@ void drawBitmap(int x, int y, int sx, int sy, unsigned short* data, int scale)
 //		drawBitmap(x, y, sx, sy, data);
 //	else
 //	{
-//		cbi(P_CS, B_CS);
+//		CLEAR_CS
 //		for (ty=0; ty<sy; ty++)
 //			for (tx=0; tx<sx; tx++)
 //			{
@@ -1078,14 +1027,14 @@ void drawBitmap(int x, int y, int sx, int sy, unsigned short* data, int scale)
 //				setXY(newx, newy, newx, newy);
 //				LCD_Write_DATA(col>>8,col & 0xff);
 //			}
-//		sbi(P_CS, B_CS);
+//		SET_CS
 //	}
 //	clrXY();
 //}
 //
 //void lcdOff()
 //{
-//	cbi(P_CS, B_CS);
+//	CLEAR_CS
 //	switch (display_model)
 //	{
 //	case PCF8833:
@@ -1096,12 +1045,12 @@ void drawBitmap(int x, int y, int sx, int sy, unsigned short* data, int scale)
 //		LCD_Write_COM(0x0F);
 //		break;
 //	}
-//	sbi(P_CS, B_CS);
+//	SET_CS
 //}
 //
 //void lcdOn()
 //{
-//	cbi(P_CS, B_CS);
+//	CLEAR_CS
 //	switch (display_model)
 //	{
 //	case PCF8833:
@@ -1112,12 +1061,12 @@ void drawBitmap(int x, int y, int sx, int sy, unsigned short* data, int scale)
 //		LCD_Write_COM(0x0F);
 //		break;
 //	}
-//	sbi(P_CS, B_CS);
+//	SET_CS
 //}
 //
 //void setContrast(char c)
 //{
-//	cbi(P_CS, B_CS);
+//	CLEAR_CS
 //	switch (display_model)
 //	{
 //	case PCF8833:
@@ -1126,7 +1075,7 @@ void drawBitmap(int x, int y, int sx, int sy, unsigned short* data, int scale)
 //		LCD_Write_DATA(c);
 //		break;
 //	}
-//	sbi(P_CS, B_CS);
+//	SET_CS
 //}
 //
 //int getDisplayXSize()
@@ -1147,7 +1096,7 @@ void drawBitmap(int x, int y, int sx, int sy, unsigned short* data, int scale)
 //
 //void setBrightness(byte br)
 //{
-//	cbi(P_CS, B_CS);
+//	CLEAR_CS
 //	switch (display_model)
 //	{
 //	case CPLD:
@@ -1156,25 +1105,25 @@ void drawBitmap(int x, int y, int sx, int sy, unsigned short* data, int scale)
 //		LCD_Write_COM(0x0F);
 //		break;
 //	}
-//	sbi(P_CS, B_CS);
+//	SET_CS
 //}
 //
 void setDisplayPage(int8_t page)
 {
-	cbi(CS_PORT, CS_BIT);
+	CLEAR_CS
 		if (page>7) page=7;
 		LCD_Write_COM_DATA(0x04,page);
 		LCD_Write_COM(0x0F);
-	sbi(CS_PORT, CS_BIT);
+	SET_CS
 }
 
 void setWritePage(int8_t page)
 {
-	cbi(CS_PORT, CS_BIT);
+	CLEAR_CS
 
 		if (page>7) page=7;
 		LCD_Write_COM_DATA(0x05,page);
 		LCD_Write_COM(0x0F);
-	sbi(CS_PORT, CS_BIT);
+	SET_CS
 }
 

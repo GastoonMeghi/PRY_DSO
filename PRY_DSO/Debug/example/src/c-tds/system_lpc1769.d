@@ -38,6 +38,11 @@ example/src/c-tds/system_lpc1769.o example/src/c-tds/system_lpc1769.d: \
  C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\inc/romapi_17xx_40xx.h \
  C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\inc/iap.h \
  C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\inc/error.h \
+ C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board.h \
+ C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board_api.h \
+ C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\inc/lpc_types.h \
+ C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/lpc_phy.h \
+ C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board.h \
  ../example/src/c-tds/../main/../c-tds/system_lpc1769.h \
  ../example/src/c-tds/../main/../c-tds/scheduler_lpc1769.h \
  ../example/src/c-tds/../main/../c-tds/port_lpc1769.h \
@@ -54,12 +59,7 @@ example/src/c-tds/system_lpc1769.o example/src/c-tds/system_lpc1769.d: \
  ../example/src/c-tds/../tasks/task-pantalla.h \
  c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\defaultfonts.h \
  c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\utft.h \
- c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\HW_AVR_DEFINES.h \
- C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board.h \
- C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board_api.h \
- C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\inc/lpc_types.h \
- C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/lpc_phy.h \
- C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board.h
+ c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\HW_AVR_DEFINES.h
 
 ../example/src/c-tds/../main/main.h:
 
@@ -137,6 +137,16 @@ C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\inc/iap.h:
 
 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\inc/error.h:
 
+C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board.h:
+
+C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board_api.h:
+
+C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\inc/lpc_types.h:
+
+C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/lpc_phy.h:
+
+C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board.h:
+
 ../example/src/c-tds/../main/../c-tds/system_lpc1769.h:
 
 ../example/src/c-tds/../main/../c-tds/scheduler_lpc1769.h:
@@ -170,13 +180,3 @@ c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\defaul
 c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\utft.h:
 
 c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\HW_AVR_DEFINES.h:
-
-C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board.h:
-
-C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board_api.h:
-
-C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\inc/lpc_types.h:
-
-C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/lpc_phy.h:
-
-C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board.h:

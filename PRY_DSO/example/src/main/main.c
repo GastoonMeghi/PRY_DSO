@@ -13,11 +13,13 @@
 
 // Project header
 #include "main.h"
-
+#include "board.h"
+#include "board_api.h"
 
 /*------------------------------------------------------------------*/
 int main(void)
 {
+	//Board_Init();
 	// Check mode, add tasks to schedule
 	SYSTEM_Init();
 

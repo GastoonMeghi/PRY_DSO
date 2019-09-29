@@ -12,9 +12,7 @@
 //función que escribe los datos en el bus de 16bits
 void LCD_Writ_Bus(uint8_t VH,uint8_t VL, uint8_t mode)
 {
-	//enciendo un led para mostrar cuanto tiempo paso dentro de esta función
-	//Chip_GPIO_WritePortBit(LPC_GPIO,0,22,false);
-	*BIT(6,FIO0PINU)=0x10;//usando bitbanding
+
 
 	//version con bitbanding
 	*BIT(10,FIO0PINU)=VL>>0; //&((uint8_t)0x01);
@@ -24,7 +22,7 @@ void LCD_Writ_Bus(uint8_t VH,uint8_t VL, uint8_t mode)
 	*BIT(5,FIO0PINU)=VL>>4;// &((uint8_t)0x01);
 	*BIT(11,FIO0PINU)=VL>>5;// &((uint8_t)0x01);
 	Chip_GPIO_WritePortBit(LPC_GPIO,DB6_PORT, DB6_BIT, VL>>6 &((uint8_t)0x01)); //no me funciono con bitbanding
-	//*BIT(12,FIO0PINU)=VL>>6;//&((uint8_t)0x01);
+//	*BIT(12,FIO0PINU)=VL>>6 &((uint32_t)0x01);
 	//*BIT(12,FIO0PINU)=VL>>6;// &((uint8_t)0x01);
 	*BIT(13,FIO2PINL)=VL>>7;// &((uint8_t)0x01);
 
@@ -64,9 +62,6 @@ void LCD_Writ_Bus(uint8_t VH,uint8_t VL, uint8_t mode)
 	//Chip_GPIO_WritePortBit(LPC_GPIO,WR_PORT, WR_BIT, 0);
 	//Chip_GPIO_WritePortBit(LPC_GPIO,WR_PORT, WR_BIT, 1);
 
-
-	*BIT(6,FIO0PINU)=0x0F;
-	//Chip_GPIO_WritePortBit(LPC_GPIO,0,22,true);
 
 }
 

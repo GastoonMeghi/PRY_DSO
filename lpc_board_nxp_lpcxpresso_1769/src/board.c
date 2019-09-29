@@ -384,30 +384,4 @@ void Board_USBD_Init(uint32_t port)
 
 //**************UTFT***************/
 
-void Board_UTFT_Init(void)
-{
-	//los seteo todos como salidas
-	Chip_GPIO_WriteDirBit(LPC_GPIO, RS_PORT , RS_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, WR_PORT , WR_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, RST_PORT , RST_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, CS_PORT , CS_BIT, true);
-
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB0_PORT , DB0_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB1_PORT , DB1_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB2_PORT , DB2_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB3_PORT , DB3_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB4_PORT , DB4_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB5_PORT , DB5_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB6_PORT , DB6_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB7_PORT , DB7_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB8_PORT , DB8_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB9_PORT , DB9_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB10_PORT ,DB10_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB11_PORT ,DB11_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB12_PORT ,DB12_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB13_PORT ,DB13_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB14_PORT ,DB14_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB15_PORT ,DB15_BIT, true);
-}
-
 

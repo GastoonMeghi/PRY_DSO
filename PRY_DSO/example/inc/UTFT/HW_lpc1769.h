@@ -13,7 +13,7 @@
 #define sbi(port, bit) Chip_GPIO_WritePortBit(LPC_GPIO,port, bit,1);
 #define pulse_high(port, bit) Chip_GPIO_WritePortBit(LPC_GPIO,port, bit,1); Chip_GPIO_WritePortBit(LPC_GPIO,port,bit,0);
 #define pulse_low(port, bit) Chip_GPIO_WritePortBit(LPC_GPIO,port, bit,0); Chip_GPIO_WritePortBit(LPC_GPIO,port,bit,1);
-
+#define CLEAR_CS *BIT(8,FIO0PINL)=0
 
 #define FIO0MASKL 0x2009C010
 #define FIO1MASKL 0x2009C030
@@ -40,9 +40,14 @@
 
 #define BIT_BAND_ALIAS 0x22000000
 #define PERIPH_BASE 0x20000000
-#define BIT(x,port) (uint32_t *)((port-PERIPH_BASE)*32+(x*4)+BIT_BAND_ALIAS)
+#define BIT(bit,ADDRES) (uint32_t *)((ADDRES-PERIPH_BASE)*32+(bit*4)+BIT_BAND_ALIAS)
+
 #define SET_CS *BIT(8,FIO0PINL)=1;
 #define CLEAR_CS *BIT(8,FIO0PINL)=0;
+
+#define SET_RS *BIT(9,FIO0PINU)=1;
+#define CLEAR_RS *BIT(9,FIO0PINU)=0;
+
 
 void LCD_Writ_Bus(uint8_t VH,uint8_t VL, uint8_t mode);
 void _fast_fill_16(int ch, int cl, long pix);

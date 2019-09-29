@@ -8,11 +8,14 @@
 #include "../inc/UTFT/UTFT.h"
 #include "../inc/UTFT/DefaultFonts.h"
 #include "task-pantalla.h"
-
+#include "board.h"
 int sin4[]={123,126,128,131,134,137,140,142,145,148,150,153,156,158,161,163,166,168,171,173,175,177,180,182,184,186,188,189,191,193,194,196,197,199,200,201,203,204,205,206,206,207,208,208,209,209,210,210,210,210,210,210,210,209,209,208,208,207,206,206,205,204,203,201,200,199,197,196,194,193,191,189,188,186,184,182,180,177,175,173,171,168,166,163,161,158,156,153,150,148,145,142,140,137,134,131,128,126,123,120,117,114,112,109,106,103,100,98,95,92,90,87,84,82,79,77,74,72,69,67,65,63,60,58,56,54,52,51,49,47,46,44,43,41,40,39,37,36,35,34,34,33,32,32,31,31,30,30,30,30,30,30,30,31,31,32,32,33,34,34,35,36,37,39,40,41,43,44,46,47,49,51,52,54,56,58,60,63,65,67,69,72,74,77,79,82,84,87,90,92,95,98,100,103,106,109,112,114,117,120,123,126,128,131,134,137,140,142,145,148,150,153,156,158,161,163,166,168,171,173,175,177,180,182,184,186,188,189,191,193,194,196,197,199,200,201,203,204,205,206,206,207,208,208,209,209,210,210,210,210,210,210,210,209,209,208,208,207,206,206,205,204,203,201,200,199,197,196,194,193,191,189,188,186,184,182,180,177,175,173,171,168,166,163,161,158,156,153,150,148,145,142,140,137,134,131,128,126,123,120,117,114,112,109,106,103,100,98,95,92,90,87,84,82,79,77,74,72,69,67,65,63,60,58,56,54,52,51,49,47,46,44,43,41,40,39,37,36,35,34,34,33,32,32,31,31,30,30,30,30,30,30,30,31,31,32,32,33,34,34,35,36,37,39,40,41,43,44,46,47,49,51,52,54,56,58,60,63,65,67,69,72,74,77,79,82,84,87,90,92,95,98,100,103,106,109,112,114,117,120};
 int sin[]={135,150,164,178,191,202,212,221,229,234,238,240,240,238,234,229,221,212,202,191,178,164,150,135,120,105,90,76,62,49,38,28,19,11,6,2,0,0,2,6,11,19,28,38,49,62,76,90,105,120,135,150,164,178,191,202,212,221,229,234,238,240,240,238,234,229,221,212,202,191,178,164,150,135,120,105,90,76,62,49,38,28,19,11,6,2,0,0,2,6,11,19,28,38,49,62,76,90,105,120,135,150,164,178,191,202,212,221,229,234,238,240,240,238,234,229,221,212,202,191,178,164,150,135,120,105,90,76,62,49,38,28,19,11,6,2,0,0,2,6,11,19,28,38,49,62,76,90,105,120,135,150,164,178,191,202,212,221,229,234,238,240,240,238,234,229,221,212,202,191,178,164,150,135,120,105,90,76,62,49,38,28,19,11,6,2,0,0,2,6,11,19,28,38,49,62,76,90,105,120,135,150,164,178,191,202,212,221,229,234,238,240,240,238,234,229,221,212,202,191,178,164,150,135,120,105,90,76,62,49,38,28,19,11,6,2,0,0,2,6,11,19,28,38,49,62,76,90,105,120,135,150,164,178,191,202,212,221,229,234,238,240,240,238,234,229,221,212,202,191,178,164,150,135,120,105,90,76,62,49,38,28,19,11,6,2,0,0,2,6,11,19,28,38,49,62,76,90,105,120,135,150,164,178,191,202,212,221,229,234,238,240,240,238,234,229,221,212,202,191,178,164,150,135,120,105,90,76,62,49,38,28,19,11,6,2,0,0,2,6,11,19,28,38,49,62,76,90,105,120,135,150,164,178,191,202,212,221,229,234,238,240,240,238,234,229,221,212,202,191,178,164,150,135,120,105,90,76,62,49,38,28,19,11,6,2,0,0,2,6,11,19,28,38,49,62,76,90,105,120};
 extern fontdatatype SmallFont[1144];
+extern _current_font cfont;
 
+char* texto;
+uint8_t texto_len=6;
 
 const unsigned short utn[0x2710] ={
 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF,   // 0x0010 (16)
@@ -642,10 +645,38 @@ const unsigned short utn[0x2710] ={
 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF,   // 0x2710 (10000)
 };
 
+
+void Board_UTFT_Init(void)
+{
+	//los seteo todos como salidas
+	Chip_GPIO_WriteDirBit(LPC_GPIO, RS_PORT , RS_BIT, true);
+	Chip_GPIO_WriteDirBit(LPC_GPIO, WR_PORT , WR_BIT, true);
+	Chip_GPIO_WriteDirBit(LPC_GPIO, RST_PORT , RST_BIT, true);
+	Chip_GPIO_WriteDirBit(LPC_GPIO, CS_PORT , CS_BIT, true);
+
+	Chip_GPIO_WriteDirBit(LPC_GPIO, DB0_PORT , DB0_BIT, true);
+	Chip_GPIO_WriteDirBit(LPC_GPIO, DB1_PORT , DB1_BIT, true);
+	Chip_GPIO_WriteDirBit(LPC_GPIO, DB2_PORT , DB2_BIT, true);
+	Chip_GPIO_WriteDirBit(LPC_GPIO, DB3_PORT , DB3_BIT, true);
+	Chip_GPIO_WriteDirBit(LPC_GPIO, DB4_PORT , DB4_BIT, true);
+	Chip_GPIO_WriteDirBit(LPC_GPIO, DB5_PORT , DB5_BIT, true);
+	Chip_GPIO_WriteDirBit(LPC_GPIO, DB6_PORT , DB6_BIT, true);
+	Chip_GPIO_WriteDirBit(LPC_GPIO, DB7_PORT , DB7_BIT, true);
+	Chip_GPIO_WriteDirBit(LPC_GPIO, DB8_PORT , DB8_BIT, true);
+	Chip_GPIO_WriteDirBit(LPC_GPIO, DB9_PORT , DB9_BIT, true);
+	Chip_GPIO_WriteDirBit(LPC_GPIO, DB10_PORT ,DB10_BIT, true);
+	Chip_GPIO_WriteDirBit(LPC_GPIO, DB11_PORT ,DB11_BIT, true);
+	Chip_GPIO_WriteDirBit(LPC_GPIO, DB12_PORT ,DB12_BIT, true);
+	Chip_GPIO_WriteDirBit(LPC_GPIO, DB13_PORT ,DB13_BIT, true);
+	Chip_GPIO_WriteDirBit(LPC_GPIO, DB14_PORT ,DB14_BIT, true);
+	Chip_GPIO_WriteDirBit(LPC_GPIO, DB15_PORT ,DB15_BIT, true);
+}
+
+
 void task_pantalla_Init(void)
 {
 	uint32_t i;
-
+	Board_UTFT_Init();
 
     InitLCD(LANDSCAPE);
 
@@ -659,108 +690,157 @@ void task_pantalla_Init(void)
 	for (i=1;i<220;i++) drawPixel(300,i);
 
 }
+
 void task_pantalla (void)
 {
 	static uint8_t state=0;
-	uint32_t i=0;
-	if (Chip_GPIO_GetPinState(LPC_GPIO,2,10)==1)
-	{
+	static uint32_t i=0;
+
 	switch (state)
 	{
 	case 0:
 		setColor2(0,0,0);
 		state++;
+		return;
 
 	case 1:
-		drawPixel(i,sin4[i]/2);
+		drawPixel(i,sin4[i]);
 		i++;
-		if(i==300) state=2;
+		drawPixel(i,sin4[i]);
+		i++;
+		drawPixel(i,sin4[i]);
+		i++;
+		drawPixel(i,sin4[i]);
+		i++;
+
+		if(i>=300) state=2;
+		return;
 	case 2:
 		setColor2(255,255,255);
 		state++;
+		i=0;
+		texto="100mV";
+		texto_len=strlen(texto);
+		return;
 	case 3:
-		print("Vpp=1.5V",305,105,0);
-		state++;
+		printChar(texto[i],305+ (i*(cfont.x_size)),105);
+		i++;
+		if(i==texto_len)
+		{
+			i=0;
+			state++;
+		}
+
+		return;
 	case 4:
-		print("frec=2Mhz",305,125,0);
-		state++;
+		texto="200Khz";
+		texto_len=strlen(texto);
+		printChar(texto[i],305+ (i*(cfont.x_size)),125);
+		i++;
+		if(i==texto_len)
+		{
+			i=0;
+			state++;
+		}
+		return;
 	case 5:
-		print("fs=200Mhz",CENTER,225,0);
-		state++;
+		texto="fs=100khz";
+		texto_len=strlen(texto);
+		printChar(texto[i],110+ (i*(cfont.x_size)),225);
+		i++;
+		if(i==texto_len)
+		{
+			i=0;
+			state++;
+		}
+		return;
 	case 6:
 		setColor2(0,255,0);
 		state++;
 		i=0;
+		return;
 	case 7:
-		drawPixel(i,(sin[i]/3));
+		drawPixel(i,(sin[i]));
 		i++;
-		if(i==300) state++;
+		drawPixel(i,(sin[i]));
+		i++;
+		drawPixel(i,(sin[i]));
+		i++;
+		drawPixel(i,(sin[i]));
+		i++;
+
+		if(i>=300) state++;
+		return;
 	case 8:
 		setColor2(0,0,0);
 		state++;
-
+		i=0;
+		return;
 	case 9:
-		drawPixel(i,sin[i]/2);
+		drawPixel(i,sin[i]);
 		i++;
-		if(i==300) state=2;
+		drawPixel(i,sin[i]);
+		i++;
+		drawPixel(i,sin[i]);
+		i++;
+		drawPixel(i,sin[i]);
+		i++;
+
+		if(i==300)
+			{
+			i=0;
+			state++;
+			}
+		return;
+
 	case 10:
 		setColor2(255,255,255);
 		state++;
+		texto="240mV";
+		texto_len=strlen(texto);
+		return;
 	case 11:
-		print("Vpp=3.3V",305,105,0);
-		state++;
+		printChar(texto[i],305+ (i*(cfont.x_size)),105);
+		i++;
+		if(i==texto_len)
+		{
+			i=0;
+			state++;
+			texto="fs=500khz";
+			texto_len=strlen(texto);
+		}
+		return;
 	case 12:
-		print("frec=700Khz",305,125,0);
-		state++;
+
+		printChar(texto[i],110+ (i*(cfont.x_size)),225);
+		i++;
+		if(i==texto_len)
+		{
+			i=0;
+			state++;
+		}
+		return;
 	case 13:
-		print("fs=1Mhz  ",CENTER,225,0);
-		state++;
-	case 14:
 		setColor2(0,255,0);
 		state++;
 		i=0;
-	case 15:
-		drawPixel(i,(sin4[i]/3));
+		return;
+	case 14:
+		drawPixel(i,(sin4[i]));
 		i++;
+		drawPixel(i,(sin4[i]));
+		i++;
+		drawPixel(i,(sin4[i]));
+		i++;
+		drawPixel(i,(sin4[i]));
+		i++;
+
 		if(i==300)
 		{
 			state=0;
 			i=0;
 		}
-	}
-	}
-	else
-	{
-	if (state==0)
-	{
-		setColor2(0,0,0);
-		for (i=1;i<300;i++)
-			drawPixel(i,sin4[i]/2);
-		setColor2(255,255,255);
-    	print("Vpp=1.5V",305,105,0);
-    	print("frec=2Mhz",305,125,0);
-    	print("fs=200Mhz",CENTER,225,0);
-    	setColor2(0,255,0);
-    	for (i=1;i<300;i++)
-    	drawPixel(i,(sin[i]/3));
-    	state=1;
-    	return;
-	}
-	else if (state==1)
-	{
-		setColor2(0,0,0);
-		for (i=1;i<300;i++)
-			drawPixel(i,(sin[i]/3));
-		setColor2(255,255,255);
-		print("Vpp=10.3V",305,105,0);
-		print("frec=1.234Khz",305,125,0);
-		print("fs=100khz",CENTER,225,0);
-
-		setColor2(0,255,0);
-		for (i=1;i<300;i++)
-			drawPixel(i,sin4[i]/2);
-		state=0;
 		return;
-	}
+
 	}
 }
