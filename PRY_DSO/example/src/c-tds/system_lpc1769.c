@@ -23,6 +23,8 @@
 #include "../tasks/task-LockDoor2_led_lpc1769.h"
 #include "../tasks/task-s3_switch_lpc1769.h"
 #include "../tasks/task-pantalla.h"
+#include "../tasks/task-pruebaPantalla.h"
+
 
 // ------ Public variable ------------------------------------------
 // In many designs, System_mode_G will be used in other modules.
@@ -183,7 +185,8 @@ void SYSTEM_Configure_Required_Mode(void)
 //            // Add Heartbeat task
             SCH_Add_Task(HEARTBEAT_Update, 0, 1000, 20, 0);
 
-            SCH_Add_Task(task_pantalla, 0, 3,1000000, 0);
+            SCH_Add_Task(task_pruebaPantalla, 0,1500,1000000, 0);
+            SCH_Add_Task(task_pantalla, 1, 3,1000000, 0);
 
             break;
         }

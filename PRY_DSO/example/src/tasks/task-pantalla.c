@@ -16,7 +16,10 @@ extern _current_font cfont;
 
 char* texto;
 uint8_t texto_len=6;
+typedef enum {changes,write_Vpp,write_Veff,write_Vm,write_fs,write_f,write_T,write_acople,prepare_signal,write_signal} writting_state_t ;
 
+pantalla_t pantalla;
+uint8_t estado_pantalla=DONE; //valores posibles {WRITTING,DONE}
 const unsigned short utn[0x2710] ={
 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF,   // 0x0010 (16)
 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF,   // 0x0020 (32)
@@ -680,7 +683,7 @@ void task_pantalla_Init(void)
 
     InitLCD(LANDSCAPE);
 
-    //drawPixel(20,20);
+   // drawPixel(20,20);
     setFont(SmallFont);
     Chip_GPIO_WritePortBit(LPC_GPIO,0,22,true);
     drawBitmap(300,0,100,100,utn,1);
@@ -691,155 +694,318 @@ void task_pantalla_Init(void)
 
 }
 
+cambios_pantalla_t calcular_cambios(pantalla_t *pantalla)
+{
+	pantalla_t aux;
+	static pantalla_t pantalla_prev;
+	static uint8_t first_use=1;
+	aux=(*pantalla);
+	uint32_t i;
+	cambios_pantalla_t result;
+
+
+	if(first_use)
+	{
+		memset(&result,1,sizeof(result));
+		pantalla_prev=(*pantalla);
+		first_use=0;
+		return result;
+	}
+
+	memset(&result,0,sizeof(result));
+	for (i=0;i<SIGNAL_LENGTH;i++)
+	{
+		if ((*pantalla).signal[i]!=pantalla_prev.signal[i])
+		{
+			result.signal=1;
+			break;
+		}
+	}
+	//calculo cambios
+	for (i=0;i<VOLTAGE_LENGTH;i++)
+	{
+		if((*pantalla).Vpp[i]!=pantalla_prev.Vpp[i])
+		{
+			result.Vpp=1;
+		}
+		if((*pantalla).Veff[i]!=pantalla_prev.Veff[i])
+		{
+			result.Veff=1;
+		}
+		if((*pantalla).Vm[i]!=pantalla_prev.Vm[i])
+		{
+			result.Vm=1;
+		}
+	}
+
+	for (i=0;i<FREC_LENGTH;i++)
+	{
+		if((*pantalla).fs[i]!=pantalla_prev.fs[i])
+		{
+			result.fs=1;
+		}
+		if((*pantalla).f[i]!=pantalla_prev.f[i])
+		{
+			result.f=1;
+		}
+		if((*pantalla).T[i]!=pantalla_prev.T[i])
+		{
+			result.T=1;
+		}
+	}
+
+	for (i=0;i<ACOPLE_LENGTH;i++)
+	{
+		if((*pantalla).acople[i]!=pantalla_prev.acople[i])
+		{
+			result.acople=1;
+		}
+	}
+	pantalla_prev=aux;
+
+	return result;
+}
+
 void task_pantalla (void)
 {
-	static uint8_t state=0;
+	static writting_state_t state=changes;
 	static uint32_t i=0;
+	static cambios_pantalla_t cambios_pantalla;
+	static uint8_t actualizado=0;
+	static uint8_t prev_signal[300];
+	static uint8_t first_use=1;
+	static uint32_t signal_i;
+	uint8_t signal_j;
+
+	if (estado_pantalla==DONE)
+		return;
 
 	switch (state)
 	{
-	case 0:
-		setColor2(0,0,0);
-		state++;
-		return;
+	case changes:
+	cambios_pantalla=calcular_cambios(&pantalla);
+	if (first_use)
+	{
+		memcpy(prev_signal,pantalla.signal,sizeof(pantalla.signal));
+		first_use=0;
+	}
 
-	case 1:
-		drawPixel(i,sin4[i]);
-		i++;
-		drawPixel(i,sin4[i]);
-		i++;
-		drawPixel(i,sin4[i]);
-		i++;
-		drawPixel(i,sin4[i]);
-		i++;
+	state=write_Vpp;
+	i=0;
+	signal_i=0;
+	actualizado=0;
+	return;
 
-		if(i>=300) state=2;
-		return;
-	case 2:
-		setColor2(255,255,255);
-		state++;
-		i=0;
-		texto="100mV";
-		texto_len=strlen(texto);
-		return;
-	case 3:
-		printChar(texto[i],305+ (i*(cfont.x_size)),105);
-		i++;
-		if(i==texto_len)
+	case write_Vpp:
+		if(cambios_pantalla.Vpp==1)
 		{
-			i=0;
-			state++;
-		}
-
-		return;
-	case 4:
-		texto="200Khz";
-		texto_len=strlen(texto);
-		printChar(texto[i],305+ (i*(cfont.x_size)),125);
-		i++;
-		if(i==texto_len)
-		{
-			i=0;
-			state++;
-		}
-		return;
-	case 5:
-		texto="fs=100khz";
-		texto_len=strlen(texto);
-		printChar(texto[i],110+ (i*(cfont.x_size)),225);
-		i++;
-		if(i==texto_len)
-		{
-			i=0;
-			state++;
-		}
-		return;
-	case 6:
-		setColor2(0,255,0);
-		state++;
-		i=0;
-		return;
-	case 7:
-		drawPixel(i,(sin[i]));
-		i++;
-		drawPixel(i,(sin[i]));
-		i++;
-		drawPixel(i,(sin[i]));
-		i++;
-		drawPixel(i,(sin[i]));
-		i++;
-
-		if(i>=300) state++;
-		return;
-	case 8:
-		setColor2(0,0,0);
-		state++;
-		i=0;
-		return;
-	case 9:
-		drawPixel(i,sin[i]);
-		i++;
-		drawPixel(i,sin[i]);
-		i++;
-		drawPixel(i,sin[i]);
-		i++;
-		drawPixel(i,sin[i]);
-		i++;
-
-		if(i==300)
+			printChar(pantalla.Vpp[i],305+ (i*(cfont.x_size)),105);
+			i++;
+			if(pantalla.Vpp[i]==0)
 			{
-			i=0;
-			state++;
+				i=0;
+				state=write_Veff;
+			}
+			return;
+		}
+		else if (cambios_pantalla.signal)
+		{
+			setColor2(0,0,0);
+			for(signal_j=0;signal_j<MUESTRAS_IMPRIMIBLES &&(signal_i+signal_j)<SIGNAL_LENGTH;signal_j++)
+				drawPixel(signal_i+signal_j,prev_signal[signal_i+signal_j]);
+			signal_i=signal_j+signal_i;
+			setColor2(255,255,255);
+			state=write_Veff;
+			return;
+		}
+		state=write_Veff;
+		return;
+	case write_Veff:
+		if(cambios_pantalla.Veff==1)
+		{
+			printChar(pantalla.Veff[i],305+ (i*(cfont.x_size)),120);
+			i++;
+			if(!pantalla.Veff[i])
+			{
+				i=0;
+				state=write_Vm;
+			}
+			return;
+		}
+		else if (cambios_pantalla.signal)
+		{
+			setColor2(0,0,0);
+			for(signal_j=0;signal_j<MUESTRAS_IMPRIMIBLES &&(signal_i+signal_j)<SIGNAL_LENGTH;signal_j++)
+				drawPixel(signal_i+signal_j,prev_signal[signal_i+signal_j]);
+			signal_i=signal_j+signal_i;
+			setColor2(255,255,255);
+			state=write_Vm;
+			return;
+		}
+		state=write_Vm;
+		return;
+	case write_Vm:
+		if(cambios_pantalla.Vm==1)
+		{
+			printChar(pantalla.Vm[i],305+ (i*(cfont.x_size)),135);
+			i++;
+			if(!pantalla.Vm[i])
+			{
+				i=0;
+				state=write_fs;
+			}
+			return;
+		}
+		else if (cambios_pantalla.signal)
+		{
+			setColor2(0,0,0);
+			for(signal_j=0;signal_j<MUESTRAS_IMPRIMIBLES &&(signal_i+signal_j)<SIGNAL_LENGTH;signal_j++)
+				drawPixel(signal_i+signal_j,prev_signal[signal_i+signal_j]);
+			signal_i=signal_j+signal_i;
+			setColor2(255,255,255);
+			state=write_fs;
+			return;
+		}
+		state=write_fs;
+		return;
+	case write_fs:
+		if(cambios_pantalla.fs==1)
+		{
+			printChar(pantalla.fs[i],305+ (i*(cfont.x_size)),155);
+			i++;
+			if(!pantalla.fs[i])
+			{
+				i=0;
+				state=write_f;
 			}
 		return;
+		}
+		else if (cambios_pantalla.signal)
+		{
+			setColor2(0,0,0);
+			for(signal_j=0;signal_j<MUESTRAS_IMPRIMIBLES &&(signal_i+signal_j)<SIGNAL_LENGTH;signal_j++)
+				drawPixel(signal_i+signal_j,prev_signal[signal_i+signal_j]);
+			signal_i=signal_j+signal_i;
+			setColor2(255,255,255);
+			state=write_f;
+			return;
+		}
+		state=write_f;
+		return;
+	case write_f:
+		if(cambios_pantalla.f==1)
+		{
+			printChar(pantalla.f[i],305+ (i*(cfont.x_size)),170);
+			i++;
+			if(!pantalla.f[i])
+			{
+				i=0;
+				state=write_T;
+			}
+			return;
+		}
+		else if (cambios_pantalla.signal)
+		{
+			setColor2(0,0,0);
+			for(signal_j=0;signal_j<MUESTRAS_IMPRIMIBLES &&(signal_i+signal_j)<SIGNAL_LENGTH;signal_j++)
+				drawPixel(signal_i+signal_j,prev_signal[signal_i+signal_j]);
+			signal_i=signal_j+signal_i;
+			setColor2(255,255,255);
+			state=write_T;
+			return;
+		}
+		state=write_T;
+		return;
+	case write_T:
+		if(cambios_pantalla.T==1)
+		{
+		printChar(pantalla.T[i],305+ (i*(cfont.x_size)),185);
+		i++;
+		if(!pantalla.T[i])
+		{
+			i=0;
+			state=write_acople;
+		}
+		return;
+		}
+		else if (cambios_pantalla.signal)
+		{
+			setColor2(0,0,0);
+			for(signal_j=0;signal_j<MUESTRAS_IMPRIMIBLES &&(signal_i+signal_j)<SIGNAL_LENGTH;signal_j++)
+				drawPixel(signal_i+signal_j,prev_signal[signal_i+signal_j]);
+			signal_i=signal_j+signal_i;
+			setColor2(255,255,255);
+			state=write_acople;
+			return;
+		}
+		state=write_acople;
+		return;
 
-	case 10:
+	case write_acople:
+		if(cambios_pantalla.acople==1)
+		{
+		printChar(pantalla.acople[i],305+ (i*(cfont.x_size)),200);
+		i++;
+		if(!pantalla.acople[i])
+		{
+			i=0;
+			state=prepare_signal;
+		}
+		return;
+		}
+		else if (cambios_pantalla.signal)
+		{
+			setColor2(0,0,0);
+			for(signal_j=0;signal_j<MUESTRAS_IMPRIMIBLES &&(signal_i+signal_j)<SIGNAL_LENGTH;signal_j++)
+				drawPixel(signal_i+signal_j,prev_signal[signal_i+signal_j]);
+			signal_i=signal_j+signal_i;
+			setColor2(255,255,255);
+			state=prepare_signal;
+			return;
+		}
+		state=prepare_signal;
+		return;
+
+	case prepare_signal:
+		if (cambios_pantalla.signal)
+		{
+		setColor2(0,0,0);
+		for(signal_j=0;signal_j<MUESTRAS_IMPRIMIBLES &&(signal_i+signal_j)<SIGNAL_LENGTH;signal_j++)
+				drawPixel(signal_i+signal_j,prev_signal[signal_i+signal_j]);
+		signal_i=signal_j+signal_i;
+		if(signal_i>=SIGNAL_LENGTH-1)
+		{
+			setColor2(255,0,0);
+			signal_i=0;
+			state=write_signal;
+		}
+		}
+		else
+		{
+			state=changes;
+			estado_pantalla=DONE;
+		}
+		return;
+
+
+	case write_signal:
+		if (cambios_pantalla.signal)
+		{
+			for(signal_j=0;signal_j<MUESTRAS_IMPRIMIBLES &&(signal_i+signal_j)<SIGNAL_LENGTH;signal_j++)
+					drawPixel(signal_i+signal_j,pantalla.signal[signal_i+signal_j]);
+			signal_i=signal_j+signal_i;
+			if(signal_i>=SIGNAL_LENGTH-1)
+			{
+				setColor2(255,255,255);
+				signal_i=0;
+				state=changes;
+				estado_pantalla=DONE;
+				memcpy(prev_signal,pantalla.signal,sizeof(pantalla.signal));
+			}
+			return;
+		}
 		setColor2(255,255,255);
-		state++;
-		texto="240mV";
-		texto_len=strlen(texto);
-		return;
-	case 11:
-		printChar(texto[i],305+ (i*(cfont.x_size)),105);
-		i++;
-		if(i==texto_len)
-		{
-			i=0;
-			state++;
-			texto="fs=500khz";
-			texto_len=strlen(texto);
-		}
-		return;
-	case 12:
-
-		printChar(texto[i],110+ (i*(cfont.x_size)),225);
-		i++;
-		if(i==texto_len)
-		{
-			i=0;
-			state++;
-		}
-		return;
-	case 13:
-		setColor2(0,255,0);
-		state++;
-		i=0;
-		return;
-	case 14:
-		drawPixel(i,(sin4[i]));
-		i++;
-		drawPixel(i,(sin4[i]));
-		i++;
-		drawPixel(i,(sin4[i]));
-		i++;
-		drawPixel(i,(sin4[i]));
-		i++;
-
-		if(i==300)
-		{
-			state=0;
-			i=0;
-		}
+		state=changes;
 		return;
 
 	}

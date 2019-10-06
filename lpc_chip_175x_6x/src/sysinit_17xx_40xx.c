@@ -95,12 +95,12 @@ void Chip_SetupXtalClocking(void)
 	Chip_Clock_SetMainPLLSource(SYSCTL_PLLCLKSRC_MAINOSC);
 
 	/* FCCO = ((15+1) * 2 * 12MHz) / (0+1) = 384MHz */
-	Chip_Clock_SetupPLL(SYSCTL_MAIN_PLL, 24, 0);
+	Chip_Clock_SetupPLL(SYSCTL_MAIN_PLL, 19, 1);
 
 	Chip_Clock_EnablePLL(SYSCTL_MAIN_PLL, SYSCTL_PLL_ENABLE);
 
 	/* 384MHz / (3+1) = 96MHz */
-	Chip_Clock_SetCPUClockDiv(5);
+	Chip_Clock_SetCPUClockDiv(1);
 	while (!Chip_Clock_IsMainPLLLocked()) {} /* Wait for the PLL to Lock */
 
 	Chip_Clock_EnablePLL(SYSCTL_MAIN_PLL, SYSCTL_PLL_CONNECT);

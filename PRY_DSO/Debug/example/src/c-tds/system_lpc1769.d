@@ -59,7 +59,8 @@ example/src/c-tds/system_lpc1769.o example/src/c-tds/system_lpc1769.d: \
  ../example/src/c-tds/../tasks/task-pantalla.h \
  c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\defaultfonts.h \
  c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\utft.h \
- c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\HW_AVR_DEFINES.h
+ c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\HW_AVR_DEFINES.h \
+ ../example/src/c-tds/../tasks/task-pruebaPantalla.h
 
 ../example/src/c-tds/../main/main.h:
 
@@ -180,3 +181,5 @@ c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\defaul
 c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\utft.h:
 
 c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\HW_AVR_DEFINES.h:
+
+../example/src/c-tds/../tasks/task-pruebaPantalla.h:

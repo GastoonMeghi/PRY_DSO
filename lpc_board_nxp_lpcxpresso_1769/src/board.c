@@ -178,7 +178,7 @@ void Board_Init(void)
 	Board_LED_Init();
 
 	/*Initialize UTFT*/
-	Board_UTFT_Init();
+	//Board_UTFT_Init();
 
 }
 
