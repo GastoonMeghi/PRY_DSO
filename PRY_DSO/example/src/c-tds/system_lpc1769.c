@@ -24,6 +24,7 @@
 #include "../tasks/task-s3_switch_lpc1769.h"
 #include "../tasks/task-pantalla.h"
 #include "../tasks/task-pruebaPantalla.h"
+#include "../tasks/task-procesamiento.h"
 
 
 // ------ Public variable ------------------------------------------
@@ -184,7 +185,7 @@ void SYSTEM_Configure_Required_Mode(void)
 //
 //            // Add Heartbeat task
             SCH_Add_Task(HEARTBEAT_Update, 0, 1000, 20, 0);
-
+            SCH_Add_Task(task_procesamiento, 0,1500,1000000, 0);
             SCH_Add_Task(task_pruebaPantalla, 0,1500,1000000, 0);
             SCH_Add_Task(task_pantalla, 1, 3,1000000, 0);
 

@@ -683,7 +683,7 @@ void task_pantalla_Init(void)
 
     InitLCD(LANDSCAPE);
 
-   // drawPixel(20,20);
+    drawPixel(20,20);
     setFont(SmallFont);
     Chip_GPIO_WritePortBit(LPC_GPIO,0,22,true);
     drawBitmap(300,0,100,100,utn,1);

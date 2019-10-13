@@ -14,6 +14,8 @@ extern pantalla_t pantalla;
 extern uint8_t estado_pantalla;
 extern int sin4[300];
 extern int sin[300];
+extern uint8_t signal[300];
+extern char str_Vm[6];
 void task_pruebaPantalla(void)
 {
 	static char i=0;
@@ -23,7 +25,7 @@ void task_pruebaPantalla(void)
 	uint32_t j=0;
 	if (estado_pantalla==DONE)
 	{
-		if(flag)
+		if(flag)//flag para que se inicialize una sola vez
 		{
 		for (i=0;i<VOLTAGE_LENGTH;i++)
 			{
@@ -65,11 +67,16 @@ void task_pruebaPantalla(void)
 		strcpy(pantalla.T,"T=");
 		strcat(pantalla.T,aux);
 		strcat(pantalla.T,"mSeg");
-		if (flag2==0)
+
+		strcpy(pantalla.Vm,"Vm=");
+		strcat(pantalla.Vm,str_Vm);
+		strcat(pantalla.Vm,"mV");
+
+		if (flag2==0) //toglea entre dos señales
 		{
 			for (j=0;j<SIGNAL_LENGTH;j++)
 			{
-				pantalla.signal[j]=sin[j];
+				pantalla.signal[j]=signal[j];
 			}
 			flag2=1;
 		}

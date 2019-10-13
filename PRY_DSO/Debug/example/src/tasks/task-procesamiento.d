@@ -1,6 +1,8 @@
-example/src/c-tds/system_lpc1769.o example/src/c-tds/system_lpc1769.d: \
- ../example/src/c-tds/system_lpc1769.c \
- ../example/src/c-tds/../main/main.h \
+example/src/tasks/task-procesamiento.o \
+ example/src/tasks/task-procesamiento.d: \
+ ../example/src/tasks/task-procesamiento.c \
+ ../example/src/tasks/task-procesamiento.h \
+ C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board.h \
  C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\inc/chip.h \
  C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\inc/lpc_types.h \
  C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\inc/sys_config.h \
@@ -38,32 +40,14 @@ example/src/c-tds/system_lpc1769.o example/src/c-tds/system_lpc1769.d: \
  C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\inc/romapi_17xx_40xx.h \
  C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\inc/iap.h \
  C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\inc/error.h \
- C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board.h \
  C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board_api.h \
  C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\inc/lpc_types.h \
  C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/lpc_phy.h \
- C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board.h \
- ../example/src/c-tds/../main/../c-tds/system_lpc1769.h \
- ../example/src/c-tds/../main/../c-tds/scheduler_lpc1769.h \
- ../example/src/c-tds/../main/../c-tds/port_lpc1769.h \
- ../example/src/c-tds/../main/../c-tds/monittor_lp1769.h \
- ../example/src/c-tds/../tasks/task-Clean_Room_controller_lpc1769.h \
- ../example/src/c-tds/../tasks/task-Door1_switch_lpc1769.h \
- ../example/src/c-tds/../tasks/task-Door2_switch_lpc1769.h \
- ../example/src/c-tds/../tasks/task-Emergency_switch_lpc1769.h \
- ../example/src/c-tds/../tasks/task-watchdog_lpc1769.h \
- ../example/src/c-tds/../tasks/task-heartbeat_lpc1769.h \
- ../example/src/c-tds/../tasks/task-LockDoor1_led_lpc1769.h \
- ../example/src/c-tds/../tasks/task-LockDoor2_led_lpc1769.h \
- ../example/src/c-tds/../tasks/task-s3_switch_lpc1769.h \
- ../example/src/c-tds/../tasks/task-pantalla.h \
- c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\defaultfonts.h \
- c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\utft.h \
- c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\HW_AVR_DEFINES.h \
- ../example/src/c-tds/../tasks/task-pruebaPantalla.h \
- ../example/src/c-tds/../tasks/task-procesamiento.h
+ C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board.h
 
-../example/src/c-tds/../main/main.h:
+../example/src/tasks/task-procesamiento.h:
+
+C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board.h:
 
 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\inc/chip.h:
 
@@ -139,8 +123,6 @@ C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\inc/iap.h:
 
 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\inc/error.h:
 
-C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board.h:
-
 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board_api.h:
 
 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\inc/lpc_types.h:
@@ -148,41 +130,3 @@ C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\inc/lpc_types.
 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/lpc_phy.h:
 
 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\inc/board.h:
-
-../example/src/c-tds/../main/../c-tds/system_lpc1769.h:
-
-../example/src/c-tds/../main/../c-tds/scheduler_lpc1769.h:
-
-../example/src/c-tds/../main/../c-tds/port_lpc1769.h:
-
-../example/src/c-tds/../main/../c-tds/monittor_lp1769.h:
-
-../example/src/c-tds/../tasks/task-Clean_Room_controller_lpc1769.h:
-
-../example/src/c-tds/../tasks/task-Door1_switch_lpc1769.h:
-
-../example/src/c-tds/../tasks/task-Door2_switch_lpc1769.h:
-
-../example/src/c-tds/../tasks/task-Emergency_switch_lpc1769.h:
-
-../example/src/c-tds/../tasks/task-watchdog_lpc1769.h:
-
-../example/src/c-tds/../tasks/task-heartbeat_lpc1769.h:
-
-../example/src/c-tds/../tasks/task-LockDoor1_led_lpc1769.h:
-
-../example/src/c-tds/../tasks/task-LockDoor2_led_lpc1769.h:
-
-../example/src/c-tds/../tasks/task-s3_switch_lpc1769.h:
-
-../example/src/c-tds/../tasks/task-pantalla.h:
-
-c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\defaultfonts.h:
-
-c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\utft.h:
-
-c:\users\gaston\documents\facultad\tdii\proyecto\pry_dso\example\inc\utft\HW_AVR_DEFINES.h:
-
-../example/src/c-tds/../tasks/task-pruebaPantalla.h:
-
-../example/src/c-tds/../tasks/task-procesamiento.h:
