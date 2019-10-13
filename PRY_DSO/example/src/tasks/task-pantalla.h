@@ -20,10 +20,17 @@
 #define ACOPLE_LENGTH 5
 #define SIGNAL_LENGTH 300
 #define MUESTRAS_IMPRIMIBLES 7
+
+#define NUM_FUNCIONES_PANTALLA 3
+
+#define SEL_TRIGGER_LEVEL 0
+#define SEL_TRIGGER_POL 1
+#define SEL_FDT 2
+
 typedef struct {
 	uint8_t state_pantalla; // Los contenidos de la estructura de ser modificados unicamente cuando la pantalla este en modo done
 									 // Una vez ingresados nuevos datos debe colocarse la pantalla en modo writting y esperar que el estado vuelva a donde
-
+	uint8_t seleccion; //indica cual es el dato que se va a modificar para escribirlo en verde
 	char Vpp[VOLTAGE_LENGTH]; //String con la tensión pico a pico medida con la unidad al final Ej: "14V  " "0,12mV"
 	char Veff[VOLTAGE_LENGTH]; //tensión eficaz de la señal medida
 	char Vm[VOLTAGE_LENGTH]; //String con la tensión media medida
@@ -56,7 +63,12 @@ typedef struct {
 void Board_UTFT_Init(void);
 void task_pantalla (void);
 void task_pantalla_Init(void);
-cambios_pantalla_t calcular_cambios(pantalla_t *pantalla_actual);
+cambios_pantalla_t calcular_cambios(void);
+void organizar (void (*funciones_pantalla[])(uint8_t*));
+void write_T(uint8_t *);
+void write_signal(uint8_t *);
+
+
 
 
 #endif /* SRC_TASKS_TASK_PANTALLA_H_ */
