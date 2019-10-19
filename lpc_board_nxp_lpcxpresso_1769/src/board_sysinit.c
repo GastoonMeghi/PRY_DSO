@@ -133,7 +133,10 @@ void Board_SystemInit(void)
 	/* Setup FLASH access to 4 clocks (100MHz clock) */
 	Chip_SYSCTL_SetFLASHAccess(FLASHTIM_100MHZ_CPU);
 	SystemCoreClockUpdate();
-
+	Board_UTFT_Init();
 	Board_SetupMuxing();
 	Board_SetupClocking();
 }
+
+
+

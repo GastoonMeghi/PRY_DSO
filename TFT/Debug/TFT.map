@@ -1406,7 +1406,7 @@ END GROUP
                 0x20084000                __top_RamAHB32 = 0x20084000
                 0x20084000                __top_RAM2 = 0x20084000
 
-.text           0x00000000     0x7920
+.text           0x00000000     0x791c
  FILL mask 0xff
                 0x00000000                __vectors_start__ = ABSOLUTE (.)
  *(.isr_vector)
@@ -1415,10 +1415,10 @@ END GROUP
                 0x000000cc                . = ALIGN (0x4)
                 0x000000cc                __section_table_start = .
                 0x000000cc                __data_section_table = .
-                0x000000cc        0x4 LONG 0x7920 LOADADDR (.data)
+                0x000000cc        0x4 LONG 0x791c LOADADDR (.data)
                 0x000000d0        0x4 LONG 0x10000000 ADDR (.data)
                 0x000000d4        0x4 LONG 0xc8c SIZEOF (.data)
-                0x000000d8        0x4 LONG 0x7920 LOADADDR (.data_RAM2)
+                0x000000d8        0x4 LONG 0x791c LOADADDR (.data_RAM2)
                 0x000000dc        0x4 LONG 0x2007c000 ADDR (.data_RAM2)
                 0x000000e0        0x4 LONG 0x0 SIZEOF (.data_RAM2)
                 0x000000e4                __data_section_table_end = .
@@ -1570,182 +1570,182 @@ END GROUP
                 0x00001b78       0x30 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board.o)
                 0x00001b78                Board_Debug_Init
  .text.Board_Init
-                0x00001ba8       0x38 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+                0x00001ba8       0x34 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board.o)
                 0x00001ba8                Board_Init
  .text.Chip_SYSCTL_SetFLASHAccess
-                0x00001be0       0x30 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
+                0x00001bdc       0x30 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
  .text.Board_SetupMuxing
-                0x00001c10       0x1c C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
-                0x00001c10                Board_SetupMuxing
+                0x00001c0c       0x1c C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
+                0x00001c0c                Board_SetupMuxing
  .text.Board_SetupClocking
-                0x00001c2c       0x12 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
-                0x00001c2c                Board_SetupClocking
+                0x00001c28       0x12 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
+                0x00001c28                Board_SetupClocking
  .text.Board_SystemInit
-                0x00001c3e       0x1e C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
-                0x00001c3e                Board_SystemInit
+                0x00001c3a       0x1e C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
+                0x00001c3a                Board_SystemInit
  .text.SystemCoreClockUpdate
-                0x00001c5c       0x18 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
-                0x00001c5c                SystemCoreClockUpdate
+                0x00001c58       0x18 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
+                0x00001c58                SystemCoreClockUpdate
  .text.Chip_Clock_IsMainPLLEnabled
-                0x00001c74       0x24 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x00001c70       0x24 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
  .text.Chip_Clock_IsMainPLLConnected
-                0x00001c98       0x24 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x00001c94       0x24 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
  .text.Chip_Clock_FeedPLL
-                0x00001cbc       0x34 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x00001cb8       0x34 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
  .text.Chip_Clock_GetMainPLLSource
-                0x00001cf0       0x20 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x00001cec       0x20 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
  .text.Chip_Clock_GetMainOscRate
-                0x00001d10       0x14 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x00001d0c       0x14 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
  .text.Chip_Clock_GetIntOscRate
-                0x00001d24       0x14 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x00001d20       0x14 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
  .text.Chip_Clock_GetRTCOscRate
-                0x00001d38       0x14 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x00001d34       0x14 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
  .text.Chip_Clock_GetMainPLLInClockRate
-                0x00001d4c        0xe C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
- *fill*         0x00001d5a        0x2 ff
+                0x00001d48        0xe C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+ *fill*         0x00001d56        0x2 ff
  .text.Chip_Clock_EnablePLL
-                0x00001d5c       0x44 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
-                0x00001d5c                Chip_Clock_EnablePLL
+                0x00001d58       0x44 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x00001d58                Chip_Clock_EnablePLL
  .text.Chip_Clock_DisablePLL
-                0x00001da0       0x48 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
-                0x00001da0                Chip_Clock_DisablePLL
+                0x00001d9c       0x48 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x00001d9c                Chip_Clock_DisablePLL
  .text.Chip_Clock_SetupPLL
-                0x00001de8       0x5c C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
-                0x00001de8                Chip_Clock_SetupPLL
+                0x00001de4       0x5c C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x00001de4                Chip_Clock_SetupPLL
  .text.Chip_Clock_EnablePeriphClock
-                0x00001e44       0x34 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
-                0x00001e44                Chip_Clock_EnablePeriphClock
+                0x00001e40       0x34 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x00001e40                Chip_Clock_EnablePeriphClock
  .text.Chip_Clock_GetCPUClockSource
-                0x00001e78       0x24 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
-                0x00001e78                Chip_Clock_GetCPUClockSource
+                0x00001e74       0x24 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x00001e74                Chip_Clock_GetCPUClockSource
  .text.Chip_Clock_SetCPUClockDiv
-                0x00001e9c       0x20 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
-                0x00001e9c                Chip_Clock_SetCPUClockDiv
+                0x00001e98       0x20 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x00001e98                Chip_Clock_SetCPUClockDiv
  .text.Chip_Clock_GetCPUClockDiv
-                0x00001ebc       0x1c C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
-                0x00001ebc                Chip_Clock_GetCPUClockDiv
+                0x00001eb8       0x1c C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x00001eb8                Chip_Clock_GetCPUClockDiv
  .text.Chip_Clock_GetPCLKDiv
-                0x00001ed8       0x8c C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
-                0x00001ed8                Chip_Clock_GetPCLKDiv
+                0x00001ed4       0x8c C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x00001ed4                Chip_Clock_GetPCLKDiv
  .text.Chip_Clock_GetSYSCLKRate
-                0x00001f64       0x34 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
-                0x00001f64                Chip_Clock_GetSYSCLKRate
+                0x00001f60       0x34 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x00001f60                Chip_Clock_GetSYSCLKRate
  .text.Chip_Clock_GetMainPLLOutClockRate
-                0x00001f98       0x54 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
-                0x00001f98                Chip_Clock_GetMainPLLOutClockRate
+                0x00001f94       0x54 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x00001f94                Chip_Clock_GetMainPLLOutClockRate
  .text.Chip_Clock_GetMainClockRate
-                0x00001fec       0x28 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
-                0x00001fec                Chip_Clock_GetMainClockRate
+                0x00001fe8       0x28 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x00001fe8                Chip_Clock_GetMainClockRate
  .text.Chip_Clock_GetSystemClockRate
-                0x00002014       0x18 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
-                0x00002014                Chip_Clock_GetSystemClockRate
+                0x00002010       0x18 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x00002010                Chip_Clock_GetSystemClockRate
  .text.Chip_Clock_GetPeripheralClockRate
-                0x0000202c       0x26 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
-                0x0000202c                Chip_Clock_GetPeripheralClockRate
+                0x00002028       0x26 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x00002028                Chip_Clock_GetPeripheralClockRate
  .text.Chip_IOCON_PinMuxSet
-                0x00002052       0x36 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
-                0x00002052                Chip_IOCON_PinMuxSet
+                0x0000204e       0x36 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
+                0x0000204e                Chip_IOCON_PinMuxSet
  .text.Chip_IOCON_PinMux
-                0x00002088       0x94 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
-                0x00002088                Chip_IOCON_PinMux
+                0x00002084       0x94 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
+                0x00002084                Chip_IOCON_PinMux
  .text.Chip_IOCON_SetPinMuxing
-                0x0000211c       0x62 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
-                0x0000211c                Chip_IOCON_SetPinMuxing
- *fill*         0x0000217e        0x2 ff
+                0x00002118       0x62 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
+                0x00002118                Chip_IOCON_SetPinMuxing
+ *fill*         0x0000217a        0x2 ff
  .text.Chip_Clock_IsMainPLLEnabled
-                0x00002180       0x24 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
+                0x0000217c       0x24 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
  .text.Chip_Clock_IsMainPLLLocked
-                0x000021a4       0x24 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
+                0x000021a0       0x24 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
  .text.Chip_Clock_IsMainPLLConnected
-                0x000021c8       0x24 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
+                0x000021c4       0x24 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
  .text.Chip_Clock_EnableCrystal
-                0x000021ec       0x20 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
+                0x000021e8       0x20 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
  .text.Chip_Clock_IsCrystalEnabled
-                0x0000220c       0x24 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
+                0x00002208       0x24 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
  .text.Chip_Clock_SetMainPLLSource
-                0x00002230       0x20 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
+                0x0000222c       0x20 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
  .text.Chip_SetupXtalClocking
-                0x00002250       0x90 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
-                0x00002250                Chip_SetupXtalClocking
+                0x0000224c       0x90 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
+                0x0000224c                Chip_SetupXtalClocking
  .text.Chip_UART_SetupFIFOS
-                0x000022e0       0x1a C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
+                0x000022dc       0x1a C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
  .text.Chip_UART_ConfigData
-                0x000022fa       0x1a C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
+                0x000022f6       0x1a C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
  .text.Chip_UART_EnableDivisorAccess
-                0x00002314       0x1e C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
+                0x00002310       0x1e C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
  .text.Chip_UART_DisableDivisorAccess
-                0x00002332       0x1e C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
+                0x0000232e       0x1e C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
  .text.Chip_UART_SetDivisorLatches
-                0x00002350       0x26 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
- *fill*         0x00002376        0x2 ff
+                0x0000234c       0x26 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
+ *fill*         0x00002372        0x2 ff
  .text.Chip_UART_GetClockIndex
-                0x00002378       0x50 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
+                0x00002374       0x50 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
  .text.Chip_UART_GetClkIndex
-                0x000023c8       0x50 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
+                0x000023c4       0x50 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
  .text.Chip_UART_Init
-                0x00002418       0x78 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
-                0x00002418                Chip_UART_Init
+                0x00002414       0x78 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
+                0x00002414                Chip_UART_Init
  .text.Chip_UART_TXEnable
-                0x00002490       0x18 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
-                0x00002490                Chip_UART_TXEnable
+                0x0000248c       0x18 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
+                0x0000248c                Chip_UART_TXEnable
  .text.Chip_UART_TXDisable
-                0x000024a8       0x18 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
-                0x000024a8                Chip_UART_TXDisable
+                0x000024a4       0x18 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
+                0x000024a4                Chip_UART_TXDisable
  .text.Chip_UART_SetBaud
-                0x000024c0       0x62 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
-                0x000024c0                Chip_UART_SetBaud
+                0x000024bc       0x62 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
+                0x000024bc                Chip_UART_SetBaud
  .text.__weak_main
-                0x00002522        0x4 c:/nxp/mcuxpressoide_10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.win32_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libcr_c.a(__weak__main.o)
-                0x00002522                __weak_main
-                0x00002522                __main
- .text.strlen   0x00002526       0x4a c:/nxp/mcuxpressoide_10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.win32_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libcr_c.a(strlen.o)
-                0x00002526                strlen
+                0x0000251e        0x4 c:/nxp/mcuxpressoide_10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.win32_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libcr_c.a(__weak__main.o)
+                0x0000251e                __weak_main
+                0x0000251e                __main
+ .text.strlen   0x00002522       0x4a c:/nxp/mcuxpressoide_10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.win32_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libcr_c.a(strlen.o)
+                0x00002522                strlen
  *(.rodata .rodata.* .constdata .constdata.*)
  .rodata.SmallFont
-                0x00002570      0x478 ./src/DefaultFonts.o
-                0x00002570                SmallFont
- .rodata.utn    0x000029e8     0x4e20 ./src/TFT.o
-                0x000029e8                utn
- .rodata        0x00007808       0x5e ./src/TFT.o
- *fill*         0x00007866        0x2 ff
+                0x0000256c      0x478 ./src/DefaultFonts.o
+                0x0000256c                SmallFont
+ .rodata.utn    0x000029e4     0x4e20 ./src/TFT.o
+                0x000029e4                utn
+ .rodata        0x00007804       0x5e ./src/TFT.o
+ *fill*         0x00007862        0x2 ff
  .rodata.OscRateIn
-                0x00007868        0x4 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board.o)
-                0x00007868                OscRateIn
+                0x00007864        0x4 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+                0x00007864                OscRateIn
  .rodata.RTCOscRateIn
-                0x0000786c        0x4 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board.o)
-                0x0000786c                RTCOscRateIn
+                0x00007868        0x4 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+                0x00007868                RTCOscRateIn
  .rodata.pinmuxing
-                0x00007870       0xb0 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
-                0x00007920                . = ALIGN (0x4)
+                0x0000786c       0xb0 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
+                0x0000791c                . = ALIGN (0x4)
 
-.glue_7         0x00007920        0x0
- .glue_7        0x00007920        0x0 linker stubs
+.glue_7         0x0000791c        0x0
+ .glue_7        0x0000791c        0x0 linker stubs
 
-.glue_7t        0x00007920        0x0
- .glue_7t       0x00007920        0x0 linker stubs
+.glue_7t        0x0000791c        0x0
+ .glue_7t       0x0000791c        0x0 linker stubs
 
-.vfp11_veneer   0x00007920        0x0
- .vfp11_veneer  0x00007920        0x0 linker stubs
+.vfp11_veneer   0x0000791c        0x0
+ .vfp11_veneer  0x0000791c        0x0 linker stubs
 
-.v4_bx          0x00007920        0x0
- .v4_bx         0x00007920        0x0 linker stubs
+.v4_bx          0x0000791c        0x0
+ .v4_bx         0x0000791c        0x0 linker stubs
 
-.iplt           0x00007920        0x0
- .iplt          0x00007920        0x0 ./src/DefaultFonts.o
+.iplt           0x0000791c        0x0
+ .iplt          0x0000791c        0x0 ./src/DefaultFonts.o
 
-.rel.dyn        0x00007920        0x0
- .rel.iplt      0x00007920        0x0 ./src/DefaultFonts.o
+.rel.dyn        0x0000791c        0x0
+ .rel.iplt      0x0000791c        0x0 ./src/DefaultFonts.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x00007920                __exidx_start = .
+                0x0000791c                __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x00007920                __exidx_end = .
-                0x00007920                _etext = .
+                0x0000791c                __exidx_end = .
+                0x0000791c                _etext = .
 
-.data_RAM2      0x2007c000        0x0 load address 0x00007920
+.data_RAM2      0x2007c000        0x0 load address 0x0000791c
  FILL mask 0xff
                 [!provide]                PROVIDE (__start_data_RAM2 = .)
  *(.ramfunc.$RAM2)
@@ -1761,7 +1761,7 @@ END GROUP
                 0x10000000                . = ALIGN (0x4)
                 0x10000000                _end_uninit_RESERVED = .
 
-.data           0x10000000      0xc8c load address 0x00007920
+.data           0x10000000      0xc8c load address 0x0000791c
  FILL mask 0xff
                 0x10000000                _data = .
  *(vtable)
@@ -1781,7 +1781,7 @@ END GROUP
  *fill*         0x10000c89        0x3 ff
                 0x10000c8c                _edata = .
 
-.igot.plt       0x10000c8c        0x0 load address 0x000085ac
+.igot.plt       0x10000c8c        0x0 load address 0x000085a8
  .igot.plt      0x10000c8c        0x0 ./src/DefaultFonts.o
 
 .bss_RAM2       0x2007c000        0x0
@@ -1827,39 +1827,39 @@ END GROUP
                 0x10008000                PROVIDE (_vStackTop = DEFINED (__user_stack_top)?__user_stack_top:(__top_RamLoc32 - 0x0))
                 0xefff74de                PROVIDE (__valid_user_code_checksum = (0x0 - ((((((_vStackTop + (ResetISR + 0x1)) + (NMI_Handler + 0x1)) + (HardFault_Handler + 0x1)) + (DEFINED (MemManage_Handler)?MemManage_Handler:0x0 + 0x1)) + (DEFINED (BusFault_Handler)?BusFault_Handler:0x0 + 0x1)) + (DEFINED (UsageFault_Handler)?UsageFault_Handler:0x0 + 0x1))))
                 0x00000000                _image_start = LOADADDR (.text)
-                0x000085ac                _image_end = (LOADADDR (.data) + SIZEOF (.data))
-                0x000085ac                _image_size = (_image_end - _image_start)
+                0x000085a8                _image_end = (LOADADDR (.data) + SIZEOF (.data))
+                0x000085a8                _image_size = (_image_end - _image_start)
 OUTPUT(TFT.axf elf32-littlearm)
 
-.debug_info     0x00000000     0x6038
+.debug_info     0x00000000     0x6026
  .debug_info    0x00000000      0x32c ./src/DefaultFonts.o
  .debug_info    0x0000032c      0x3d3 ./src/HW_lpc1769.o
  .debug_info    0x000006ff      0x533 ./src/TFT.o
  .debug_info    0x00000c32      0xbfa ./src/UTFT.o
  .debug_info    0x0000182c      0x255 ./src/cr_startup_lpc175x_6x.o
  .debug_info    0x00001a81      0x232 ./src/sysinit.o
- .debug_info    0x00001cb3     0x1521 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board.o)
- .debug_info    0x000031d4      0x6c3 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
- .debug_info    0x00003897      0x558 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
- .debug_info    0x00003def      0xba2 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
- .debug_info    0x00004991      0x31e C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
- .debug_info    0x00004caf      0x474 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
- .debug_info    0x00005123      0xf15 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
+ .debug_info    0x00001cb3     0x150f C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+ .debug_info    0x000031c2      0x6c3 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
+ .debug_info    0x00003885      0x558 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
+ .debug_info    0x00003ddd      0xba2 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+ .debug_info    0x0000497f      0x31e C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
+ .debug_info    0x00004c9d      0x474 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
+ .debug_info    0x00005111      0xf15 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
 
-.debug_abbrev   0x00000000     0x17e5
+.debug_abbrev   0x00000000     0x17cf
  .debug_abbrev  0x00000000       0xdf ./src/DefaultFonts.o
  .debug_abbrev  0x000000df      0x163 ./src/HW_lpc1769.o
  .debug_abbrev  0x00000242      0x1bf ./src/TFT.o
  .debug_abbrev  0x00000401      0x251 ./src/UTFT.o
  .debug_abbrev  0x00000652      0x114 ./src/cr_startup_lpc175x_6x.o
  .debug_abbrev  0x00000766       0xdd ./src/sysinit.o
- .debug_abbrev  0x00000843      0x3de C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board.o)
- .debug_abbrev  0x00000c21      0x180 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
- .debug_abbrev  0x00000da1      0x151 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
- .debug_abbrev  0x00000ef2      0x309 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
- .debug_abbrev  0x000011fb      0x14a C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
- .debug_abbrev  0x00001345      0x18e C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
- .debug_abbrev  0x000014d3      0x312 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
+ .debug_abbrev  0x00000843      0x3c8 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+ .debug_abbrev  0x00000c0b      0x180 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
+ .debug_abbrev  0x00000d8b      0x151 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
+ .debug_abbrev  0x00000edc      0x309 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+ .debug_abbrev  0x000011e5      0x14a C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
+ .debug_abbrev  0x0000132f      0x18e C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
+ .debug_abbrev  0x000014bd      0x312 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
 
 .debug_aranges  0x00000000      0x6c0
  .debug_aranges
@@ -1949,22 +1949,22 @@ OUTPUT(TFT.axf elf32-littlearm)
  .debug_macro   0x00005e5e      0x1cd C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
  .debug_macro   0x0000602b      0x1cd C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
 
-.debug_line     0x00000000     0x4e36
+.debug_line     0x00000000     0x4e35
  .debug_line    0x00000000      0x532 ./src/DefaultFonts.o
  .debug_line    0x00000532      0x61b ./src/HW_lpc1769.o
  .debug_line    0x00000b4d      0x627 ./src/TFT.o
  .debug_line    0x00001174      0xb28 ./src/UTFT.o
  .debug_line    0x00001c9c       0xd3 ./src/cr_startup_lpc175x_6x.o
  .debug_line    0x00001d6f      0x4f9 ./src/sysinit.o
- .debug_line    0x00002268      0x8b7 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board.o)
- .debug_line    0x00002b1f      0x53c C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
- .debug_line    0x0000305b      0x4c4 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
- .debug_line    0x0000351f      0x740 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
- .debug_line    0x00003c5f      0x4b0 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
- .debug_line    0x0000410f      0x53a C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
- .debug_line    0x00004649      0x7ed C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
+ .debug_line    0x00002268      0x8b6 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+ .debug_line    0x00002b1e      0x53c C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
+ .debug_line    0x0000305a      0x4c4 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
+ .debug_line    0x0000351e      0x740 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+ .debug_line    0x00003c5e      0x4b0 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
+ .debug_line    0x0000410e      0x53a C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
+ .debug_line    0x00004648      0x7ed C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
 
-.debug_str      0x00000000    0x14256
+.debug_str      0x00000000    0x14246
  .debug_str     0x00000000    0x11568 ./src/DefaultFonts.o
                               0x1164e (size before relaxing)
  .debug_str     0x00011568      0x438 ./src/HW_lpc1769.o
@@ -1977,19 +1977,19 @@ OUTPUT(TFT.axf elf32-littlearm)
                                0x2ec7 (size before relaxing)
  .debug_str     0x00012495       0x1b ./src/sysinit.o
                               0x11473 (size before relaxing)
- .debug_str     0x000124b0      0xd74 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board.o)
-                              0x12351 (size before relaxing)
- .debug_str     0x00013224      0x22d C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
+ .debug_str     0x000124b0      0xd64 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+                              0x12341 (size before relaxing)
+ .debug_str     0x00013214      0x22d C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_board_nxp_lpcxpresso_1769\Debug\liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
                               0x1187b (size before relaxing)
- .debug_str     0x00013451       0xbb C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
+ .debug_str     0x00013441       0xbb C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
                               0x11301 (size before relaxing)
- .debug_str     0x0001350c      0x852 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+ .debug_str     0x000134fc      0x852 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
                               0x1197f (size before relaxing)
- .debug_str     0x00013d5e       0x74 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
+ .debug_str     0x00013d4e       0x74 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
                               0x10dfc (size before relaxing)
- .debug_str     0x00013dd2       0xc4 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
+ .debug_str     0x00013dc2       0xc4 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
                               0x10fe4 (size before relaxing)
- .debug_str     0x00013e96      0x3c0 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
+ .debug_str     0x00013e86      0x3c0 C:\Users\Gaston\Documents\facultad\TDII\Proyecto\lpc_chip_175x_6x\Debug\liblpc_chip_175x_6x.a(uart_17xx_40xx.o)
                               0x11854 (size before relaxing)
 
 .comment        0x00000000       0x7f

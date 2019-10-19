@@ -648,46 +648,75 @@ const unsigned short utn[0x2710] ={
 };
 
 
+
+
 void Board_UTFT_Init(void)
 {
 	//los seteo todos como salidas
-	Chip_GPIO_WriteDirBit(LPC_GPIO, RS_PORT , RS_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, WR_PORT , WR_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, RST_PORT , RST_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, CS_PORT , CS_BIT, true);
 
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB0_PORT , DB0_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB1_PORT , DB1_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB2_PORT , DB2_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB3_PORT , DB3_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB4_PORT , DB4_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB5_PORT , DB5_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB6_PORT , DB6_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB7_PORT , DB7_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB8_PORT , DB8_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB9_PORT , DB9_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB10_PORT ,DB10_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB11_PORT ,DB11_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB12_PORT ,DB12_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB13_PORT ,DB13_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB14_PORT ,DB14_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB15_PORT ,DB15_BIT, true);
+
+	Chip_GPIO_SetPinDIR(LPC_GPIO, RS_PORT , RS_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, WR_PORT , WR_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, RST_PORT , RST_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, CS_PORT , CS_BIT, true);
+
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB0_PORT , DB0_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB1_PORT , DB1_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB2_PORT , DB2_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB3_PORT , DB3_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB4_PORT , DB4_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB5_PORT , DB5_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB6_PORT , DB6_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB7_PORT , DB7_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB8_PORT , DB8_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB9_PORT , DB9_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB10_PORT ,DB10_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB11_PORT ,DB11_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB12_PORT ,DB12_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB13_PORT ,DB13_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB14_PORT ,DB14_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB15_PORT ,DB15_BIT, true);
+
+
+	Chip_GPIO_WritePortBit(LPC_GPIO, RS_PORT , RS_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, WR_PORT , WR_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, RST_PORT , RST_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, CS_PORT , CS_BIT, 0);
+
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB0_PORT , DB0_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB1_PORT , DB1_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB2_PORT , DB2_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB3_PORT , DB3_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB4_PORT , DB4_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB5_PORT , DB5_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB6_PORT , DB6_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB7_PORT , DB7_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB8_PORT , DB8_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB9_PORT , DB9_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB10_PORT ,DB10_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB11_PORT ,DB11_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB12_PORT ,DB12_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB13_PORT ,DB13_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB14_PORT ,DB14_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB15_PORT ,DB15_BIT, 0);
+
 }
-
-
 void task_pantalla_Init(void)
 {
 	uint32_t i;
-	Board_UTFT_Init();
+	//Board_UTFT_Init();
 
     InitLCD(LANDSCAPE);
 
     //drawPixel(20,20);
     setFont(SmallFont);
-    Chip_GPIO_WritePortBit(LPC_GPIO,0,22,true);
     drawBitmap(300,0,100,100,utn,1);
-
     setColor2(255,255,255);
+    print("FDV=", FDV_X,FDV_Y,0);
+    print("FDT=", FDT_X,FDT_Y,0);
+    print("ACOPLE:", ACOPLE_X,ACOPLE_Y,0);
+    print("T=", TRIGGER_LEVEL_X,TRIGGER_LEVEL_Y,0);
+
 	for (i=1;i<300;i++) drawPixel(i,220);
 	for (i=1;i<220;i++) drawPixel(300,i);
 
@@ -714,6 +743,10 @@ cambios_pantalla_t calcular_cambios()
 	memset(&result,0,sizeof(result)); //seteo todo en no hay cambios y despues checkeo
 	//calculo cambios
 
+	if (pantalla.seleccion!=pantalla_prev.seleccion)
+	{
+		result.seleccion=1;
+	}
 	for (i=0;i<SIGNAL_LENGTH;i++)
 	{
 		if (pantalla.signal[i]!=pantalla_prev.signal[i])
@@ -766,15 +799,123 @@ cambios_pantalla_t calcular_cambios()
 	return result;
 }
 
-void write_T (uint8_t *state)
+//void write_T (uint8_t *state)
+//{
+//	static uint8_t i=0;
+//	printChar(pantalla.T[i],305+ (i*(cfont.x_size)),185);
+//	i++;
+//	if(pantalla.T[i]==0)
+//	{
+//		(*state)++;
+//		i=0;
+//	}
+//}
+
+//LOS NUMEROS SUMADOS A LAS COORDENADAS X SON EL LARGO DE LOS TEXTOS INICIALIZADOS
+
+void write_fdv (uint8_t *state)
 {
 	static uint8_t i=0;
-	printChar(pantalla.T[i],305+ (i*(cfont.x_size)),185);
-	i++;
-	if(pantalla.T[i]==0)
+	setColor2(255,255,255);
+
+	if(pantalla.fdv[i]==0)
 	{
 		(*state)++;
 		i=0;
+	}
+	else
+	{
+		printChar(pantalla.fdv[i],FDV_X+32+ (i*(cfont.x_size)),FDV_Y);
+		i++;
+	}
+}
+
+void write_fdt (uint8_t *state)
+{
+	static uint8_t i=0;
+	if (pantalla.seleccion==SEL_FDT)
+	{
+		setColor2(0,255,0);
+	}
+	else
+	{
+		setColor2(255,255,255);
+	}
+
+	if(pantalla.fdt[i]==0)
+	{
+		(*state)++;
+		i=0;
+	}
+	else
+	{
+		printChar(pantalla.fdt[i],FDT_X+32+ (i*(cfont.x_size)),FDT_Y);
+		i++;
+	}
+}
+
+void write_trigger_level (uint8_t *state)
+{
+	static uint8_t i=0;
+	if (pantalla.seleccion==SEL_TRIGGER_LEVEL)
+	{
+		setColor2(0,255,0);
+	}
+	else
+	{
+		setColor2(255,255,255);
+	}
+
+
+	if(pantalla.trigger_level[i]==0)
+	{
+		(*state)++;
+		i=0;
+	}
+	else
+	{
+		printChar(pantalla.trigger_level[i],TRIGGER_LEVEL_X+16+ (i*(cfont.x_size)),TRIGGER_LEVEL_Y);
+		i++;
+	}
+}
+
+void write_trigger_pol (uint8_t *state)
+{
+	static uint8_t i=0;
+	if (pantalla.seleccion==SEL_TRIGGER_POL)
+	{
+		setColor2(0,255,0);
+	}
+	else
+	{
+		setColor2(255,255,255);
+	}
+	if(pantalla.trigger_pol[i]==0)
+	{
+		(*state)++;
+		i=0;
+	}
+	else
+	{
+		printChar(pantalla.trigger_pol[i],TRIGGER_POL_X+ (i*(cfont.x_size)),TRIGGER_POL_Y);
+		i++;
+	}
+}
+
+void write_acople (uint8_t *state)
+{
+	static uint8_t i=0;
+	setColor2(255,255,255);
+
+	if(pantalla.acople[i]==0)
+	{
+		(*state)++;
+		i=0;
+	}
+	else
+	{
+		printChar(pantalla.acople[i],ACOPLE_X+56+ (i*(cfont.x_size)),ACOPLE_Y);
+		i++;
 	}
 }
 
@@ -840,23 +981,61 @@ void organizar (void (*funciones_pantalla[])(uint8_t*))
 	cambios_pantalla=calcular_cambios();
 	memset(funciones_pantalla,0,sizeof(*funciones_pantalla));//seteo todos los punteros en NULL
 
-	if (cambios_pantalla.T)
+//	if (cambios_pantalla.T)
+//	{
+//		funciones_pantalla[i]=write_T;
+//		i++;
+//	}
+	if (cambios_pantalla.seleccion)
 	{
-		funciones_pantalla[i]=write_T;
-
-		i++;
-		if(i==NUM_FUNCIONES_PANTALLA) while(1); //Si me fui de rango lo clavo
+		funciones_pantalla[i++]=write_fdt;
+		funciones_pantalla[i++]=write_trigger_level;
+		funciones_pantalla[i++]=write_trigger_pol;
 	}
+	else //si ya fueron programadas por el cambio de seleccion no las vuelvo a programar
+	{
+		if (cambios_pantalla.fdt)
+		{
+			funciones_pantalla[i]=write_fdt;
+			i++;
+		}
+		if (cambios_pantalla.trigger_pol)
+		{
+			funciones_pantalla[i]=write_trigger_pol;
+			i++;
+		}
+		if (cambios_pantalla.trigger_level)
+		{
+			funciones_pantalla[i]=write_trigger_level;
+			i++;
+		}
+
+	}
+	if (cambios_pantalla.fdv)
+	{
+		funciones_pantalla[i]=write_fdv;
+		i++;
+	}
+
+	if (cambios_pantalla.acople)
+	{
+		funciones_pantalla[i]=write_acople;
+		i++;
+	}
+
+
 	if (cambios_pantalla.signal)
 	{
 		funciones_pantalla[i]=write_signal;
 		i++;
-		if(i==NUM_FUNCIONES_PANTALLA) while(1);	//Si me fui de rango lo clavo
 	}
 	funciones_pantalla[i]=0;
+	if(i>=NUM_FUNCIONES_PANTALLA) while(1); //Si me fui de rango lo clavo
 
 
 }
+
+
 void task_pantalla (void)
 {
 	static uint8_t state=0;

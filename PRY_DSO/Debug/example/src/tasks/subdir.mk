@@ -11,6 +11,7 @@ C_SRCS += \
 ../example/src/tasks/task-LockDoor1_led_lpc1769.c \
 ../example/src/tasks/task-LockDoor2_led_lpc1769.c \
 ../example/src/tasks/task-heartbeat_lpc1769.c \
+../example/src/tasks/task-main.c \
 ../example/src/tasks/task-pantalla.c \
 ../example/src/tasks/task-procesamiento.c \
 ../example/src/tasks/task-pruebaPantalla.c \
@@ -25,6 +26,7 @@ OBJS += \
 ./example/src/tasks/task-LockDoor1_led_lpc1769.o \
 ./example/src/tasks/task-LockDoor2_led_lpc1769.o \
 ./example/src/tasks/task-heartbeat_lpc1769.o \
+./example/src/tasks/task-main.o \
 ./example/src/tasks/task-pantalla.o \
 ./example/src/tasks/task-procesamiento.o \
 ./example/src/tasks/task-pruebaPantalla.o \
@@ -39,6 +41,7 @@ C_DEPS += \
 ./example/src/tasks/task-LockDoor1_led_lpc1769.d \
 ./example/src/tasks/task-LockDoor2_led_lpc1769.d \
 ./example/src/tasks/task-heartbeat_lpc1769.d \
+./example/src/tasks/task-main.d \
 ./example/src/tasks/task-pantalla.d \
 ./example/src/tasks/task-procesamiento.d \
 ./example/src/tasks/task-pruebaPantalla.d \
