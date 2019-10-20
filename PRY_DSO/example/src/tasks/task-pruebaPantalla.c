@@ -8,7 +8,7 @@
 #include "task-pruebaPantalla.h"
 #include "task-pantalla.h"
 #include "board.h"
-#include <String.h>
+#include <string.h>
 
 extern pantalla_t pantalla;
 extern uint8_t estado_pantalla;
