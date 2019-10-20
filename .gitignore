@@ -1,11 +1,9 @@
-FreeRTOS_TAD_logs/
-.metadata/
+.metadata/**
+FreeRTOS_TAD_logs/**
+/.setting/
+.mcuxpressoide_packages_support/**
+*.ld
 
-/Debug/
-/Release/
-
-# Created by https://www.gitignore.io/api/c,eclipse
-# Edit at https://www.gitignore.io/?templates=c,eclipse
 
 ### C ###
 # Prerequisites
@@ -61,6 +59,9 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
+# Created by https://www.gitignore.io/api/eclipse
+# Edit at https://www.gitignore.io/?templates=eclipse
+
 ### Eclipse ###
 .metadata
 bin/
@@ -82,6 +83,9 @@ local.properties
 
 # PyDev specific (Python IDE for Eclipse)
 *.pydevproject
+
+# CDT-specific (C/C++ Development Tooling)
+.cproject
 
 # CDT- autotools
 .autotools
@@ -115,9 +119,17 @@ local.properties
 .scala_dependencies
 .worksheet
 
+### Eclipse Patch ###
+# Eclipse Core
+.project
+
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
+
 # Annotation Processing
 .apt_generated
 
 .sts4-cache/
 
-# End of https://www.gitignore.io/api/c,eclipse
+# End of https://www.gitignore.io/api/eclipse
+# End of https://www.gitignore.io/api/c
