@@ -64,7 +64,6 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-<<<<<<< HEAD
 
 # Created by https://www.gitignore.io/api/eclipse
 # Edit at https://www.gitignore.io/?templates=eclipse
@@ -92,7 +91,7 @@ local.properties
 *.pydevproject
 
 # CDT-specific (C/C++ Development Tooling)
-.cproject
+#.cproject
 
 # CDT- autotools
 .autotools
@@ -128,10 +127,10 @@ local.properties
 
 ### Eclipse Patch ###
 # Eclipse Core
-.project
+#.project
 
 # JDT-specific (Eclipse Java Development Tools)
-.classpath
+#.classpath
 
 # Annotation Processing
 .apt_generated
@@ -140,5 +139,3 @@ local.properties
 
 # End of https://www.gitignore.io/api/eclipse
 # End of https://www.gitignore.io/api/c
-=======
->>>>>>> pantalla_function_pointers
