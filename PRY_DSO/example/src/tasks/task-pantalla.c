@@ -18,6 +18,13 @@ uint8_t texto_len=6;
 //typedef enum {changes,write_Vpp,write_Veff,write_Vm,write_fs,write_f,write_T,write_acople,prepare_signal,write_signal} writting_state_t ;
 
 pantalla_t pantalla;
+
+//estado_pantalla=DONE: Controla si la pantalla debe escribir o no
+//si esta en modo DONE, la pantalla termino de escribir lo que se le encomendo
+//para volver a escribir datos nuevos, se colocan los mismos en pantalla_t pantalla
+// y se pone estado_pantalla en WRITTING, el valor cambiara a DONE cuando termine
+// NO SE DEBE MODIFICAR EL VALOR DE pantalla SI LA PANTALLA SE ENCUENTRA EN WRITTING
+// TODAS LAS FUNCIONES INTERNAS TRABAJAN DIRECTAMENTE SOBRE ESA VARIABLE
 uint8_t estado_pantalla=DONE; //valores posibles {WRITTING,DONE}
 const unsigned short utn[0x2710] ={
 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF,   // 0x0010 (16)
@@ -949,7 +956,7 @@ void write_signal(uint8_t* state)
 				i=0;
 				(*state)++;
 				signal_state=errasing_1;
-				memcpy(prev_signal,pantalla.signal,sizeof(pantalla.signal));//guardo la primera señal como señal anterior
+				memcpy(prev_signal,pantalla.signal,SIGNAL_LENGTH*sizeof(*(pantalla.signal)));//guardo la primera señal como señal anterior
 
 			}
 			return;
@@ -1038,7 +1045,7 @@ void organizar (void (*funciones_pantalla[])(uint8_t*))
 
 void task_pantalla (void)
 {
-	static uint8_t state=0;
+	static uint8_t state=2;
 	static uint8_t i=0;
 	static void (*funciones_pantalla[NUM_FUNCIONES_PANTALLA])(uint8_t *);
 

@@ -21,6 +21,8 @@
 #define FALLING_EDGE 0
 //************************
 
+//***Maq de estados para probar muestreo
+#define MUESTRAS_TERMINADO 1
 
 
 typedef struct {

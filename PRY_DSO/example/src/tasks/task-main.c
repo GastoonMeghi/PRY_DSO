@@ -13,10 +13,66 @@
 #include "task-pantalla.h"
 #include "string.h"
 parametros_t parametros;
+
+//estado_pantalla=DONE: Controla si la pantalla debe escribir o no
+//si esta en modo DONE, la pantalla termino de escribir lo que se le encomendo
+//para volver a escribir datos nuevos, se colocan los mismos en pantalla_t pantalla
+// y se pone estado_pantalla en WRITTING, el valor cambiara a DONE cuando termine
+// NO SE DEBE MODIFICAR EL VALOR DE pantalla SI LA PANTALLA SE ENCUENTRA EN WRITTING
+// TODAS LAS FUNCIONES INTERNAS TRABAJAN DIRECTAMENTE SOBRE ESA VARIABLE
+extern uint8_t estado_pantalla;
+
+//Estructura de datos con los valores tal y como deben ser mostrados en la pantalla
 extern pantalla_t pantalla;
+
+//uint8_t signal[300] : Señal ya procesada como para entrar correctamente en la pantalla
+extern uint8_t signal[300];
+
+//Estado del Task de procesamiento de señal
+//Cuando queramos que trabaje hay que ponerla en PROCESSING
+//La tarea va a leer el buffer del adc y colocarlo en el buffer signal ADC ya aconidicionado para
+//mostrarse en la pantalla, comunica que finalizo cambiando su estado a IDLE
+extern enum {IDLE,PROCESSING}processing_state;
+
+
 
 void task_main (void)
 {
+	static enum {INIC,SAMPLING,SHOWING_RESULTS_1,SHOWING_RESULTS_2}state=INIC;
+
+	switch (state)
+	{
+	case INIC:
+		//EMPEZAR_MUESTREO;
+		state=SAMPLING;
+		return;
+
+	case SAMPLING:
+		if (MUESTRAS_TERMINADO)
+		{
+			processing_state=PROCESSING;
+			state=SHOWING_RESULTS_1;
+			//Esto habilita la tarea que procesa las muestras, esta directamente
+			//toma el buffer del adc y lo coloca en la variable global signal
+		}
+		return;
+
+	case SHOWING_RESULTS_1:
+		if (processing_state==IDLE)//terminamos de procesar las muestras
+		{
+			memcpy(pantalla.signal,signal,SIGNAL_LENGTH*sizeof(*(signal)));//Copio los datos en la pantalla
+			estado_pantalla=WRITTING; //Habilito la pantalla para que escriba
+			state=SHOWING_RESULTS_2;
+		}
+		return;
+	case SHOWING_RESULTS_2:
+		if (estado_pantalla==DONE)
+		{
+			state=INIC;
+		}
+		return;
+	}
+
 
 
 }
