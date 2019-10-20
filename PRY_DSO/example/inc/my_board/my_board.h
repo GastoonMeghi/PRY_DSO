@@ -134,5 +134,5 @@ void setSampleRate(uint32_t sampleRate);
 
 void setTriggerEdge(trigger_edge_t edge);
 
-void startSampling(void);
+void startSampling(float triggerLvl, trigger_edge_t edge, uint32_t sampleRate);
 #endif /* MY_BOARD_H_ */

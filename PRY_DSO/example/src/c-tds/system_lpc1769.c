@@ -136,9 +136,8 @@ void SYSTEM_Configure_Required_Mode(void)
             //Inicializo el ADC
             InitADC();
 
-            //Inicializo el nivel del trigger en el 0
+            //Inicializo el generador de trigger
             InitTriggerPWM();
-            setTriggerLvl(0);
 
             //Inicializo la interrupcion del trigger
             InitTriggerInt();

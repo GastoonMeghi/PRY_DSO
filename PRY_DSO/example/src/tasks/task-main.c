@@ -39,17 +39,22 @@ extern enum {IDLE,PROCESSING}processing_state;
 void task_main (void)
 {
 	static enum {INIC,SAMPLING,SHOWING_RESULTS_1,SHOWING_RESULTS_2}state=INIC;
+	uint32_t sample_rate;
 
 	switch (state)
 	{
 	case INIC:
-		//EMPEZAR_MUESTREO;
+
+		sample_rate = 1000 * parametros.fdt;	/*TODO definir como establecer un sample_rate*/
+		startSampling(parametros.trigger_level, parametros.trigger_pol, sample_rate);
 		state=SAMPLING;
+
 		return;
 
 	case SAMPLING:
-		if (MUESTRAS_TERMINADO)
+		if (sample_buffer_flag)
 		{
+			sample_buffer_flag = 0;
 			processing_state=PROCESSING;
 			state=SHOWING_RESULTS_1;
 			//Esto habilita la tarea que procesa las muestras, esta directamente
@@ -138,12 +143,12 @@ void seleccion(void)
 		case config_trigger_pol:
 			if (PLUS_PRESSED)
 			{
-				parametros.trigger_pol=RISING_EDGE;
+				parametros.trigger_pol=RISING;
 				return;
 			}
 			if (MINUS_PRESSED)
 			{
-				parametros.trigger_pol=FALLING_EDGE;
+				parametros.trigger_pol=FALLING;
 				return;
 			}
 			if (FLANCO_SEL)

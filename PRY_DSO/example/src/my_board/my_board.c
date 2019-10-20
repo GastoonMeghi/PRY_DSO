@@ -166,7 +166,7 @@ void InitTriggerInt(void)
 //	Chip_GPIO_SetPinDIRInput(LPC_GPIO, TRIGGER_IN_PORT, TRIGGER_IN_PIN);	//Configuro como entrada
 
 //	Chip_GPIOINT_ClearIntStatus(LPC_GPIOINT, GPIOINT_PORT0, 1 << TRIGGER_IN_PIN); //Limpio interrupciones previas por las dudas
-//	Chip_GPIOINT_SetIntRising(LPC_GPIOINT, GPIOINT_PORT0, 1 << TRIGGER_IN_PIN); //Habilito interrupcion por rising edge
+////Chip_GPIOINT_SetIntRising(LPC_GPIOINT, GPIOINT_PORT0, 1 << TRIGGER_IN_PIN); //Habilito interrupcion por rising edge
 //	NVIC_EnableIRQ(EINT3_IRQn);	//Habilito interrupcion en el NVIC
 
 	//SW2
@@ -175,7 +175,7 @@ void InitTriggerInt(void)
 	Chip_GPIO_SetPinDIRInput(LPC_GPIO, TRIGGER_IN_PORT, 18);	//Configuro como entrada
 
 	Chip_GPIOINT_ClearIntStatus(LPC_GPIOINT, GPIOINT_PORT0, 1 << 18); //Limpio interrupciones previas
-	Chip_GPIOINT_SetIntFalling(LPC_GPIOINT, GPIOINT_PORT0, 1 << 18); //Int rising edge
+//	Chip_GPIOINT_SetIntFalling(LPC_GPIOINT, GPIOINT_PORT0, 1 << 18); //Int rising edge. sacar se hace cuando se dispara la conversion
 	NVIC_EnableIRQ(EINT3_IRQn);	//Habilito interrupcion en el NVIC
 
 }
@@ -214,11 +214,11 @@ void ADC_IRQHandler(void)
 
 }
 
-void startSampling(void)
+void startSampling(float triggerLvl, trigger_edge_t edge, uint32_t sampleRate)
 {
-	setTriggerLvl(0);
-	setTriggerEdge(RISING);
-	setSampleRate(1000);
+	setTriggerLvl(triggerLvl);
+	setTriggerEdge(edge);
+	setSampleRate(sampleRate);
 }
 
 void setTriggerEdge(trigger_edge_t edge)
@@ -233,5 +233,5 @@ void setTriggerEdge(trigger_edge_t edge)
 
 void setSampleRate(uint32_t sampleRate)
 {
-	Chip_ADC_SetSampleRate(LPC_ADC, &ADCSetup, sampleRate);	//100KHz
+	Chip_ADC_SetSampleRate(LPC_ADC, &ADCSetup, sampleRate);
 }

@@ -21,9 +21,6 @@
 #define FALLING_EDGE 0
 //************************
 
-//***Maq de estados para probar muestreo
-#define MUESTRAS_TERMINADO 1
-
 
 typedef struct {
 	uint32_t Vpp;
@@ -35,8 +32,8 @@ typedef struct {
 	uint8_t acople;
 	uint32_t fdv;
 	uint32_t fdt;
-	uint32_t trigger_level;
-	uint8_t trigger_pol;
+	float trigger_level;	/*	TODO  evaluar si conviene usar float o uint32 */
+	trigger_edge_t trigger_pol;
 
 	uint16_t signal[300];
 } parametros_t;
