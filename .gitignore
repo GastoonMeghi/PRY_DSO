@@ -1,6 +1,8 @@
 .metadata/**
 FreeRTOS_TAD_logs/**
 /.setting/
+/Debug/
+*.mk
 .mcuxpressoide_packages_support/**
 *.ld
 
