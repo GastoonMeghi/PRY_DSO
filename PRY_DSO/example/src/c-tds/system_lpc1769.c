@@ -130,7 +130,18 @@ void SYSTEM_Configure_Required_Mode(void)
             // Set up Timer 0 as MoniTTor unit
             MONITTOR_I_Init();
 
-            task_pantalla_Init();
+//            task_pantalla_Init();
+
+            //Inicializo el ADC
+            InitADC();
+
+            //Inicializo el nivel del trigger en el 0
+            InitTriggerPWM();
+            setTriggerLvl(0);
+
+            //Inicializo la interrupcion del trigger
+            InitTriggerInt();
+
 //        	// Prepare to Read Em SWITCH task
 //        	Em_SWITCH_Init();
 //
@@ -185,9 +196,9 @@ void SYSTEM_Configure_Required_Mode(void)
 //
 //            // Add Heartbeat task
             SCH_Add_Task(HEARTBEAT_Update, 0, 1000, 20, 0);
-            SCH_Add_Task(task_procesamiento, 0,1500,1000000, 0);
-            SCH_Add_Task(task_pruebaPantalla, 0,1500,1000000, 0);
-            SCH_Add_Task(task_pantalla, 1, 3,1000000, 0);
+//            SCH_Add_Task(task_procesamiento, 0,1500,1000000, 0);
+//            SCH_Add_Task(task_pruebaPantalla, 0,1500,1000000, 0);
+//            SCH_Add_Task(task_pantalla, 1, 3,1000000, 0);
 
             break;
         }
