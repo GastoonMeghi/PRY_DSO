@@ -55,6 +55,7 @@ extern "C" {
  * clocking, memory, and any resources needed prior to the application
  * starting.
  */
+
 void Board_SystemInit(void);
 
 /**

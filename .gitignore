@@ -4,14 +4,18 @@ FreeRTOS_TAD_logs/**
 /Debug/
 *.mk
 .mcuxpressoide_packages_support/**
+lpc_board_nxp_lpcxpresso_1769/Debug/**
 *.ld
+TFT/Debug/**
+
 
 
 ### C ###
+
 # Prerequisites
 *.d
 
-# Object files
+*.map
 *.o
 *.ko
 *.obj
@@ -60,6 +64,7 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+<<<<<<< HEAD
 
 # Created by https://www.gitignore.io/api/eclipse
 # Edit at https://www.gitignore.io/?templates=eclipse
@@ -135,3 +140,5 @@ local.properties
 
 # End of https://www.gitignore.io/api/eclipse
 # End of https://www.gitignore.io/api/c
+=======
+>>>>>>> pantalla_function_pointers

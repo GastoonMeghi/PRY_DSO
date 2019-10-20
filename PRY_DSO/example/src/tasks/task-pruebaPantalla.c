@@ -56,21 +56,25 @@ void task_pruebaPantalla(void)
 		}
 		flag=0;
 		aux[0]='0'+i;
-		strcpy(pantalla.Veff,"Veff=");
-		strcat(pantalla.Veff,aux);
-		strcat(pantalla.Veff,"mV");
+//		strcpy(pantalla.Veff,"Veff=");
+//		strcat(pantalla.Veff,aux);
+//		strcat(pantalla.Veff,"mV");
+//
+//		strcpy(pantalla.Vpp,"Vpp=");
+//		strcat(pantalla.Vpp,aux);
+//		strcat(pantalla.Vpp,"V");
+//
+//		strcpy(pantalla.T,"T=");
+//		strcat(pantalla.T,aux);
+//		strcat(pantalla.T,"mSeg");
+//
+//		strcpy(pantalla.Vm,"Vm=");
+//		strcat(pantalla.Vm,str_Vm);
+//		strcat(pantalla.Vm,"mV");
+				strcpy(pantalla.fdt,aux);
+				strcpy(pantalla.fdv,aux);
+				strcpy(pantalla.trigger_level,aux);
 
-		strcpy(pantalla.Vpp,"Vpp=");
-		strcat(pantalla.Vpp,aux);
-		strcat(pantalla.Vpp,"V");
-
-		strcpy(pantalla.T,"T=");
-		strcat(pantalla.T,aux);
-		strcat(pantalla.T,"mSeg");
-
-		strcpy(pantalla.Vm,"Vm=");
-		strcat(pantalla.Vm,str_Vm);
-		strcat(pantalla.Vm,"mV");
 
 		if (flag2==0) //toglea entre dos señales
 		{
@@ -79,6 +83,10 @@ void task_pruebaPantalla(void)
 				pantalla.signal[j]=signal[j];
 			}
 			flag2=1;
+			pantalla.seleccion=SEL_TRIGGER_POL;
+			strcpy(pantalla.acople,"AC");
+			strcpy(pantalla.trigger_pol,"ASC");
+
 		}
 		else
 		{
@@ -86,6 +94,9 @@ void task_pruebaPantalla(void)
 			{
 				pantalla.signal[j]=sin4[j];
 			}
+			pantalla.seleccion=SEL_FDT;
+			strcpy(pantalla.acople,"DC");
+			strcpy(pantalla.trigger_pol,"DES");
 			flag2=0;
 		}
 		i++;

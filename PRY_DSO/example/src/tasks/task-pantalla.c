@@ -13,10 +13,9 @@ int sin4[]={123,126,128,131,134,137,140,142,145,148,150,153,156,158,161,163,166,
 int sin[]={135,150,164,178,191,202,212,221,229,234,238,240,240,238,234,229,221,212,202,191,178,164,150,135,120,105,90,76,62,49,38,28,19,11,6,2,0,0,2,6,11,19,28,38,49,62,76,90,105,120,135,150,164,178,191,202,212,221,229,234,238,240,240,238,234,229,221,212,202,191,178,164,150,135,120,105,90,76,62,49,38,28,19,11,6,2,0,0,2,6,11,19,28,38,49,62,76,90,105,120,135,150,164,178,191,202,212,221,229,234,238,240,240,238,234,229,221,212,202,191,178,164,150,135,120,105,90,76,62,49,38,28,19,11,6,2,0,0,2,6,11,19,28,38,49,62,76,90,105,120,135,150,164,178,191,202,212,221,229,234,238,240,240,238,234,229,221,212,202,191,178,164,150,135,120,105,90,76,62,49,38,28,19,11,6,2,0,0,2,6,11,19,28,38,49,62,76,90,105,120,135,150,164,178,191,202,212,221,229,234,238,240,240,238,234,229,221,212,202,191,178,164,150,135,120,105,90,76,62,49,38,28,19,11,6,2,0,0,2,6,11,19,28,38,49,62,76,90,105,120,135,150,164,178,191,202,212,221,229,234,238,240,240,238,234,229,221,212,202,191,178,164,150,135,120,105,90,76,62,49,38,28,19,11,6,2,0,0,2,6,11,19,28,38,49,62,76,90,105,120,135,150,164,178,191,202,212,221,229,234,238,240,240,238,234,229,221,212,202,191,178,164,150,135,120,105,90,76,62,49,38,28,19,11,6,2,0,0,2,6,11,19,28,38,49,62,76,90,105,120,135,150,164,178,191,202,212,221,229,234,238,240,240,238,234,229,221,212,202,191,178,164,150,135,120,105,90,76,62,49,38,28,19,11,6,2,0,0,2,6,11,19,28,38,49,62,76,90,105,120};
 extern fontdatatype SmallFont[1144];
 extern _current_font cfont;
-
 char* texto;
 uint8_t texto_len=6;
-typedef enum {changes,write_Vpp,write_Veff,write_Vm,write_fs,write_f,write_T,write_acople,prepare_signal,write_signal} writting_state_t ;
+//typedef enum {changes,write_Vpp,write_Veff,write_Vm,write_fs,write_f,write_T,write_acople,prepare_signal,write_signal} writting_state_t ;
 
 pantalla_t pantalla;
 uint8_t estado_pantalla=DONE; //valores posibles {WRITTING,DONE}
@@ -649,90 +648,124 @@ const unsigned short utn[0x2710] ={
 };
 
 
+
+
 void Board_UTFT_Init(void)
 {
 	//los seteo todos como salidas
-	Chip_GPIO_WriteDirBit(LPC_GPIO, RS_PORT , RS_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, WR_PORT , WR_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, RST_PORT , RST_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, CS_PORT , CS_BIT, true);
 
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB0_PORT , DB0_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB1_PORT , DB1_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB2_PORT , DB2_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB3_PORT , DB3_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB4_PORT , DB4_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB5_PORT , DB5_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB6_PORT , DB6_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB7_PORT , DB7_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB8_PORT , DB8_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB9_PORT , DB9_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB10_PORT ,DB10_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB11_PORT ,DB11_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB12_PORT ,DB12_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB13_PORT ,DB13_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB14_PORT ,DB14_BIT, true);
-	Chip_GPIO_WriteDirBit(LPC_GPIO, DB15_PORT ,DB15_BIT, true);
+
+	Chip_GPIO_SetPinDIR(LPC_GPIO, RS_PORT , RS_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, WR_PORT , WR_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, RST_PORT , RST_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, CS_PORT , CS_BIT, true);
+
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB0_PORT , DB0_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB1_PORT , DB1_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB2_PORT , DB2_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB3_PORT , DB3_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB4_PORT , DB4_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB5_PORT , DB5_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB6_PORT , DB6_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB7_PORT , DB7_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB8_PORT , DB8_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB9_PORT , DB9_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB10_PORT ,DB10_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB11_PORT ,DB11_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB12_PORT ,DB12_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB13_PORT ,DB13_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB14_PORT ,DB14_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, DB15_PORT ,DB15_BIT, true);
+
+
+	Chip_GPIO_WritePortBit(LPC_GPIO, RS_PORT , RS_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, WR_PORT , WR_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, RST_PORT , RST_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, CS_PORT , CS_BIT, 0);
+
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB0_PORT , DB0_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB1_PORT , DB1_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB2_PORT , DB2_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB3_PORT , DB3_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB4_PORT , DB4_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB5_PORT , DB5_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB6_PORT , DB6_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB7_PORT , DB7_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB8_PORT , DB8_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB9_PORT , DB9_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB10_PORT ,DB10_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB11_PORT ,DB11_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB12_PORT ,DB12_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB13_PORT ,DB13_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB14_PORT ,DB14_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, DB15_PORT ,DB15_BIT, 0);
+
 }
-
-
 void task_pantalla_Init(void)
 {
 	uint32_t i;
-	Board_UTFT_Init();
+	//Board_UTFT_Init();
 
     InitLCD(LANDSCAPE);
 
-    drawPixel(20,20);
+    //drawPixel(20,20);
     setFont(SmallFont);
-    Chip_GPIO_WritePortBit(LPC_GPIO,0,22,true);
     drawBitmap(300,0,100,100,utn,1);
-
     setColor2(255,255,255);
+    print("FDV=", FDV_X,FDV_Y,0);
+    print("FDT=", FDT_X,FDT_Y,0);
+    print("ACOPLE:", ACOPLE_X,ACOPLE_Y,0);
+    print("T=", TRIGGER_LEVEL_X,TRIGGER_LEVEL_Y,0);
+
 	for (i=1;i<300;i++) drawPixel(i,220);
 	for (i=1;i<220;i++) drawPixel(300,i);
 
 }
 
-cambios_pantalla_t calcular_cambios(pantalla_t *pantalla)
+cambios_pantalla_t calcular_cambios()
 {
 	pantalla_t aux;
 	static pantalla_t pantalla_prev;
 	static uint8_t first_use=1;
-	aux=(*pantalla);
+	aux=pantalla;
 	uint32_t i;
 	cambios_pantalla_t result;
 
 
-	if(first_use)
+	if(first_use) //Si es la primera vez que corro la funcion todo cambio
 	{
 		memset(&result,1,sizeof(result));
-		pantalla_prev=(*pantalla);
+		pantalla_prev=pantalla;
 		first_use=0;
 		return result;
 	}
 
-	memset(&result,0,sizeof(result));
+	memset(&result,0,sizeof(result)); //seteo todo en no hay cambios y despues checkeo
+	//calculo cambios
+
+	if (pantalla.seleccion!=pantalla_prev.seleccion)
+	{
+		result.seleccion=1;
+	}
 	for (i=0;i<SIGNAL_LENGTH;i++)
 	{
-		if ((*pantalla).signal[i]!=pantalla_prev.signal[i])
+		if (pantalla.signal[i]!=pantalla_prev.signal[i])
 		{
 			result.signal=1;
 			break;
 		}
 	}
-	//calculo cambios
 	for (i=0;i<VOLTAGE_LENGTH;i++)
 	{
-		if((*pantalla).Vpp[i]!=pantalla_prev.Vpp[i])
+		if(pantalla.Vpp[i]!=pantalla_prev.Vpp[i])
 		{
 			result.Vpp=1;
 		}
-		if((*pantalla).Veff[i]!=pantalla_prev.Veff[i])
+		if(pantalla.Veff[i]!=pantalla_prev.Veff[i])
 		{
 			result.Veff=1;
 		}
-		if((*pantalla).Vm[i]!=pantalla_prev.Vm[i])
+		if(pantalla.Vm[i]!=pantalla_prev.Vm[i])
 		{
 			result.Vm=1;
 		}
@@ -740,15 +773,15 @@ cambios_pantalla_t calcular_cambios(pantalla_t *pantalla)
 
 	for (i=0;i<FREC_LENGTH;i++)
 	{
-		if((*pantalla).fs[i]!=pantalla_prev.fs[i])
+		if(pantalla.fs[i]!=pantalla_prev.fs[i])
 		{
 			result.fs=1;
 		}
-		if((*pantalla).f[i]!=pantalla_prev.f[i])
+		if(pantalla.f[i]!=pantalla_prev.f[i])
 		{
 			result.f=1;
 		}
-		if((*pantalla).T[i]!=pantalla_prev.T[i])
+		if(pantalla.T[i]!=pantalla_prev.T[i])
 		{
 			result.T=1;
 		}
@@ -756,7 +789,7 @@ cambios_pantalla_t calcular_cambios(pantalla_t *pantalla)
 
 	for (i=0;i<ACOPLE_LENGTH;i++)
 	{
-		if((*pantalla).acople[i]!=pantalla_prev.acople[i])
+		if(pantalla.acople[i]!=pantalla_prev.acople[i])
 		{
 			result.acople=1;
 		}
@@ -766,247 +799,519 @@ cambios_pantalla_t calcular_cambios(pantalla_t *pantalla)
 	return result;
 }
 
+//void write_T (uint8_t *state)
+//{
+//	static uint8_t i=0;
+//	printChar(pantalla.T[i],305+ (i*(cfont.x_size)),185);
+//	i++;
+//	if(pantalla.T[i]==0)
+//	{
+//		(*state)++;
+//		i=0;
+//	}
+//}
+
+//LOS NUMEROS SUMADOS A LAS COORDENADAS X SON EL LARGO DE LOS TEXTOS INICIALIZADOS
+
+void write_fdv (uint8_t *state)
+{
+	static uint8_t i=0;
+	setColor2(255,255,255);
+
+	if(pantalla.fdv[i]==0)
+	{
+		(*state)++;
+		i=0;
+	}
+	else
+	{
+		printChar(pantalla.fdv[i],FDV_X+32+ (i*(cfont.x_size)),FDV_Y);
+		i++;
+	}
+}
+
+void write_fdt (uint8_t *state)
+{
+	static uint8_t i=0;
+	if (pantalla.seleccion==SEL_FDT)
+	{
+		setColor2(0,255,0);
+	}
+	else
+	{
+		setColor2(255,255,255);
+	}
+
+	if(pantalla.fdt[i]==0)
+	{
+		(*state)++;
+		i=0;
+	}
+	else
+	{
+		printChar(pantalla.fdt[i],FDT_X+32+ (i*(cfont.x_size)),FDT_Y);
+		i++;
+	}
+}
+
+void write_trigger_level (uint8_t *state)
+{
+	static uint8_t i=0;
+	if (pantalla.seleccion==SEL_TRIGGER_LEVEL)
+	{
+		setColor2(0,255,0);
+	}
+	else
+	{
+		setColor2(255,255,255);
+	}
+
+
+	if(pantalla.trigger_level[i]==0)
+	{
+		(*state)++;
+		i=0;
+	}
+	else
+	{
+		printChar(pantalla.trigger_level[i],TRIGGER_LEVEL_X+16+ (i*(cfont.x_size)),TRIGGER_LEVEL_Y);
+		i++;
+	}
+}
+
+void write_trigger_pol (uint8_t *state)
+{
+	static uint8_t i=0;
+	if (pantalla.seleccion==SEL_TRIGGER_POL)
+	{
+		setColor2(0,255,0);
+	}
+	else
+	{
+		setColor2(255,255,255);
+	}
+	if(pantalla.trigger_pol[i]==0)
+	{
+		(*state)++;
+		i=0;
+	}
+	else
+	{
+		printChar(pantalla.trigger_pol[i],TRIGGER_POL_X+ (i*(cfont.x_size)),TRIGGER_POL_Y);
+		i++;
+	}
+}
+
+void write_acople (uint8_t *state)
+{
+	static uint8_t i=0;
+	setColor2(255,255,255);
+
+	if(pantalla.acople[i]==0)
+	{
+		(*state)++;
+		i=0;
+	}
+	else
+	{
+		printChar(pantalla.acople[i],ACOPLE_X+56+ (i*(cfont.x_size)),ACOPLE_Y);
+		i++;
+	}
+}
+
+//función que imprime la señal
+void write_signal(uint8_t* state)
+{
+	static uint8_t prev_signal[300];
+	static uint32_t i=0;
+	uint32_t j=0;
+	static enum {writting_1,writting_2,errasing_1,errasing_2}signal_state=writting_1;
+	switch(signal_state)
+	{
+		case writting_1:
+			setColor2(0,0,255);
+			for(j=0;j<3;j++)
+			drawPixel(i+j,pantalla.signal[i+j]);
+			i=j+i;
+			signal_state=writting_2;
+			return;
+ 		case writting_2:
+		//si estoy en este estado es porque la pantalla esta vacia y puedo escribir la señal
+		//una vez que termino de hacer esto hago incremento el estado principal porque ya termine lo que
+	    //debia hacer, dejo el signal state en errasing para poder borrar lo que escribí y guardo la señal
+		// actual para poder borrarla posteriormente
+			setColor2(0,0,255);
+			for(j=0;j<MUESTRAS_IMPRIMIBLES &&(i+j)<SIGNAL_LENGTH;j++)
+				drawPixel(i+j,pantalla.signal[i+j]);
+			i=j+i;
+			if (i+j>=SIGNAL_LENGTH)
+			{
+				i=0;
+				(*state)++;
+				signal_state=errasing_1;
+				memcpy(prev_signal,pantalla.signal,sizeof(pantalla.signal));//guardo la primera señal como señal anterior
+
+			}
+			return;
+ 		case errasing_1:
+ 			setColor2(0,0,0);
+ 			for(j=0;j<3;j++)
+ 				drawPixel(i+j,prev_signal[i+j]);
+ 			i=j+i;
+ 			signal_state=errasing_2;
+ 			return;
+		case errasing_2:
+		//si estoy en este estado hay una señal vieja que debo borrar para poder escribir la nueva señal
+			setColor2(0,0,0);
+			for(j=0;j<MUESTRAS_IMPRIMIBLES &&(i+j)<SIGNAL_LENGTH;j++)
+				drawPixel(i+j,prev_signal[i+j]);
+			i=j+i;
+			if (i+j>=SIGNAL_LENGTH)
+			{
+				i=0;
+				signal_state=writting_1;
+			}
+		return;
+	}
+}
+void organizar (void (*funciones_pantalla[])(uint8_t*))
+{
+	uint8_t i=0;
+	static cambios_pantalla_t cambios_pantalla;
+	cambios_pantalla=calcular_cambios();
+	memset(funciones_pantalla,0,sizeof(*funciones_pantalla));//seteo todos los punteros en NULL
+
+//	if (cambios_pantalla.T)
+//	{
+//		funciones_pantalla[i]=write_T;
+//		i++;
+//	}
+	if (cambios_pantalla.seleccion)
+	{
+		funciones_pantalla[i++]=write_fdt;
+		funciones_pantalla[i++]=write_trigger_level;
+		funciones_pantalla[i++]=write_trigger_pol;
+	}
+	else //si ya fueron programadas por el cambio de seleccion no las vuelvo a programar
+	{
+		if (cambios_pantalla.fdt)
+		{
+			funciones_pantalla[i]=write_fdt;
+			i++;
+		}
+		if (cambios_pantalla.trigger_pol)
+		{
+			funciones_pantalla[i]=write_trigger_pol;
+			i++;
+		}
+		if (cambios_pantalla.trigger_level)
+		{
+			funciones_pantalla[i]=write_trigger_level;
+			i++;
+		}
+
+	}
+	if (cambios_pantalla.fdv)
+	{
+		funciones_pantalla[i]=write_fdv;
+		i++;
+	}
+
+	if (cambios_pantalla.acople)
+	{
+		funciones_pantalla[i]=write_acople;
+		i++;
+	}
+
+
+	if (cambios_pantalla.signal)
+	{
+		funciones_pantalla[i]=write_signal;
+		i++;
+	}
+	funciones_pantalla[i]=0;
+	if(i>=NUM_FUNCIONES_PANTALLA) while(1); //Si me fui de rango lo clavo
+
+
+}
+
+
 void task_pantalla (void)
 {
-	static writting_state_t state=changes;
-	static uint32_t i=0;
-	static cambios_pantalla_t cambios_pantalla;
-	static uint8_t actualizado=0;
-	static uint8_t prev_signal[300];
-	static uint8_t first_use=1;
-	static uint32_t signal_i;
-	uint8_t signal_j;
-
-	if (estado_pantalla==DONE)
-		return;
+	static uint8_t state=0;
+	static uint8_t i=0;
+	static void (*funciones_pantalla[NUM_FUNCIONES_PANTALLA])(uint8_t *);
 
 	switch (state)
 	{
-	case changes:
-	cambios_pantalla=calcular_cambios(&pantalla);
-	if (first_use)
-	{
-		memcpy(prev_signal,pantalla.signal,sizeof(pantalla.signal));
-		first_use=0;
-	}
-
-	state=write_Vpp;
-	i=0;
-	signal_i=0;
-	actualizado=0;
-	return;
-
-	case write_Vpp:
-		if(cambios_pantalla.Vpp==1)
-		{
-			printChar(pantalla.Vpp[i],305+ (i*(cfont.x_size)),105);
-			i++;
-			if(pantalla.Vpp[i]==0)
+		case 0:
+			organizar(funciones_pantalla);
+			state=1;
+			return;
+		case 1:
+			if (funciones_pantalla[i])
+				//me doy cuenta cuando ejecute todas funciones que debía porque
+				// si no hay más el vector es NULL
 			{
-				i=0;
-				state=write_Veff;
+				funciones_pantalla[i](&i);
 			}
-			return;
-		}
-		else if (cambios_pantalla.signal)
-		{
-			setColor2(0,0,0);
-			for(signal_j=0;signal_j<MUESTRAS_IMPRIMIBLES &&(signal_i+signal_j)<SIGNAL_LENGTH;signal_j++)
-				drawPixel(signal_i+signal_j,prev_signal[signal_i+signal_j]);
-			signal_i=signal_j+signal_i;
-			setColor2(255,255,255);
-			state=write_Veff;
-			return;
-		}
-		state=write_Veff;
-		return;
-	case write_Veff:
-		if(cambios_pantalla.Veff==1)
-		{
-			printChar(pantalla.Veff[i],305+ (i*(cfont.x_size)),120);
-			i++;
-			if(!pantalla.Veff[i])
+			else
 			{
-				i=0;
-				state=write_Vm;
-			}
-			return;
-		}
-		else if (cambios_pantalla.signal)
-		{
-			setColor2(0,0,0);
-			for(signal_j=0;signal_j<MUESTRAS_IMPRIMIBLES &&(signal_i+signal_j)<SIGNAL_LENGTH;signal_j++)
-				drawPixel(signal_i+signal_j,prev_signal[signal_i+signal_j]);
-			signal_i=signal_j+signal_i;
-			setColor2(255,255,255);
-			state=write_Vm;
-			return;
-		}
-		state=write_Vm;
-		return;
-	case write_Vm:
-		if(cambios_pantalla.Vm==1)
-		{
-			printChar(pantalla.Vm[i],305+ (i*(cfont.x_size)),135);
-			i++;
-			if(!pantalla.Vm[i])
-			{
-				i=0;
-				state=write_fs;
-			}
-			return;
-		}
-		else if (cambios_pantalla.signal)
-		{
-			setColor2(0,0,0);
-			for(signal_j=0;signal_j<MUESTRAS_IMPRIMIBLES &&(signal_i+signal_j)<SIGNAL_LENGTH;signal_j++)
-				drawPixel(signal_i+signal_j,prev_signal[signal_i+signal_j]);
-			signal_i=signal_j+signal_i;
-			setColor2(255,255,255);
-			state=write_fs;
-			return;
-		}
-		state=write_fs;
-		return;
-	case write_fs:
-		if(cambios_pantalla.fs==1)
-		{
-			printChar(pantalla.fs[i],305+ (i*(cfont.x_size)),155);
-			i++;
-			if(!pantalla.fs[i])
-			{
-				i=0;
-				state=write_f;
-			}
-		return;
-		}
-		else if (cambios_pantalla.signal)
-		{
-			setColor2(0,0,0);
-			for(signal_j=0;signal_j<MUESTRAS_IMPRIMIBLES &&(signal_i+signal_j)<SIGNAL_LENGTH;signal_j++)
-				drawPixel(signal_i+signal_j,prev_signal[signal_i+signal_j]);
-			signal_i=signal_j+signal_i;
-			setColor2(255,255,255);
-			state=write_f;
-			return;
-		}
-		state=write_f;
-		return;
-	case write_f:
-		if(cambios_pantalla.f==1)
-		{
-			printChar(pantalla.f[i],305+ (i*(cfont.x_size)),170);
-			i++;
-			if(!pantalla.f[i])
-			{
-				i=0;
-				state=write_T;
-			}
-			return;
-		}
-		else if (cambios_pantalla.signal)
-		{
-			setColor2(0,0,0);
-			for(signal_j=0;signal_j<MUESTRAS_IMPRIMIBLES &&(signal_i+signal_j)<SIGNAL_LENGTH;signal_j++)
-				drawPixel(signal_i+signal_j,prev_signal[signal_i+signal_j]);
-			signal_i=signal_j+signal_i;
-			setColor2(255,255,255);
-			state=write_T;
-			return;
-		}
-		state=write_T;
-		return;
-	case write_T:
-		if(cambios_pantalla.T==1)
-		{
-		printChar(pantalla.T[i],305+ (i*(cfont.x_size)),185);
-		i++;
-		if(!pantalla.T[i])
-		{
+			state=2;
 			i=0;
-			state=write_acople;
-		}
-		return;
-		}
-		else if (cambios_pantalla.signal)
-		{
-			setColor2(0,0,0);
-			for(signal_j=0;signal_j<MUESTRAS_IMPRIMIBLES &&(signal_i+signal_j)<SIGNAL_LENGTH;signal_j++)
-				drawPixel(signal_i+signal_j,prev_signal[signal_i+signal_j]);
-			signal_i=signal_j+signal_i;
-			setColor2(255,255,255);
-			state=write_acople;
-			return;
-		}
-		state=write_acople;
-		return;
-
-	case write_acople:
-		if(cambios_pantalla.acople==1)
-		{
-		printChar(pantalla.acople[i],305+ (i*(cfont.x_size)),200);
-		i++;
-		if(!pantalla.acople[i])
-		{
-			i=0;
-			state=prepare_signal;
-		}
-		return;
-		}
-		else if (cambios_pantalla.signal)
-		{
-			setColor2(0,0,0);
-			for(signal_j=0;signal_j<MUESTRAS_IMPRIMIBLES &&(signal_i+signal_j)<SIGNAL_LENGTH;signal_j++)
-				drawPixel(signal_i+signal_j,prev_signal[signal_i+signal_j]);
-			signal_i=signal_j+signal_i;
-			setColor2(255,255,255);
-			state=prepare_signal;
-			return;
-		}
-		state=prepare_signal;
-		return;
-
-	case prepare_signal:
-		if (cambios_pantalla.signal)
-		{
-		setColor2(0,0,0);
-		for(signal_j=0;signal_j<MUESTRAS_IMPRIMIBLES &&(signal_i+signal_j)<SIGNAL_LENGTH;signal_j++)
-				drawPixel(signal_i+signal_j,prev_signal[signal_i+signal_j]);
-		signal_i=signal_j+signal_i;
-		if(signal_i>=SIGNAL_LENGTH-1)
-		{
-			setColor2(255,0,0);
-			signal_i=0;
-			state=write_signal;
-		}
-		}
-		else
-		{
-			state=changes;
 			estado_pantalla=DONE;
-		}
-		return;
-
-
-	case write_signal:
-		if (cambios_pantalla.signal)
-		{
-			for(signal_j=0;signal_j<MUESTRAS_IMPRIMIBLES &&(signal_i+signal_j)<SIGNAL_LENGTH;signal_j++)
-					drawPixel(signal_i+signal_j,pantalla.signal[signal_i+signal_j]);
-			signal_i=signal_j+signal_i;
-			if(signal_i>=SIGNAL_LENGTH-1)
-			{
-				setColor2(255,255,255);
-				signal_i=0;
-				state=changes;
-				estado_pantalla=DONE;
-				memcpy(prev_signal,pantalla.signal,sizeof(pantalla.signal));
 			}
-			return;
-		}
-		setColor2(255,255,255);
-		state=changes;
 		return;
-
+		case 2:
+			if (estado_pantalla==WRITTING)
+			{
+				state=0;
+			}
+		return;
 	}
 }
+
+//void task_pantalla (void)
+//{
+//	static writting_state_t state=changes;
+//	static uint32_t i=0;
+//	static cambios_pantalla_t cambios_pantalla;
+//	static uint8_t prev_signal[300];
+//	static uint8_t first_use=1;
+//	static uint32_t signal_i;
+//	uint8_t signal_j;
+//
+//	if (estado_pantalla==DONE)
+//		return;
+//
+//	switch (state)
+//	{
+//	case changes:
+//	cambios_pantalla=calcular_cambios(&pantalla);
+//	if (first_use)
+//	{
+//		memcpy(prev_signal,pantalla.signal,sizeof(pantalla.signal));
+//		first_use=0;
+//	}
+//
+//	state=write_Vpp;
+//	i=0;
+//	signal_i=0;
+//	return;
+//
+//	case write_Vpp:
+//		if(cambios_pantalla.Vpp==1)
+//		{
+//			printChar(pantalla.Vpp[i],305+ (i*(cfont.x_size)),105);
+//			i++;
+//			if(pantalla.Vpp[i]==0)
+//			{
+//				i=0;
+//				state=write_Veff;
+//			}
+//			return;
+//		}
+//		else if (cambios_pantalla.signal)
+//		{
+//			setColor2(0,0,0);
+//			for(signal_j=0;signal_j<MUESTRAS_IMPRIMIBLES &&(signal_i+signal_j)<SIGNAL_LENGTH;signal_j++)
+//				drawPixel(signal_i+signal_j,prev_signal[signal_i+signal_j]);
+//			signal_i=signal_j+signal_i;
+//			setColor2(255,255,255);
+//			state=write_Veff;
+//			return;
+//		}
+//		state=write_Veff;
+//		return;
+//	case write_Veff:
+//		if(cambios_pantalla.Veff==1)
+//		{
+//			printChar(pantalla.Veff[i],305+ (i*(cfont.x_size)),120);
+//			i++;
+//			if(!pantalla.Veff[i])
+//			{
+//				i=0;
+//				state=write_Vm;
+//			}
+//			return;
+//		}
+//		else if (cambios_pantalla.signal)
+//		{
+//			setColor2(0,0,0);
+//			for(signal_j=0;signal_j<MUESTRAS_IMPRIMIBLES &&(signal_i+signal_j)<SIGNAL_LENGTH;signal_j++)
+//				drawPixel(signal_i+signal_j,prev_signal[signal_i+signal_j]);
+//			signal_i=signal_j+signal_i;
+//			setColor2(255,255,255);
+//			state=write_Vm;
+//			return;
+//		}
+//		state=write_Vm;
+//		return;
+//	case write_Vm:
+//		if(cambios_pantalla.Vm==1)
+//		{
+//			printChar(pantalla.Vm[i],305+ (i*(cfont.x_size)),135);
+//			i++;
+//			if(!pantalla.Vm[i])
+//			{
+//				i=0;
+//				state=write_fs;
+//			}
+//			return;
+//		}
+//		else if (cambios_pantalla.signal)
+//		{
+//			setColor2(0,0,0);
+//			for(signal_j=0;signal_j<MUESTRAS_IMPRIMIBLES &&(signal_i+signal_j)<SIGNAL_LENGTH;signal_j++)
+//				drawPixel(signal_i+signal_j,prev_signal[signal_i+signal_j]);
+//			signal_i=signal_j+signal_i;
+//			setColor2(255,255,255);
+//			state=write_fs;
+//			return;
+//		}
+//		state=write_fs;
+//		return;
+//	case write_fs:
+//		if(cambios_pantalla.fs==1)
+//		{
+//			printChar(pantalla.fs[i],305+ (i*(cfont.x_size)),155);
+//			i++;
+//			if(!pantalla.fs[i])
+//			{
+//				i=0;
+//				state=write_f;
+//			}
+//		return;
+//		}
+//		else if (cambios_pantalla.signal)
+//		{
+//			setColor2(0,0,0);
+//			for(signal_j=0;signal_j<MUESTRAS_IMPRIMIBLES &&(signal_i+signal_j)<SIGNAL_LENGTH;signal_j++)
+//				drawPixel(signal_i+signal_j,prev_signal[signal_i+signal_j]);
+//			signal_i=signal_j+signal_i;
+//			setColor2(255,255,255);
+//			state=write_f;
+//			return;
+//		}
+//		state=write_f;
+//		return;
+//	case write_f:
+//		if(cambios_pantalla.f==1)
+//		{
+//			printChar(pantalla.f[i],305+ (i*(cfont.x_size)),170);
+//			i++;
+//			if(!pantalla.f[i])
+//			{
+//				i=0;
+//				state=write_T;
+//			}
+//			return;
+//		}
+//		else if (cambios_pantalla.signal)
+//		{
+//			setColor2(0,0,0);
+//			for(signal_j=0;signal_j<MUESTRAS_IMPRIMIBLES &&(signal_i+signal_j)<SIGNAL_LENGTH;signal_j++)
+//				drawPixel(signal_i+signal_j,prev_signal[signal_i+signal_j]);
+//			signal_i=signal_j+signal_i;
+//			setColor2(255,255,255);
+//			state=write_T;
+//			return;
+//		}
+//		state=write_T;
+//		return;
+//	case write_T:
+//		if(cambios_pantalla.T==1)
+//		{
+//		printChar(pantalla.T[i],305+ (i*(cfont.x_size)),185);
+//		i++;
+//		if(!pantalla.T[i])
+//		{
+//			i=0;
+//			state=write_acople;
+//		}
+//		return;
+//		}
+//		else if (cambios_pantalla.signal)
+//		{
+//			setColor2(0,0,0);
+//			for(signal_j=0;signal_j<MUESTRAS_IMPRIMIBLES &&(signal_i+signal_j)<SIGNAL_LENGTH;signal_j++)
+//				drawPixel(signal_i+signal_j,prev_signal[signal_i+signal_j]);
+//			signal_i=signal_j+signal_i;
+//			setColor2(255,255,255);
+//			state=write_acople;
+//			return;
+//		}
+//		state=write_acople;
+//		return;
+//
+//	case write_acople:
+//		if(cambios_pantalla.acople==1)
+//		{
+//		printChar(pantalla.acople[i],305+ (i*(cfont.x_size)),200);
+//		i++;
+//		if(!pantalla.acople[i])
+//		{
+//			i=0;
+//			state=prepare_signal;
+//		}
+//		return;
+//		}
+//		else if (cambios_pantalla.signal)
+//		{
+//			setColor2(0,0,0);
+//			for(signal_j=0;signal_j<MUESTRAS_IMPRIMIBLES &&(signal_i+signal_j)<SIGNAL_LENGTH;signal_j++)
+//				drawPixel(signal_i+signal_j,prev_signal[signal_i+signal_j]);
+//			signal_i=signal_j+signal_i;
+//			setColor2(255,255,255);
+//			state=prepare_signal;
+//			return;
+//		}
+//		state=prepare_signal;
+//		return;
+//
+//
+//
+//	case prepare_signal:
+//		if (cambios_pantalla.signal)
+//		{
+//		setColor2(0,0,0);
+//		for(signal_j=0;signal_j<MUESTRAS_IMPRIMIBLES &&(signal_i+signal_j)<SIGNAL_LENGTH;signal_j++)
+//				drawPixel(signal_i+signal_j,prev_signal[signal_i+signal_j]);
+//		signal_i=signal_j+signal_i;
+//		if(signal_i>=SIGNAL_LENGTH-1)
+//		{
+//			setColor2(255,0,0);
+//			signal_i=0;
+//			state=write_signal;
+//		}
+//		}
+//		else
+//		{
+//			state=changes;
+//			estado_pantalla=DONE;
+//		}
+//		return;
+//
+//
+//	case write_signal:
+//		if (cambios_pantalla.signal)
+//		{
+//			for(signal_j=0;signal_j<MUESTRAS_IMPRIMIBLES &&(signal_i+signal_j)<SIGNAL_LENGTH;signal_j++)
+//					drawPixel(signal_i+signal_j,pantalla.signal[signal_i+signal_j]);
+//			signal_i=signal_j+signal_i;
+//			if(signal_i>=SIGNAL_LENGTH-1)
+//			{
+//				setColor2(255,255,255);
+//				signal_i=0;
+//				state=changes;
+//				estado_pantalla=DONE;
+//				memcpy(prev_signal,pantalla.signal,sizeof(pantalla.signal));
+//			}
+//			return;
+//		}
+//		setColor2(255,255,255);
+//		state=changes;
+//		return;
+//
+//	}
+//}
