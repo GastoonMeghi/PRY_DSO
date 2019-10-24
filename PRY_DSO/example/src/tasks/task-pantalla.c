@@ -711,11 +711,11 @@ void Board_UTFT_Init(void)
 void task_pantalla_Init(void)
 {
 	uint32_t i;
-	//Board_UTFT_Init();
+	Board_UTFT_Init();
 
     InitLCD(LANDSCAPE);
 
-    //drawPixel(20,20);
+    drawPixel(20,20);
     setFont(SmallFont);
     drawBitmap(300,0,100,100,utn,1);
     setColor2(255,255,255);

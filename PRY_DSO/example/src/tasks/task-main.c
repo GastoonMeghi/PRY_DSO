@@ -45,7 +45,9 @@ void task_main (void)
 	{
 	case INIC:
 
-		sample_rate = 1000 * parametros.fdt;	/*TODO definir como establecer un sample_rate*/
+//		sample_rate = 1000 * parametros.fdt;	/*TODO definir como establecer un sample_rate*/
+		/* BORRAR	*/
+		sample_rate = 5000;
 		startSampling(parametros.trigger_level, parametros.trigger_pol, sample_rate);
 		state=SAMPLING;
 

@@ -115,7 +115,19 @@ void InitADC(void)
 //	Chip_ADC_Int_SetChannelCmd(LPC_ADC, 8, DISABLE); //Pongo 0 en ADGINTEN por q estoy en modo burst
 //	NVIC_EnableIRQ(ADC_IRQn); //Habilito las interrupciones del ADC en el NVIC
 
-	/*Potenciometro*/
+//	/*Potenciometro*/
+//	Chip_IOCON_PinMuxSet(LPC_IOCON, 1, 31, IOCON_FUNC3|IOCON_MODE_INACT); //Entrada de ADC con func3
+//	/*ADC Init */
+//	Chip_ADC_Init(LPC_ADC, &ADCSetup);
+//	Chip_Clock_SetPCLKDiv(SYSCTL_PCLK_ADC,SYSCTL_CLKDIV_1);
+//	Chip_ADC_SetBurstCmd(LPC_ADC, ENABLE);	//Lo pongo en modo burst (Conversiones repetitivas)
+//	ADCSetup.burstMode = TRUE;
+//	Chip_ADC_Int_SetChannelCmd(LPC_ADC, ADC_CHANNEL, ENABLE);	//Habilito la interrupcion del canal
+//	Chip_ADC_Int_SetChannelCmd(LPC_ADC, 8, DISABLE); //Pongo 0 en ADGINTEN por q estoy en modo burst
+//	NVIC_EnableIRQ(ADC_IRQn); //Habilito las interrupciones del ADC en el NVIC
+
+
+	/*Placa de prueba*/
 	Chip_IOCON_PinMuxSet(LPC_IOCON, 1, 31, IOCON_FUNC3|IOCON_MODE_INACT); //Entrada de ADC con func3
 	/*ADC Init */
 	Chip_ADC_Init(LPC_ADC, &ADCSetup);
@@ -169,12 +181,21 @@ void InitTriggerInt(void)
 ////Chip_GPIOINT_SetIntRising(LPC_GPIOINT, GPIOINT_PORT0, 1 << TRIGGER_IN_PIN); //Habilito interrupcion por rising edge
 //	NVIC_EnableIRQ(EINT3_IRQn);	//Habilito interrupcion en el NVIC
 
-	//SW2
-	Chip_GPIOINT_Init(LPC_GPIOINT); //Habilita el clock a los GPIO
-	Chip_IOCON_PinMuxSet(LPC_IOCON, TRIGGER_IN_PORT, 18, IOCON_FUNC0|IOCON_MODE_REPEATER); //Configuro como GPIO repetidor
-	Chip_GPIO_SetPinDIRInput(LPC_GPIO, TRIGGER_IN_PORT, 18);	//Configuro como entrada
+//	//SW2
+//	Chip_GPIOINT_Init(LPC_GPIOINT); //Habilita el clock a los GPIO
+//	Chip_IOCON_PinMuxSet(LPC_IOCON, TRIGGER_IN_PORT, 18, IOCON_FUNC0|IOCON_MODE_REPEATER); //Configuro como GPIO repetidor
+//	Chip_GPIO_SetPinDIRInput(LPC_GPIO, TRIGGER_IN_PORT, 18);	//Configuro como entrada
+//
+//	Chip_GPIOINT_ClearIntStatus(LPC_GPIOINT, GPIOINT_PORT0, 1 << 18); //Limpio interrupciones previas
+////	Chip_GPIOINT_SetIntFalling(LPC_GPIOINT, GPIOINT_PORT0, 1 << 18); //Int rising edge. sacar se hace cuando se dispara la conversion
+//	NVIC_EnableIRQ(EINT3_IRQn);	//Habilito interrupcion en el NVIC
 
-	Chip_GPIOINT_ClearIntStatus(LPC_GPIOINT, GPIOINT_PORT0, 1 << 18); //Limpio interrupciones previas
+	//Placa juani P2.1
+	Chip_GPIOINT_Init(LPC_GPIOINT); //Habilita el clock a los GPIO
+	Chip_IOCON_PinMuxSet(LPC_IOCON, 2, 1, IOCON_FUNC0|IOCON_MODE_REPEATER); //Configuro como GPIO repetidor
+	Chip_GPIO_SetPinDIRInput(LPC_GPIO, 2, 1);	//Configuro como entrada
+
+	Chip_GPIOINT_ClearIntStatus(LPC_GPIOINT, GPIOINT_PORT2, 1 << 1); //Limpio interrupciones previas
 //	Chip_GPIOINT_SetIntFalling(LPC_GPIOINT, GPIOINT_PORT0, 1 << 18); //Int rising edge. sacar se hace cuando se dispara la conversion
 	NVIC_EnableIRQ(EINT3_IRQn);	//Habilito interrupcion en el NVIC
 
@@ -182,13 +203,17 @@ void InitTriggerInt(void)
 
 void EINT3_IRQHandler(void)
 {
+	//Proyecto
 //	Chip_GPIOINT_ClearIntStatus(LPC_GPIOINT, GPIOINT_PORT0, 1 << TRIGGER_PIN); //Limpio el flag de interrupcion para que no vuelva a interrumpir
-	Chip_GPIOINT_ClearIntStatus(LPC_GPIOINT, GPIOINT_PORT0, 1 << 18); //Limpio BORRAR
-
 //	Chip_GPIOINT_SetIntRising(LPC_GPIOINT, GPIOINT_PORT0, 0); //Deshabilito todas las int
-	Chip_GPIOINT_SetIntFalling(LPC_GPIOINT, GPIOINT_PORT0, 0); //Deshabilito todas las int BORRAR
 
-//	Chip_ADC_SetSampleRate(LPC_ADC, &ADCSetup, 100000);	//100KHz
+//	//Placa digitales
+//	Chip_GPIOINT_ClearIntStatus(LPC_GPIOINT, GPIOINT_PORT0, 1 << 18); //Limpio BORRAR
+//	Chip_GPIOINT_SetIntFalling(LPC_GPIOINT, GPIOINT_PORT0, 0); //Deshabilito todas las int BORRAR
+
+	//Placa juani P2.1
+	Chip_GPIOINT_ClearIntStatus(LPC_GPIOINT, GPIOINT_PORT2, 1 << 1); //Limpio BORRAR
+	Chip_GPIOINT_SetIntFalling(LPC_GPIOINT, GPIOINT_PORT2, 0); //Deshabilito todas las int BORRAR
 
 	Chip_ADC_EnableChannel(LPC_ADC, ADC_CHANNEL, ENABLE);	//Habilito el canal para convertir
 }
@@ -223,12 +248,21 @@ void startSampling(float triggerLvl, trigger_edge_t edge, uint32_t sampleRate)
 
 void setTriggerEdge(trigger_edge_t edge)
 {
-	Chip_GPIOINT_ClearIntStatus(LPC_GPIOINT, GPIOINT_PORT0, 1 << TRIGGER_IN_PIN); //Limpio interrupciones previas por las dudas
+//	//Proyecto
+//	Chip_GPIOINT_ClearIntStatus(LPC_GPIOINT, GPIOINT_PORT0, 1 << TRIGGER_IN_PIN); //Limpio interrupciones previas por las dudas
+//
+//	if(edge == RISING)
+//		Chip_GPIOINT_SetIntRising(LPC_GPIOINT, GPIOINT_PORT0, 1 << TRIGGER_IN_PIN); //Habilito interrupcion por rising edge
+//	else
+//		Chip_GPIOINT_SetIntFalling(LPC_GPIOINT, GPIOINT_PORT0, 1 << TRIGGER_IN_PIN); //Habilito interrupcion por falling edge
 
-	if(edge == RISING)
-		Chip_GPIOINT_SetIntRising(LPC_GPIOINT, GPIOINT_PORT0, 1 << TRIGGER_IN_PIN); //Habilito interrupcion por rising edge
-	else
-		Chip_GPIOINT_SetIntFalling(LPC_GPIOINT, GPIOINT_PORT0, 1 << TRIGGER_IN_PIN); //Habilito interrupcion por falling edge
+	//Placa juani
+	Chip_GPIOINT_ClearIntStatus(LPC_GPIOINT, GPIOINT_PORT2, 1 << 1); //Limpio interrupciones previas por las dudas
+
+		if(edge == RISING)
+			Chip_GPIOINT_SetIntRising(LPC_GPIOINT, GPIOINT_PORT2, 1 << 1); //Habilito interrupcion por rising edge
+		else
+			Chip_GPIOINT_SetIntFalling(LPC_GPIOINT, GPIOINT_PORT2, 1 << 1); //Habilito interrupcion por falling edge
 }
 
 void setSampleRate(uint32_t sampleRate)
