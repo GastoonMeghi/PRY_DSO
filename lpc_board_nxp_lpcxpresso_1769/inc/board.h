@@ -111,49 +111,49 @@ extern "C" {
 /**
  * UTFT defines
  */
-#define RS_PORT 0
-#define RST_PORT 0
-#define WR_PORT 0
-#define CS_PORT 0
+#define RS_PORT 2   //Placa nueva
+#define RST_PORT 0  //Placa nueva
+#define WR_PORT 2   //Placa nueva
+#define CS_PORT 0   //Placa nueva  //ojo hay dos!!
 
-#define RS_BIT 25
-#define RST_BIT 9
-#define WR_BIT 24
-#define CS_BIT 8
+#define RS_BIT 10   //Placa nueva
+#define RST_BIT 5   //Placa nueva
+#define WR_BIT 11   //Placa nueva
+#define CS_BIT 6    //Placa nueva
 
-#define DB0_BIT 26
-#define DB1_BIT 30
-#define DB2_BIT 2
-#define DB3_BIT 3
-#define DB4_BIT 21
-#define DB5_BIT 27
-#define DB6_BIT 28
-#define DB7_BIT 13
-#define DB8_BIT 16
-#define DB9_BIT 15
-#define DB10_BIT 17
-#define DB11_BIT 18
-#define DB12_BIT 1
-#define DB13_BIT 0
-#define DB14_BIT 6
-#define DB15_BIT 7
+#define DB0_BIT 22  //Placa nueva
+#define DB1_BIT 21	//Placa nueva
+#define DB2_BIT 20	//Placa nueva
+#define DB3_BIT 19	//Placa nueva
+#define DB4_BIT 18	//Placa nueva
+#define DB5_BIT 17	//Placa nueva
+#define DB6_BIT 15	//Placa nueva
+#define DB7_BIT 9	//Placa nueva
+#define DB8_BIT 16	//Placa nueva
+#define DB9_BIT 8	//Placa nueva
+#define DB10_BIT 6	//Placa nueva
+#define DB11_BIT 4	//Placa nueva
+#define DB12_BIT 2	//Placa nueva
+#define DB13_BIT 1	//Placa nueva
+#define DB14_BIT 9	//Placa nueva
+#define DB15_BIT 7	//Placa nueva
 
-#define DB0_PORT 0
-#define DB1_PORT 1
-#define DB2_PORT 0
-#define DB3_PORT 0
-#define DB4_PORT 0
-#define DB5_PORT 0
-#define DB6_PORT 0
-#define DB7_PORT 2
-#define DB8_PORT 0
-#define DB9_PORT 0
-#define DB10_PORT 0
-#define DB11_PORT 0
-#define DB12_PORT 0
-#define DB13_PORT 0
-#define DB14_PORT 0
-#define DB15_PORT 0
+#define DB0_PORT 0	//Placa nueva
+#define DB1_PORT 0	//Placa nueva
+#define DB2_PORT 0	//Placa nueva
+#define DB3_PORT 0	//Placa nueva
+#define DB4_PORT 0	//Placa nueva
+#define DB5_PORT 0	//Placa nueva
+#define DB6_PORT 0	//Placa nueva
+#define DB7_PORT 2	//Placa nueva
+#define DB8_PORT 0	//Placa nueva
+#define DB9_PORT 2	//Placa nueva
+#define DB10_PORT 2	//Placa nueva
+#define DB11_PORT 2	//Placa nueva
+#define DB12_PORT 2	//Placa nueva
+#define DB13_PORT 2	//Placa nueva
+#define DB14_PORT 0	//Placa nueva
+#define DB15_PORT 0	//Placa nueva
 
 
 
