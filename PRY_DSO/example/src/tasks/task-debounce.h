@@ -8,6 +8,8 @@
 #ifndef SRC_TASKS_TASK_DEBOUNCE_H_
 #define SRC_TASKS_TASK_DEBOUNCE_H_
 
+#include "my_board.h"
+
 #define OK_PORT			0			/*BTN1*/
 #define OK_PIN			4			/*BTN1*/
 
@@ -80,5 +82,5 @@ extern key_t Key[N_KEYS];
 
 void task_debounce(void);
 uint16_t getKeys(void);
-
+void initDebounce(void);
 #endif /* SRC_TASKS_TASK_DEBOUNCE_H_ */

@@ -205,7 +205,7 @@ void InitTriggerInt(void)
 void EINT3_IRQHandler(void)
 {
 	//Proyecto
-	Chip_GPIOINT_ClearIntStatus(LPC_GPIOINT, GPIOINT_PORT0, 1 << TRIGGER_PIN); //Limpio el flag de interrupcion para que no vuelva a interrumpir
+	Chip_GPIOINT_ClearIntStatus(LPC_GPIOINT, GPIOINT_PORT0, 1 << TRIGGER_IN_PIN); //Limpio el flag de interrupcion para que no vuelva a interrumpir
 	Chip_GPIOINT_SetIntRising(LPC_GPIOINT, GPIOINT_PORT0, 0); //Deshabilito todas las int
 
 //	//Placa digitales
