@@ -46,11 +46,14 @@
 
 
 
-#define SET_CS *BIT(8,FIO0PINL)=1;
-#define CLEAR_CS *BIT(8,FIO0PINL)=0;
+#define SET_CS *BIT(6,FIO0PINL)=1; //Placa nueva
+#define CLEAR_CS *BIT(6,FIO0PINL)=0; //Placa nueva
 
-#define SET_RS *BIT(9,FIO0PINU)=1;
-#define CLEAR_RS *BIT(9,FIO0PINU)=0;
+#define SET_RS *BIT(10,FIO2PINL)=1;   //Placa nueva
+#define CLEAR_RS *BIT(10,FIO2PINL)=0; //Placa nueva
+
+#define CLEAR_WR *BIT(11,FIO2PINL)=0; //Placa nueva
+#define SET_WR *BIT(11,FIO2PINL)=1;   //Placa nueva
 
 
 void LCD_Writ_Bus(uint8_t VH,uint8_t VL, uint8_t mode);

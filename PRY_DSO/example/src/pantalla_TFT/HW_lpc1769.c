@@ -14,61 +14,81 @@ void LCD_Writ_Bus(uint8_t VH,uint8_t VL, uint8_t mode)
 
 	//version con bitbanding
 
-	*BIT(10,FIO0PINU)=VL; //&((uint8_t)0x01);
-	*BIT(14,FIO1PINU)=VL>>1; //&((uint8_t)0x01);
-	*BIT(2,FIO0PINL)=VL>>2;// &((uint8_t)0x01);
-	*BIT(3,FIO0PINL)=VL>>3;// &((uint8_t)0x01);
-	*BIT(5,FIO0PINU)=VL>>4;// &((uint8_t)0x01);
-	*BIT(11,FIO0PINU)=VL>>5;// &((uint8_t)0x01);
-	if (VL&0x40)
-	{
-		*((uint32_t *)FIO0SETU)|=0x1000;
-	}
-	else
-	{
-		*((uint32_t *)FIO0CLRU)|=0x1000;
-	}
+	*BIT(6,FIO0PINU)=VL; //P0.22 DB0
+	*BIT(5,FIO0PINU)=VL>>1; //P0.21 DB1
+	*BIT(4,FIO0PINU)=VL>>2; //P0.20 DB2
+	*BIT(3,FIO0PINU)=VL>>3; //P0.19 DB3
+	*BIT(2,FIO0PINU)=VL>>4; //P0.18 DB4
+	*BIT(1,FIO0PINU)=VL>>5; //P0.17 DB5
+	*BIT(15,FIO0PINL)=VL>>6; //P0.15 DB6
+	*BIT(9,FIO2PINL)=VL>>7; //P2.9 DB7
+	*BIT(0,FIO0PINU)=VH; //P0.16 DB8
+	*BIT(8,FIO2PINL)=VH>>1; //P2.8 DB9
+	*BIT(6,FIO2PINL)=VH>>2; //P2.6 DB10
+	*BIT(4,FIO2PINL)=VH>>3; //P2.4 DB11
+	*BIT(2,FIO2PINL)=VH>>4; //P2.2 DB12
+	*BIT(1,FIO2PINL)=VH>>5; //P2.1 DB13
+	*BIT(9,FIO0PINL)=VH>>6; //P0.9 DB14
+	*BIT(7,FIO0PINL)=VH>>7; //P0.7 DB15
 
-	*BIT(13,FIO2PINL)=VL>>7;// &((uint8_t)0x01);
-//	*((uint32_t*)FIO0MASKL)=0b0111111100111100;
-//	*((uint32_t*)FIO0PINL)=array[VL];
-//	*((uint32_t*)FIO0MASKL)=0x00;
+//
+//
+//
+////	*BIT(10,FIO0PINU)=VL; //&((uint8_t)0x01);
+////	*BIT(14,FIO1PINU)=VL>>1; //&((uint8_t)0x01);
+////	*BIT(2,FIO0PINL)=VL>>2;// &((uint8_t)0x01);
+////	*BIT(3,FIO0PINL)=VL>>3;// &((uint8_t)0x01);
+////	*BIT(5,FIO0PINU)=VL>>4;// &((uint8_t)0x01);
+////	*BIT(11,FIO0PINU)=VL>>5;// &((uint8_t)0x01);
+//	if (VL&0x40)
+//	{
+//		*((uint32_t *)FIO0SETU)|=0x1000;
+//	}
+//	else
+//	{
+//		*((uint32_t *)FIO0CLRU)|=0x1000;
+//	}
+//
+//	*BIT(13,FIO2PINL)=VL>>7;// &((uint8_t)0x01);
+////	*((uint32_t*)FIO0MASKL)=0b0111111100111100;
+////	*((uint32_t*)FIO0PINL)=array[VL];
+////	*((uint32_t*)FIO0MASKL)=0x00;
+//
+//	//version anterior
+////	Chip_GPIO_WritePortBit(LPC_GPIO,DB0_PORT, DB0_BIT, VL>>0 &((uint8_t)0x01));
+////	Chip_GPIO_WritePortBit(LPC_GPIO,DB1_PORT, DB1_BIT, VL>>1 &((uint8_t)0x01));
+////	Chip_GPIO_WritePortBit(LPC_GPIO,DB2_PORT, DB2_BIT, VL>>2 &((uint8_t)0x01));
+////	Chip_GPIO_WritePortBit(LPC_GPIO,DB3_PORT, DB3_BIT, VL>>3 &((uint8_t)0x01));
+////	Chip_GPIO_WritePortBit(LPC_GPIO,DB4_PORT, DB4_BIT, VL>>4 &((uint8_t)0x01));
+////	Chip_GPIO_WritePortBit(LPC_GPIO,DB5_PORT, DB5_BIT, VL>>5 &((uint8_t)0x01));
+////	Chip_GPIO_WritePortBit(LPC_GPIO,DB6_PORT, DB6_BIT, VL>>6 &((uint8_t)0x01)); //no me funciono con bitbanding
+////	Chip_GPIO_WritePortBit(LPC_GPIO,DB7_PORT, DB7_BIT, VL>>7 &((uint8_t)0x01));
+//
+//
+//
+//
+//	*BIT(0,FIO0PINU)=VH;
+//	*BIT(15,FIO0PINL)=VH>>1;
+//	*BIT(1,FIO0PINU)=VH>>2;
+//	*BIT(2,FIO0PINU)=VH>>3;
+//	*BIT(1,FIO0PINL)=VH>>4;
+//	*BIT(0,FIO0PINL)=VH>>5;
+//	*BIT(6,FIO0PINL)=VH>>6;
+//	*BIT(7,FIO0PINL)=VH>>7;
+////	*((uint32_t*)FIO0MASKU)=0b0111111100111100;
+////	*((uint32_t*)FIO0PINU)=array[VH];
+////	*((uint32_t*)FIO0MASKU)=0x00;
+//	//Chip_GPIO_WritePortBit(LPC_GPIO,DB8_PORT, DB8_BIT, VH>>0 &((uint8_t)0x01));
+//	//Chip_GPIO_WritePortBit(LPC_GPIO,DB9_PORT, DB9_BIT, VH>>1 &((uint8_t)0x01));
+//	//Chip_GPIO_WritePortBit(LPC_GPIO,DB10_PORT, DB10_BIT, VH>>2 &((uint8_t)0x01));
+//	//Chip_GPIO_WritePortBit(LPC_GPIO,DB11_PORT, DB11_BIT, VH>>3 &((uint8_t)0x01));
+//	//Chip_GPIO_WritePortBit(LPC_GPIO,DB12_PORT, DB12_BIT, VH>>4 &((uint8_t)0x01));
+//	//Chip_GPIO_WritePortBit(LPC_GPIO,DB13_PORT, DB13_BIT, VH>>5 &((uint8_t)0x01));
+//	//Chip_GPIO_WritePortBit(LPC_GPIO,DB14_PORT, DB14_BIT, VH>>6 &((uint8_t)0x01));
+//	//Chip_GPIO_WritePortBit(LPC_GPIO,DB15_PORT, DB15_BIT, VH>>7 &((uint8_t)0x01));
 
-	//version anterior
-	//Chip_GPIO_WritePortBit(LPC_GPIO,DB0_PORT, DB0_BIT, VL>>0 &((uint8_t)0x01));
-	//Chip_GPIO_WritePortBit(LPC_GPIO,DB1_PORT, DB1_BIT, VL>>1 &((uint8_t)0x01));
-	//Chip_GPIO_WritePortBit(LPC_GPIO,DB2_PORT, DB2_BIT, VL>>2 &((uint8_t)0x01));
-	//Chip_GPIO_WritePortBit(LPC_GPIO,DB3_PORT, DB3_BIT, VL>>3 &((uint8_t)0x01));
-	//Chip_GPIO_WritePortBit(LPC_GPIO,DB4_PORT, DB4_BIT, VL>>4 &((uint8_t)0x01));
-	//Chip_GPIO_WritePortBit(LPC_GPIO,DB5_PORT, DB5_BIT, VL>>5 &((uint8_t)0x01));
-	//Chip_GPIO_WritePortBit(LPC_GPIO,DB6_PORT, DB6_BIT, VL>>6 &((uint8_t)0x01)); //no me funciono con bitbanding
-	//Chip_GPIO_WritePortBit(LPC_GPIO,DB7_PORT, DB7_BIT, VL>>7 &((uint8_t)0x01));
-
-
-
-
-	*BIT(0,FIO0PINU)=VH;
-	*BIT(15,FIO0PINL)=VH>>1;
-	*BIT(1,FIO0PINU)=VH>>2;
-	*BIT(2,FIO0PINU)=VH>>3;
-	*BIT(1,FIO0PINL)=VH>>4;
-	*BIT(0,FIO0PINL)=VH>>5;
-	*BIT(6,FIO0PINL)=VH>>6;
-	*BIT(7,FIO0PINL)=VH>>7;
-//	*((uint32_t*)FIO0MASKU)=0b0111111100111100;
-//	*((uint32_t*)FIO0PINU)=array[VH];
-//	*((uint32_t*)FIO0MASKU)=0x00;
-	//Chip_GPIO_WritePortBit(LPC_GPIO,DB8_PORT, DB8_BIT, VH>>0 &((uint8_t)0x01));
-	//Chip_GPIO_WritePortBit(LPC_GPIO,DB9_PORT, DB9_BIT, VH>>1 &((uint8_t)0x01));
-	//Chip_GPIO_WritePortBit(LPC_GPIO,DB10_PORT, DB10_BIT, VH>>2 &((uint8_t)0x01));
-	//Chip_GPIO_WritePortBit(LPC_GPIO,DB11_PORT, DB11_BIT, VH>>3 &((uint8_t)0x01));
-	//Chip_GPIO_WritePortBit(LPC_GPIO,DB12_PORT, DB12_BIT, VH>>4 &((uint8_t)0x01));
-	//Chip_GPIO_WritePortBit(LPC_GPIO,DB13_PORT, DB13_BIT, VH>>5 &((uint8_t)0x01));
-	//Chip_GPIO_WritePortBit(LPC_GPIO,DB14_PORT, DB14_BIT, VH>>6 &((uint8_t)0x01));
-	//Chip_GPIO_WritePortBit(LPC_GPIO,DB15_PORT, DB15_BIT, VH>>7 &((uint8_t)0x01));
-
-	*BIT(8,FIO0PINU)=0;
-	*BIT(8,FIO0PINU)=1;
+	CLEAR_WR
+	SET_WR
 	//Chip_GPIO_WritePortBit(LPC_GPIO,WR_PORT, WR_BIT, 0);
 	//Chip_GPIO_WritePortBit(LPC_GPIO,WR_PORT, WR_BIT, 1);
 

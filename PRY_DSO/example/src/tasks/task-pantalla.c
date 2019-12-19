@@ -680,7 +680,7 @@ void Board_UTFT_Init(void)
 	Chip_GPIO_SetPinDIR(LPC_GPIO, DB10_PORT ,DB10_BIT, true);
 	Chip_GPIO_SetPinDIR(LPC_GPIO, DB11_PORT ,DB11_BIT, true);
 	Chip_GPIO_SetPinDIR(LPC_GPIO, DB12_PORT ,DB12_BIT, true);
-	Chip_GPIO_SetPinDIR(LPC_GPIO, DB13_PORT ,DB13_BIT, true);
+	Chip_GPIO_SetPinDIR(LPC_GPIO, 2 ,1, true);
 	Chip_GPIO_SetPinDIR(LPC_GPIO, DB14_PORT ,DB14_BIT, true);
 	Chip_GPIO_SetPinDIR(LPC_GPIO, DB15_PORT ,DB15_BIT, true);
 
@@ -703,7 +703,7 @@ void Board_UTFT_Init(void)
 	Chip_GPIO_WritePortBit(LPC_GPIO, DB10_PORT ,DB10_BIT, 0);
 	Chip_GPIO_WritePortBit(LPC_GPIO, DB11_PORT ,DB11_BIT, 0);
 	Chip_GPIO_WritePortBit(LPC_GPIO, DB12_PORT ,DB12_BIT, 0);
-	Chip_GPIO_WritePortBit(LPC_GPIO, DB13_PORT ,DB13_BIT, 0);
+	Chip_GPIO_WritePortBit(LPC_GPIO, 2 ,1, 0);
 	Chip_GPIO_WritePortBit(LPC_GPIO, DB14_PORT ,DB14_BIT, 0);
 	Chip_GPIO_WritePortBit(LPC_GPIO, DB15_PORT ,DB15_BIT, 0);
 
