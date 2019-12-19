@@ -85,7 +85,7 @@ void LCD_Write_DATA_8(uint8_t VL)
 void InitLCD(uint8_t orientation)
 {
 	orient=orientation;
-	unsigned long i;
+	unsigned long i,j;
 
 
 //Estimo que nada de esto es necesario
@@ -95,6 +95,12 @@ void InitLCD(uint8_t orientation)
 //		pinMode(__p5,OUTPUT);
 //	if (display_transfer_mode!=1)
 //		_set_direction_registers(display_transfer_mode);
+
+	for (j=0;j<30;j++) //espero 300mSeg a que este estable la tensión
+	{
+	for (i=0;i<30301*(100000000/SystemCoreClock);i++); //trato de hacer una demora de 10mSeg
+	}
+
 
 	Chip_GPIO_WritePortBit(LPC_GPIO,RST_PORT, RST_BIT, 1);
 	for (i=0;i<45451*(100000000/SystemCoreClock);i++); //trato de hacer una demora de 5mSeg

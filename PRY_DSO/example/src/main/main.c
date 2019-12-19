@@ -21,6 +21,8 @@
 
 int main(void)
 {
+	uint32_t i;
+
 	//Board_Init();
 	// Check mode, add tasks to schedule
 
@@ -118,8 +120,11 @@ int main(void)
 //	while (1)
 //		pulse_high(0,22);
 
+
     while(1)
     {
+    	print("juani", 100,100,0);
+    	print("puto", 100,100,0);
     	SCH_Dispatch_Tasks();
     }
 
