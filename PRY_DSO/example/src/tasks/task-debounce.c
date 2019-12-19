@@ -30,8 +30,10 @@ void task_debounce(void)
 			if(contador_invariables[i] >= MIN_TIME_KEYS) //Tecla estable
 			{
 				key_now_state = BIS(keys_now, i);
-				Key[i].was_pressed = !Key[i].state && key_now_state? TRUE: FALSE;
-				Key[i].was_release = Key[i].state && !key_now_state? TRUE: FALSE;
+				if(!Key[i].was_pressed)
+					Key[i].was_pressed = !Key[i].state && key_now_state? TRUE: FALSE;
+				if(!Key[i].was_release)
+					Key[i].was_release = Key[i].state && !key_now_state? TRUE: FALSE;
 				Key[i].state = key_now_state;
 			}
 		}
@@ -43,9 +45,21 @@ void task_debounce(void)
 
 uint16_t getKeys(void)
 {
-	return (Chip_GPIO_GetPinState(LPC_GPIO, OK_PORT, OK_PIN) << 0) || (Chip_GPIO_GetPinState(LPC_GPIO, PLUS_PORT, PLUS_PIN) << 1) || (Chip_GPIO_GetPinState(LPC_GPIO, MINUS_PORT, MINUS_PIN) << 2) || (Chip_GPIO_GetPinState(LPC_GPIO, SEL_PORT, SEL_PIN) << 3) || (Chip_GPIO_GetPinState(LPC_GPIO, CPL1_PORT, CPL1_PIN) << 4) || (Chip_GPIO_GetPinState(LPC_GPIO, CPL2_PORT, CPL2_PIN) << 5) || (Chip_GPIO_GetPinState(LPC_GPIO, CPL3_PORT, CPL3_PIN) << 6) || (Chip_GPIO_GetPinState(LPC_GPIO, VSEN11_PORT, VSEN11_PIN) << 7) || (Chip_GPIO_GetPinState(LPC_GPIO, VSEN12_PORT, VSEN12_PIN) << 8) || (Chip_GPIO_GetPinState(LPC_GPIO, VSEN13_PORT, VSEN13_PIN) << 9) || (Chip_GPIO_GetPinState(LPC_GPIO, VSEN21_PORT, VSEN21_PIN) << 10) || (Chip_GPIO_GetPinState(LPC_GPIO, VSEN22_PORT, VSEN22_PIN) << 11) || (Chip_GPIO_GetPinState(LPC_GPIO, VSEN23_PORT, VSEN23_PIN) << 12);
+	return 	(((uint8_t)!Chip_GPIO_GetPinState(LPC_GPIO, OK_PORT, OK_PIN)) << 0) 			|
+			(((uint8_t)(!Chip_GPIO_GetPinState(LPC_GPIO, PLUS_PORT, PLUS_PIN)) << 1)) 		|
+			(((uint8_t)!Chip_GPIO_GetPinState(LPC_GPIO, MINUS_PORT, MINUS_PIN) << 2)) 		|
+			(((uint8_t)!Chip_GPIO_GetPinState(LPC_GPIO, SEL_PORT, SEL_PIN) << 3)) 			|
+			(((uint8_t)!Chip_GPIO_GetPinState(LPC_GPIO, CPL1_PORT, CPL1_PIN) << 4)) 		|
+			(((uint8_t)!Chip_GPIO_GetPinState(LPC_GPIO, CPL2_PORT, CPL2_PIN) << 5)) 		|
+			(((uint8_t)!Chip_GPIO_GetPinState(LPC_GPIO, CPL3_PORT, CPL3_PIN) << 6)) 		|
+			(((uint8_t)!Chip_GPIO_GetPinState(LPC_GPIO, VSEN11_PORT, VSEN11_PIN) << 7)) 	|
+			(((uint8_t)!Chip_GPIO_GetPinState(LPC_GPIO, VSEN12_PORT, VSEN12_PIN) << 8)) 	|
+			(((uint8_t)!Chip_GPIO_GetPinState(LPC_GPIO, VSEN13_PORT, VSEN13_PIN) << 9)) 	|
+			(((uint8_t)!Chip_GPIO_GetPinState(LPC_GPIO, VSEN21_PORT, VSEN21_PIN) << 10)) 	|
+			(((uint8_t)!Chip_GPIO_GetPinState(LPC_GPIO, VSEN22_PORT, VSEN22_PIN) << 11)) 	|
+			(((uint8_t)!Chip_GPIO_GetPinState(LPC_GPIO, VSEN23_PORT, VSEN23_PIN) << 12));
 }
-void initDebounce(void)
+void InitDebounce(void)
 {
 	Chip_IOCON_PinMuxSet(LPC_IOCON, OK_PORT, OK_PIN, IOCON_MODE_PULLUP);
 	Chip_IOCON_PinMuxSet(LPC_IOCON, PLUS_PORT, PLUS_PIN, IOCON_MODE_PULLUP);

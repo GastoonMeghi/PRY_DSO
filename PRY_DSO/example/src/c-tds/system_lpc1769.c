@@ -26,6 +26,7 @@
 #include "../tasks/task-pruebaPantalla.h"
 #include "../tasks/task-procesamiento.h"
 #include "../tasks/task-main.h"
+#include "../tasks/task-debounce.h"
 
 
 // ------ Public variable ------------------------------------------
@@ -122,16 +123,16 @@ void SYSTEM_Configure_Required_Mode(void)
         	// Set up scheduler for 1 ms ticks (tick interval in *ms*)
             SCH_Init(2);
 
-            // Initialize WWDT and event router
-        	Chip_WWDT_Init(LPC_WWDT);
+//            // Initialize WWDT and event router
+//        	Chip_WWDT_Init(LPC_WWDT);
+//
+//            // Set up WDT (timeout in *microseconds*)
+//            WATCHDOG_Init(WatchDog_RateuS);
+//
+//            // Set up Timer 0 as MoniTTor unit
+//            MONITTOR_I_Init();
 
-            // Set up WDT (timeout in *microseconds*)
-            WATCHDOG_Init(WatchDog_RateuS);
-
-            // Set up Timer 0 as MoniTTor unit
-            MONITTOR_I_Init();
-
-            task_pantalla_Init();
+//            task_pantalla_Init();
 
             //Inicializo el ADC
             InitADC();
@@ -142,6 +143,8 @@ void SYSTEM_Configure_Required_Mode(void)
             //Inicializo la interrupcion del trigger
             InitTriggerInt();
 
+            //Inicializo las teclas
+            InitDebounce();
 //        	// Prepare to Read Em SWITCH task
 //        	Em_SWITCH_Init();
 //
@@ -162,7 +165,7 @@ void SYSTEM_Configure_Required_Mode(void)
 //        	CLEAN_ROOM_CONTROLLER_Init();
 
         	// Prepare for Heartbeat task
-        	HEARTBEAT_Init();
+//        	HEARTBEAT_Init();
 
         	// Add tasks to schedule.
             // Parameters are:
@@ -173,7 +176,7 @@ void SYSTEM_Configure_Required_Mode(void)
             // 5. Task BCET (in microseconds)
 
             // Add watchdog task first
-            SCH_Add_Task(WATCHDOG_Update, 0, 1, 10, 0);
+//            SCH_Add_Task(WATCHDOG_Update, 0, 1, 10, 0);
 
 //            // Add EM_SWITCH task
 //            SCH_Add_Task(Em_SWITCH_Update, 1, 10, 20, 0);
@@ -195,11 +198,13 @@ void SYSTEM_Configure_Required_Mode(void)
 //            SCH_Add_Task(CLEAN_ROOM_CONTROLLER_Update, 0, 10, 40, 0);
 //
 //            // Add Heartbeat task
-            SCH_Add_Task(HEARTBEAT_Update, 0, 1000, 20, 0);
-            SCH_Add_Task(task_procesamiento, 0,20,1000000, 0);
+//            SCH_Add_Task(HEARTBEAT_Update, 0, 1000, 20, 0);
+//            SCH_Add_Task(task_procesamiento, 0,20,1000000, 0);
             //SCH_Add_Task(task_pruebaPantalla, 0,1500,1000000, 0);
-            SCH_Add_Task(task_pantalla, 1, 3,1000000, 0);
+//            SCH_Add_Task(task_pantalla, 1, 3,1000000, 0);
             SCH_Add_Task(task_main, 2, 10,1000000, 0);
+//            startSampling(0, FALLING, 10000);
+            SCH_Add_Task(task_debounce, 2, 1,1000000, 0);
 
             break;
         }

@@ -82,5 +82,5 @@ extern key_t Key[N_KEYS];
 
 void task_debounce(void);
 uint16_t getKeys(void);
-void initDebounce(void);
+void InitDebounce(void);
 #endif /* SRC_TASKS_TASK_DEBOUNCE_H_ */

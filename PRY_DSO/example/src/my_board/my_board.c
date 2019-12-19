@@ -98,7 +98,7 @@ void setTriggerLvl(float lvl)
 	if(lvl > -MAX_TRIGGER_LVL && lvl < MAX_TRIGGER_LVL)
 	{
 		duty = (lvl + MAX_TRIGGER_LVL) / (2 * MAX_TRIGGER_LVL);
-		PWM_SetDuty(PWM1, duty);
+		PWM_SetDuty(PWM4, duty);
 	}
 }
 
@@ -269,4 +269,13 @@ void setTriggerEdge(trigger_edge_t edge)
 void setSampleRate(uint32_t sampleRate)
 {
 	Chip_ADC_SetSampleRate(LPC_ADC, &ADCSetup, sampleRate);
+}
+
+void InitSquareSig(void)
+{
+	//P3.25 como PWM14
+	Chip_IOCON_PinMuxSet(LPC_IOCON, SQUARE_PORT, SQUARE_PORT, IOCON_FUNC3|IOCON_MODE_INACT);
+
+	//Habilito la salida de PWM
+	Chip_PWM_OutputEnable(PWM2, ENABLE);
 }
