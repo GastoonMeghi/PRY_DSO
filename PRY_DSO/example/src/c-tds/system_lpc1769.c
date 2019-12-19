@@ -123,18 +123,6 @@ void SYSTEM_Configure_Required_Mode(void)
         	// Set up scheduler for 1 ms ticks (tick interval in *ms*)
             SCH_Init(2);
 
-<<<<<<< HEAD
-//            // Initialize WWDT and event router
-//        	Chip_WWDT_Init(LPC_WWDT);
-//
-//            // Set up WDT (timeout in *microseconds*)
-//            WATCHDOG_Init(WatchDog_RateuS);
-//
-//            // Set up Timer 0 as MoniTTor unit
-//            MONITTOR_I_Init();
-
-//            task_pantalla_Init();
-=======
             // Initialize WWDT and event router
         	//Chip_WWDT_Init(LPC_WWDT);
 
@@ -145,16 +133,14 @@ void SYSTEM_Configure_Required_Mode(void)
           //  MONITTOR_I_Init();
 
 
->>>>>>> e43693a6538405c3b554ba8aff7230f2fba9ee11
-
             //Inicializo el ADC
-           // InitADC();
+            InitADC();
 
             //Inicializo el generador de trigger
-         //   InitTriggerPWM();
+            InitTriggerPWM();
 
             //Inicializo la interrupcion del trigger
-           // InitTriggerInt();
+            InitTriggerInt();
 
             //Inicializo las teclas
             InitDebounce();
@@ -178,13 +164,9 @@ void SYSTEM_Configure_Required_Mode(void)
 //        	CLEAN_ROOM_CONTROLLER_Init();
 
         	// Prepare for Heartbeat task
-<<<<<<< HEAD
-//        	HEARTBEAT_Init();
-=======
        // 	HEARTBEAT_Init();
 
             task_pantalla_Init();
->>>>>>> e43693a6538405c3b554ba8aff7230f2fba9ee11
 
         	// Add tasks to schedule.
             // Parameters are:
@@ -195,11 +177,8 @@ void SYSTEM_Configure_Required_Mode(void)
             // 5. Task BCET (in microseconds)
 
             // Add watchdog task first
-<<<<<<< HEAD
+
 //            SCH_Add_Task(WATCHDOG_Update, 0, 1, 10, 0);
-=======
-           // SCH_Add_Task(WATCHDOG_Update, 0, 1, 10, 0);
->>>>>>> e43693a6538405c3b554ba8aff7230f2fba9ee11
 
 //            // Add EM_SWITCH task
 //            SCH_Add_Task(Em_SWITCH_Update, 1, 10, 20, 0);
@@ -222,9 +201,9 @@ void SYSTEM_Configure_Required_Mode(void)
 //
 //            // Add Heartbeat task
 //            SCH_Add_Task(HEARTBEAT_Update, 0, 1000, 20, 0);
-//            SCH_Add_Task(task_procesamiento, 0,20,1000000, 0);
-            //SCH_Add_Task(task_pruebaPantalla, 0,1500,1000000, 0);
-//            SCH_Add_Task(task_pantalla, 1, 3,1000000, 0);
+            SCH_Add_Task(task_procesamiento, 0,20,1000000, 0);
+//            SCH_Add_Task(task_pruebaPantalla, 0,1500,1000000, 0);
+            SCH_Add_Task(task_pantalla, 1, 3,1000000, 0);
             SCH_Add_Task(task_main, 2, 10,1000000, 0);
             SCH_Add_Task(task_debounce, 2, 1,1000000, 0);
             break;
