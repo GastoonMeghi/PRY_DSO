@@ -123,8 +123,6 @@ int main(void)
 
     while(1)
     {
-    	print("juani", 100,100,0);
-    	print("puto", 100,100,0);
     	SCH_Dispatch_Tasks();
     }
 

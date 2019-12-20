@@ -12,6 +12,7 @@
 #include "task-main.h"
 #include "task-pantalla.h"
 #include "string.h"
+#include "task-debounce.h"
 parametros_t parametros;
 
 //estado_pantalla=DONE: Controla si la pantalla debe escribir o no
@@ -44,7 +45,6 @@ void task_main (void)
 	switch (state)
 	{
 	case INIC:
-
 //		sample_rate = 1000 * parametros.fdt;	/*TODO definir como establecer un sample_rate*/
 		/* BORRAR	*/
 		sample_rate = 5000;
@@ -68,6 +68,7 @@ void task_main (void)
 		if (processing_state==IDLE)//terminamos de procesar las muestras
 		{
 			memcpy(pantalla.signal,signal,SIGNAL_LENGTH*sizeof(*(signal)));//Copio los datos en la pantalla
+			seleccion();
 			estado_pantalla=WRITTING; //Habilito la pantalla para que escriba
 			state=SHOWING_RESULTS_2;
 		}
@@ -100,21 +101,10 @@ void seleccion(void)
 		return;
 	}
 
-	//**lectura del acople***//
-//	if (CPLSEL1_ACTIVO)
-//	{
-//		strcpy(pantalla.acople,"DC");
-//	}
-//	else if (CPLSEL2_ACTIVO)
-//	{
-//		strcpy(pantalla.acople,"AC");
-//	}
-//	else if (CPLSEL3_ACTIVO)
-//	{
-//		strcpy(pantalla.acople,"GND");
-//	}
-//
 
+
+	config_fdv();
+	config_acople();
 	switch (state)
 	{
 		case reposo:
@@ -174,8 +164,75 @@ void seleccion(void)
 			{
 				pantalla.seleccion=SEL_TRIGGER_LEVEL;
 				state=config_trigger_lvl;
-				//CLEAN_FLANCO_SEL;
 			}
+
 	}
 
 }
+
+void config_acople (void)
+{
+
+	if (Key[CPL1].state)
+	{
+		strcpy(pantalla.acople,"DC ");
+	}
+	else if (Key[CPL2].state)
+	{
+		strcpy(pantalla.acople,"AC ");
+	}
+	else if (Key[CPL3].state)
+	{
+		strcpy(pantalla.acople,"GND");
+	}
+
+}
+void config_fdv (void)
+{
+	if(Key[VSEN11].state)
+	{
+		if(Key[VSEN21].state)
+		{
+			strcpy(pantalla.fdv,"10mV    ");
+		}
+		else if(Key[VSEN22].state)
+		{
+			strcpy(pantalla.fdv,"20mV    ");
+		}
+		else if(Key[VSEN23].state)
+		{
+			strcpy(pantalla.fdv,"50mV    ");
+		}
+	}
+	else if(Key[VSEN12].state)
+	{
+		if(Key[VSEN21].state)
+		{
+			strcpy(pantalla.fdv,"0.1V    ");
+		}
+		else if(Key[VSEN22].state)
+		{
+			strcpy(pantalla.fdv,"0.2V    ");
+		}
+		else if(Key[VSEN23].state)
+		{
+			strcpy(pantalla.fdv,"0.5V    ");
+		}
+	}
+	else if(Key[VSEN13].state)
+	{
+		if(Key[VSEN21].state)
+		{
+			strcpy(pantalla.fdv,"1V    ");
+		}
+		else if(Key[VSEN22].state)
+		{
+			strcpy(pantalla.fdv,"2V    ");
+		}
+		else if(Key[VSEN23].state)
+		{
+			strcpy(pantalla.fdv,"5V    ");
+		}
+	}
+}
+

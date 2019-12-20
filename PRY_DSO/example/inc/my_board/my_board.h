@@ -19,8 +19,12 @@
 #define	TRIGGER_IN_PORT		0
 #define TRIGGER_IN_PIN		24
 
+#define SQUARE_PORT			3
+#define SQUARE_PIN			25
 
-#define ADC_CHANNEL ADC_CH5		//Cambiar por ADC_CH0 para leer la señal
+
+//#define ADC_CHANNEL ADC_CH5		//Placa prototipo
+#define ADC_CHANNEL ADC_CH0	//Placa final
 #define SAMPLE_BUFFER_LENGHT 	300
 #define ADC_PORT	0
 #define ADC_PIN		23

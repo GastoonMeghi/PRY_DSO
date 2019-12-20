@@ -776,6 +776,10 @@ cambios_pantalla_t calcular_cambios()
 		{
 			result.Vm=1;
 		}
+		if(pantalla.fdv[i]!=pantalla_prev.fdv[i])
+		{
+			result.fdv=1;
+		}
 	}
 
 	for (i=0;i<FREC_LENGTH;i++)
@@ -936,7 +940,7 @@ void write_signal(uint8_t* state)
 	switch(signal_state)
 	{
 		case writting_1:
-			setColor2(0,0,255);
+			setColor2(255,255,0);
 			for(j=0;j<3;j++)
 			drawPixel(i+j,pantalla.signal[i+j]);
 			i=j+i;
@@ -947,7 +951,7 @@ void write_signal(uint8_t* state)
 		//una vez que termino de hacer esto hago incremento el estado principal porque ya termine lo que
 	    //debia hacer, dejo el signal state en errasing para poder borrar lo que escribí y guardo la señal
 		// actual para poder borrarla posteriormente
-			setColor2(0,0,255);
+			setColor2(255,255,0);
 			for(j=0;j<MUESTRAS_IMPRIMIBLES &&(i+j)<SIGNAL_LENGTH;j++)
 				drawPixel(i+j,pantalla.signal[i+j]);
 			i=j+i;

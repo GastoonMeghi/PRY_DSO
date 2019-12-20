@@ -87,21 +87,6 @@ void InitLCD(uint8_t orientation)
 	orient=orientation;
 	unsigned long i,j;
 
-
-//Estimo que nada de esto es necesario
-//	if (__p4 != NOTINUSE)
-//		pinMode(__p4,OUTPUT);
-//	if ((display_transfer_mode==LATCHED_16) || ((display_transfer_mode==1) && (display_serial_mode==SERIAL_5PIN)))
-//		pinMode(__p5,OUTPUT);
-//	if (display_transfer_mode!=1)
-//		_set_direction_registers(display_transfer_mode);
-
-	for (j=0;j<30;j++) //espero 300mSeg a que este estable la tensión
-	{
-	for (i=0;i<30301*(100000000/SystemCoreClock);i++); //trato de hacer una demora de 10mSeg
-	}
-
-
 	Chip_GPIO_WritePortBit(LPC_GPIO,RST_PORT, RST_BIT, 1);
 	for (i=0;i<45451*(100000000/SystemCoreClock);i++); //trato de hacer una demora de 5mSeg
 	Chip_GPIO_WritePortBit(LPC_GPIO,RST_PORT, RST_BIT, 0);
