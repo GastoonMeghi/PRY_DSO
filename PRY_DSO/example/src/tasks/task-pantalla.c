@@ -710,12 +710,12 @@ void Board_UTFT_Init(void)
 }
 void task_pantalla_Init(void)
 {
-	uint32_t i;
+	uint32_t i,j;
 	Board_UTFT_Init();
 
     InitLCD(LANDSCAPE);
 
-    drawPixel(20,20);
+   // drawPixel(20,20);
     setFont(SmallFont);
     drawBitmap(300,0,100,100,utn,1);
     setColor2(255,255,255);
@@ -726,6 +726,21 @@ void task_pantalla_Init(void)
 
 	for (i=1;i<300;i++) drawPixel(i,220);
 	for (i=1;i<220;i++) drawPixel(300,i);
+	for(j=30;j<300;j+=30)
+	{
+		for(i=1;i<220;i++)
+		{
+			drawPixel(j,i);
+		}
+	}
+
+	for(j=28;j<220;j+=28)
+	{
+		for(i=1;i<300;i++)
+		{
+			drawPixel(i,j);
+		}
+	}
 
 }
 
@@ -795,6 +810,11 @@ cambios_pantalla_t calcular_cambios()
 		if(pantalla.T[i]!=pantalla_prev.T[i])
 		{
 			result.T=1;
+		}
+
+		if(pantalla.fdt[i]!=pantalla_prev.fdt[i])
+		{
+			result.fdt=1;
 		}
 	}
 

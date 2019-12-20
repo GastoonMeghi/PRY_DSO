@@ -35,7 +35,8 @@ extern uint8_t signal[300];
 //mostrarse en la pantalla, comunica que finalizo cambiando su estado a IDLE
 extern enum {IDLE,PROCESSING}processing_state;
 
-
+uint8_t freq_index=0;
+uint32_t sample_rate2[FREQ_INDEX_LENGHT] = {5000, 100000,200000};
 
 void task_main (void)
 {
@@ -48,7 +49,7 @@ void task_main (void)
 //		sample_rate = 1000 * parametros.fdt;	/*TODO definir como establecer un sample_rate*/
 		/* BORRAR	*/
 		sample_rate = 5000;
-		startSampling(parametros.trigger_level, parametros.trigger_pol, sample_rate);
+		startSampling(parametros.trigger_level, parametros.trigger_pol, sample_rate2[freq_index]);
 		state=SAMPLING;
 
 		return;
@@ -86,6 +87,16 @@ void task_main (void)
 }
 
 
+void config_sampligRate(void)
+{
+if(Key[OK].was_pressed)
+{
+Key[OK].was_pressed = FALSE;
+freq_index++;
+freq_index%=FREQ_INDEX_LENGHT;
+}
+}
+
 //Lee todos los pulsadores e informa directamente a la pantalla de la selección de los parametros:
 // acople
 // escala de tensión
@@ -102,8 +113,9 @@ void seleccion(void)
 	}
 
 
-
+	config_sampligRate();
 	config_fdv();
+	config_fdt1 ();
 	config_acople();
 	switch (state)
 	{
@@ -170,6 +182,25 @@ void seleccion(void)
 
 }
 
+
+void config_fdt1 (void)
+{
+	switch(freq_index)
+	{
+		case 0:
+			strcpy(pantalla.fdt,"5Khz   ");
+			break;
+		case 1:
+			strcpy(pantalla.fdt,"6Khz   ");
+			break;
+		case 2:
+			strcpy(pantalla.fdt,"7Khz   ");
+			break;
+		case 3:
+			strcpy(pantalla.fdt,"8Khz   ");
+			break;
+	}
+}
 void config_acople (void)
 {
 

@@ -16,6 +16,8 @@
 #define CLEAN_FLANCO_SEL 0
 #define CLEAN_FLANCO_OK 0
 
+#define FREQ_INDEX_LENGHT 3
+
 //***Modos del trigger*****
 #define RISING_EDGE 1
 #define FALLING_EDGE 0
@@ -47,4 +49,7 @@ void config_fdv (void);
 
 void config_acople (void);
 
+void config_sampligRate(void);
+
+void config_fdt1 (void);
 #endif /* SRC_TASKS_TASK_MAIN_H_ */
