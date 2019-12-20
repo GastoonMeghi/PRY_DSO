@@ -5,7 +5,7 @@
  *      Author: ordonezt
  */
 
-#include "task-debounce.h"
+#include "../tasks/task-debounce.h"
 
 key_t Key[N_KEYS] = {0};
 
@@ -49,15 +49,15 @@ uint16_t getKeys(void)
 			(((uint8_t)(!Chip_GPIO_GetPinState(LPC_GPIO, PLUS_PORT, PLUS_PIN)) << 1)) 		|
 			(((uint8_t)!Chip_GPIO_GetPinState(LPC_GPIO, MINUS_PORT, MINUS_PIN) << 2)) 		|
 			(((uint8_t)!Chip_GPIO_GetPinState(LPC_GPIO, SEL_PORT, SEL_PIN) << 3)) 			|
-			(((uint8_t)!Chip_GPIO_GetPinState(LPC_GPIO, CPL1_PORT, CPL1_PIN) << 4)) 		|
-			(((uint8_t)!Chip_GPIO_GetPinState(LPC_GPIO, CPL2_PORT, CPL2_PIN) << 5)) 		|
-			(((uint8_t)!Chip_GPIO_GetPinState(LPC_GPIO, CPL3_PORT, CPL3_PIN) << 6)) 		|
-			(((uint8_t)!Chip_GPIO_GetPinState(LPC_GPIO, VSEN11_PORT, VSEN11_PIN) << 7)) 	|
-			(((uint8_t)!Chip_GPIO_GetPinState(LPC_GPIO, VSEN12_PORT, VSEN12_PIN) << 8)) 	|
-			(((uint8_t)!Chip_GPIO_GetPinState(LPC_GPIO, VSEN13_PORT, VSEN13_PIN) << 9)) 	|
-			(((uint8_t)!Chip_GPIO_GetPinState(LPC_GPIO, VSEN21_PORT, VSEN21_PIN) << 10)) 	|
-			(((uint8_t)!Chip_GPIO_GetPinState(LPC_GPIO, VSEN22_PORT, VSEN22_PIN) << 11)) 	|
-			(((uint8_t)!Chip_GPIO_GetPinState(LPC_GPIO, VSEN23_PORT, VSEN23_PIN) << 12));
+			(((uint8_t)Chip_GPIO_GetPinState(LPC_GPIO, CPL1_PORT, CPL1_PIN) << 4)) 		|
+			(((uint8_t)Chip_GPIO_GetPinState(LPC_GPIO, CPL2_PORT, CPL2_PIN) << 5)) 		|
+			(((uint8_t)Chip_GPIO_GetPinState(LPC_GPIO, CPL3_PORT, CPL3_PIN) << 6)) 		|
+			(((uint8_t)Chip_GPIO_GetPinState(LPC_GPIO, VSEN11_PORT, VSEN11_PIN) << 7)) 	|
+			(((uint8_t)Chip_GPIO_GetPinState(LPC_GPIO, VSEN12_PORT, VSEN12_PIN) << 8)) 	|
+			(((uint8_t)Chip_GPIO_GetPinState(LPC_GPIO, VSEN13_PORT, VSEN13_PIN) << 9)) 	|
+			(((uint8_t)Chip_GPIO_GetPinState(LPC_GPIO, VSEN21_PORT, VSEN21_PIN) << 10)) 	|
+			(((uint8_t)Chip_GPIO_GetPinState(LPC_GPIO, VSEN22_PORT, VSEN22_PIN) << 11)) 	|
+			(((uint8_t)Chip_GPIO_GetPinState(LPC_GPIO, VSEN23_PORT, VSEN23_PIN) << 12));
 }
 void InitDebounce(void)
 {
@@ -66,17 +66,17 @@ void InitDebounce(void)
 	Chip_IOCON_PinMuxSet(LPC_IOCON, MINUS_PORT, MINUS_PIN, IOCON_MODE_PULLUP);
 	Chip_IOCON_PinMuxSet(LPC_IOCON, SEL_PORT, SEL_PIN, IOCON_MODE_PULLUP);
 
-	Chip_IOCON_PinMuxSet(LPC_IOCON, CPL1_PORT, CPL1_PIN, IOCON_MODE_PULLUP);
-	Chip_IOCON_PinMuxSet(LPC_IOCON, CPL2_PORT, CPL2_PIN, IOCON_MODE_PULLUP);
-	Chip_IOCON_PinMuxSet(LPC_IOCON, CPL3_PORT, CPL3_PIN, IOCON_MODE_PULLUP);
+	Chip_IOCON_PinMuxSet(LPC_IOCON, CPL1_PORT, CPL1_PIN, IOCON_MODE_PULLDOWN);
+	Chip_IOCON_PinMuxSet(LPC_IOCON, CPL2_PORT, CPL2_PIN, IOCON_MODE_PULLDOWN);
+	Chip_IOCON_PinMuxSet(LPC_IOCON, CPL3_PORT, CPL3_PIN, IOCON_MODE_PULLDOWN);
 
-	Chip_IOCON_PinMuxSet(LPC_IOCON, VSEN11_PORT, VSEN11_PIN, IOCON_MODE_PULLUP);
-	Chip_IOCON_PinMuxSet(LPC_IOCON, VSEN12_PORT, VSEN12_PIN, IOCON_MODE_PULLUP);
-	Chip_IOCON_PinMuxSet(LPC_IOCON, VSEN13_PORT, VSEN13_PIN, IOCON_MODE_PULLUP);
+	Chip_IOCON_PinMuxSet(LPC_IOCON, VSEN11_PORT, VSEN11_PIN, IOCON_MODE_PULLDOWN);
+	Chip_IOCON_PinMuxSet(LPC_IOCON, VSEN12_PORT, VSEN12_PIN, IOCON_MODE_PULLDOWN);
+	Chip_IOCON_PinMuxSet(LPC_IOCON, VSEN13_PORT, VSEN13_PIN, IOCON_MODE_PULLDOWN);
 
-	Chip_IOCON_PinMuxSet(LPC_IOCON, VSEN21_PORT, VSEN21_PIN, IOCON_MODE_PULLUP);
-	Chip_IOCON_PinMuxSet(LPC_IOCON, VSEN22_PORT, VSEN22_PIN, IOCON_MODE_PULLUP);
-	Chip_IOCON_PinMuxSet(LPC_IOCON, VSEN23_PORT, VSEN23_PIN, IOCON_MODE_PULLUP);
+	Chip_IOCON_PinMuxSet(LPC_IOCON, VSEN21_PORT, VSEN21_PIN, IOCON_MODE_PULLDOWN);
+	Chip_IOCON_PinMuxSet(LPC_IOCON, VSEN22_PORT, VSEN22_PIN, IOCON_MODE_PULLDOWN);
+	Chip_IOCON_PinMuxSet(LPC_IOCON, VSEN23_PORT, VSEN23_PIN, IOCON_MODE_PULLDOWN);
 
 	Chip_GPIO_SetPinDIRInput(LPC_GPIO, OK_PORT, OK_PIN);
 	Chip_GPIO_SetPinDIRInput(LPC_GPIO, PLUS_PORT, PLUS_PIN);

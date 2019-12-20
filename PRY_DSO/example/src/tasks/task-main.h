@@ -8,13 +8,13 @@
 #ifndef SRC_TASKS_TASK_MAIN_H_
 #define SRC_TASKS_TASK_MAIN_H_
 
-#define FLANCO_SEL 1
-#define PLUS_PRESSED 1
-#define MINUS_PRESSED 1
-#define FLANCO_OK  1
-#define FLANCO_SEL 1
-#define CLEAN_FLANCO_SEL 1
-#define CLEAN_FLANCO_OK 1
+#define FLANCO_SEL 0
+#define PLUS_PRESSED 0
+#define MINUS_PRESSED 0
+#define FLANCO_OK  0
+#define FLANCO_SEL 0
+#define CLEAN_FLANCO_SEL 0
+#define CLEAN_FLANCO_OK 0
 
 //***Modos del trigger*****
 #define RISING_EDGE 1
@@ -42,4 +42,9 @@ typedef struct {
 void task_main (void);
 
 void seleccion (void);
+
+void config_fdv (void);
+
+void config_acople (void);
+
 #endif /* SRC_TASKS_TASK_MAIN_H_ */
